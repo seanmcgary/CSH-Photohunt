@@ -13,6 +13,13 @@
 		430C0769151E5B8400FC7C4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 430C0767151E5B8400FC7C4F /* InfoPlist.strings */; };
 		430C076B151E5B8400FC7C4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C076A151E5B8400FC7C4F /* main.m */; };
 		430C076F151E5B8400FC7C4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C076E151E5B8400FC7C4F /* AppDelegate.m */; };
+		430C0777151E5BAC00FC7C4F /* AppNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0776151E5BAC00FC7C4F /* AppNavigationController.m */; };
+		430C077B151E5BDF00FC7C4F /* CameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */; };
+		430C077E151E5BFA00FC7C4F /* GalleryNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C077D151E5BFA00FC7C4F /* GalleryNavigationController.m */; };
+		430C0784151E5D7900FC7C4F /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0783151E5D7900FC7C4F /* GalleryViewController.m */; };
+		430C0787151E5E4A00FC7C4F /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0786151E5E4A00FC7C4F /* CameraViewController.m */; };
+		430C078A151E5F9400FC7C4F /* AppStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0789151E5F9300FC7C4F /* AppStartViewController.m */; };
+		43965205151E928C0000181C /* AppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43965204151E928C0000181C /* AppTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +27,26 @@
 		430C075E151E5B8400FC7C4F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		430C0760151E5B8400FC7C4F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		430C0762151E5B8400FC7C4F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		430C0766151E5B8400FC7C4F /* Photohunt-Info.plist */ = {isa = PBXFileReference; path = "Photohunt-Info.plist"; sourceTree = "<group>"; };
+		430C0766151E5B8400FC7C4F /* Photohunt-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Photohunt-Info.plist"; sourceTree = "<group>"; };
 		430C0768151E5B8400FC7C4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		430C076A151E5B8400FC7C4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		430C076C151E5B8400FC7C4F /* Photohunt-Prefix.pch */ = {isa = PBXFileReference; path = "Photohunt-Prefix.pch"; sourceTree = "<group>"; };
-		430C076D151E5B8400FC7C4F /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		430C076C151E5B8400FC7C4F /* Photohunt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Photohunt-Prefix.pch"; sourceTree = "<group>"; };
+		430C076D151E5B8400FC7C4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		430C076E151E5B8400FC7C4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		430C0775151E5BAC00FC7C4F /* AppNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppNavigationController.h; sourceTree = "<group>"; };
+		430C0776151E5BAC00FC7C4F /* AppNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppNavigationController.m; sourceTree = "<group>"; };
+		430C0779151E5BDF00FC7C4F /* CameraNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraNavigationController.h; sourceTree = "<group>"; };
+		430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraNavigationController.m; sourceTree = "<group>"; };
+		430C077C151E5BFA00FC7C4F /* GalleryNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryNavigationController.h; sourceTree = "<group>"; };
+		430C077D151E5BFA00FC7C4F /* GalleryNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryNavigationController.m; sourceTree = "<group>"; };
+		430C0782151E5D7900FC7C4F /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
+		430C0783151E5D7900FC7C4F /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
+		430C0785151E5E4A00FC7C4F /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		430C0786151E5E4A00FC7C4F /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		430C0788151E5F9300FC7C4F /* AppStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStartViewController.h; sourceTree = "<group>"; };
+		430C0789151E5F9300FC7C4F /* AppStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartViewController.m; sourceTree = "<group>"; };
+		43965203151E928C0000181C /* AppTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTabBarController.h; sourceTree = "<group>"; };
+		43965204151E928C0000181C /* AppTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +93,14 @@
 		430C0764151E5B8400FC7C4F /* Photohunt */ = {
 			isa = PBXGroup;
 			children = (
+				430C0778151E5BBA00FC7C4F /* AppNavigationViewControllers */,
 				430C076D151E5B8400FC7C4F /* AppDelegate.h */,
 				430C076E151E5B8400FC7C4F /* AppDelegate.m */,
 				430C0765151E5B8400FC7C4F /* Supporting Files */,
+				430C0775151E5BAC00FC7C4F /* AppNavigationController.h */,
+				430C0776151E5BAC00FC7C4F /* AppNavigationController.m */,
+				43965203151E928C0000181C /* AppTabBarController.h */,
+				43965204151E928C0000181C /* AppTabBarController.m */,
 			);
 			path = Photohunt;
 			sourceTree = "<group>";
@@ -88,6 +114,39 @@
 				430C076C151E5B8400FC7C4F /* Photohunt-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		430C0778151E5BBA00FC7C4F /* AppNavigationViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				430C0781151E5C2600FC7C4F /* GalleryViewControllers */,
+				430C077F151E5C0B00FC7C4F /* CameraViewControllers */,
+				430C0779151E5BDF00FC7C4F /* CameraNavigationController.h */,
+				430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */,
+				430C077C151E5BFA00FC7C4F /* GalleryNavigationController.h */,
+				430C077D151E5BFA00FC7C4F /* GalleryNavigationController.m */,
+				430C0788151E5F9300FC7C4F /* AppStartViewController.h */,
+				430C0789151E5F9300FC7C4F /* AppStartViewController.m */,
+			);
+			name = AppNavigationViewControllers;
+			sourceTree = "<group>";
+		};
+		430C077F151E5C0B00FC7C4F /* CameraViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				430C0785151E5E4A00FC7C4F /* CameraViewController.h */,
+				430C0786151E5E4A00FC7C4F /* CameraViewController.m */,
+			);
+			name = CameraViewControllers;
+			sourceTree = "<group>";
+		};
+		430C0781151E5C2600FC7C4F /* GalleryViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				430C0782151E5D7900FC7C4F /* GalleryViewController.h */,
+				430C0783151E5D7900FC7C4F /* GalleryViewController.m */,
+			);
+			name = GalleryViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +213,13 @@
 			files = (
 				430C076B151E5B8400FC7C4F /* main.m in Sources */,
 				430C076F151E5B8400FC7C4F /* AppDelegate.m in Sources */,
+				430C0777151E5BAC00FC7C4F /* AppNavigationController.m in Sources */,
+				430C077B151E5BDF00FC7C4F /* CameraNavigationController.m in Sources */,
+				430C077E151E5BFA00FC7C4F /* GalleryNavigationController.m in Sources */,
+				430C0784151E5D7900FC7C4F /* GalleryViewController.m in Sources */,
+				430C0787151E5E4A00FC7C4F /* CameraViewController.m in Sources */,
+				430C078A151E5F9400FC7C4F /* AppStartViewController.m in Sources */,
+				43965205151E928C0000181C /* AppTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +323,7 @@
 				430C0774151E5B8400FC7C4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
