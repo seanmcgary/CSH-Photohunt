@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppCell.h"
+#import "AppCellData.h"
 
-@interface AppStartViewController : UIViewController
+@interface AppStartViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) NSArray *cells;
+@property (strong, nonatomic) NSArray *sections;
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UIToolbar *toolbar;
 
 - (id) init;
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

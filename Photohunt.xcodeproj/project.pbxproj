@@ -13,12 +13,19 @@
 		430C0769151E5B8400FC7C4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 430C0767151E5B8400FC7C4F /* InfoPlist.strings */; };
 		430C076B151E5B8400FC7C4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C076A151E5B8400FC7C4F /* main.m */; };
 		430C076F151E5B8400FC7C4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C076E151E5B8400FC7C4F /* AppDelegate.m */; };
-		430C0777151E5BAC00FC7C4F /* AppNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0776151E5BAC00FC7C4F /* AppNavigationController.m */; };
 		430C077B151E5BDF00FC7C4F /* CameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */; };
-		430C077E151E5BFA00FC7C4F /* GalleryNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C077D151E5BFA00FC7C4F /* GalleryNavigationController.m */; };
 		430C0784151E5D7900FC7C4F /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0783151E5D7900FC7C4F /* GalleryViewController.m */; };
 		430C0787151E5E4A00FC7C4F /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0786151E5E4A00FC7C4F /* CameraViewController.m */; };
 		430C078A151E5F9400FC7C4F /* AppStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0789151E5F9300FC7C4F /* AppStartViewController.m */; };
+		434340B1151FCAAA006E75C9 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 434340B0151FCAAA006E75C9 /* home.png */; };
+		434340B5151FCB7E006E75C9 /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = 434340B3151FCB7E006E75C9 /* gallery.png */; };
+		434340BA151FCC4B006E75C9 /* CluesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 434340B9151FCC4B006E75C9 /* CluesNavigationController.m */; };
+		434340BE151FCCF6006E75C9 /* CluesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 434340BD151FCCF6006E75C9 /* CluesViewController.m */; };
+		434340C0151FCE8A006E75C9 /* clues.png in Resources */ = {isa = PBXBuildFile; fileRef = 434340BF151FCE8A006E75C9 /* clues.png */; };
+		434340C2151FCEE9006E75C9 /* clues2.png in Resources */ = {isa = PBXBuildFile; fileRef = 434340C1151FCEE8006E75C9 /* clues2.png */; };
+		434340C4151FCF22006E75C9 /* camera2.png in Resources */ = {isa = PBXBuildFile; fileRef = 434340C3151FCF22006E75C9 /* camera2.png */; };
+		434340CF151FDA3F006E75C9 /* AppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 434340CE151FDA3F006E75C9 /* AppCell.m */; };
+		434340D3151FDAD1006E75C9 /* AppCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 434340D2151FDAD1006E75C9 /* AppCellData.m */; };
 		43965205151E928C0000181C /* AppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43965204151E928C0000181C /* AppTabBarController.m */; };
 /* End PBXBuildFile section */
 
@@ -33,18 +40,27 @@
 		430C076C151E5B8400FC7C4F /* Photohunt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Photohunt-Prefix.pch"; sourceTree = "<group>"; };
 		430C076D151E5B8400FC7C4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		430C076E151E5B8400FC7C4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		430C0775151E5BAC00FC7C4F /* AppNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppNavigationController.h; sourceTree = "<group>"; };
-		430C0776151E5BAC00FC7C4F /* AppNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppNavigationController.m; sourceTree = "<group>"; };
 		430C0779151E5BDF00FC7C4F /* CameraNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraNavigationController.h; sourceTree = "<group>"; };
 		430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraNavigationController.m; sourceTree = "<group>"; };
-		430C077C151E5BFA00FC7C4F /* GalleryNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryNavigationController.h; sourceTree = "<group>"; };
-		430C077D151E5BFA00FC7C4F /* GalleryNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryNavigationController.m; sourceTree = "<group>"; };
 		430C0782151E5D7900FC7C4F /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		430C0783151E5D7900FC7C4F /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		430C0785151E5E4A00FC7C4F /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		430C0786151E5E4A00FC7C4F /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		430C0788151E5F9300FC7C4F /* AppStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStartViewController.h; sourceTree = "<group>"; };
 		430C0789151E5F9300FC7C4F /* AppStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartViewController.m; sourceTree = "<group>"; };
+		434340B0151FCAAA006E75C9 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		434340B3151FCB7E006E75C9 /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
+		434340B8151FCC4A006E75C9 /* CluesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesNavigationController.h; sourceTree = "<group>"; };
+		434340B9151FCC4B006E75C9 /* CluesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesNavigationController.m; sourceTree = "<group>"; };
+		434340BC151FCCF6006E75C9 /* CluesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesViewController.h; sourceTree = "<group>"; };
+		434340BD151FCCF6006E75C9 /* CluesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesViewController.m; sourceTree = "<group>"; };
+		434340BF151FCE8A006E75C9 /* clues.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clues.png; sourceTree = "<group>"; };
+		434340C1151FCEE8006E75C9 /* clues2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clues2.png; sourceTree = "<group>"; };
+		434340C3151FCF22006E75C9 /* camera2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera2.png; sourceTree = "<group>"; };
+		434340CD151FDA3F006E75C9 /* AppCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCell.h; sourceTree = "<group>"; };
+		434340CE151FDA3F006E75C9 /* AppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCell.m; sourceTree = "<group>"; };
+		434340D1151FDAD1006E75C9 /* AppCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCellData.h; sourceTree = "<group>"; };
+		434340D2151FDAD1006E75C9 /* AppCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCellData.m; sourceTree = "<group>"; };
 		43965203151E928C0000181C /* AppTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTabBarController.h; sourceTree = "<group>"; };
 		43965204151E928C0000181C /* AppTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,12 +109,12 @@
 		430C0764151E5B8400FC7C4F /* Photohunt */ = {
 			isa = PBXGroup;
 			children = (
+				434340CC151FDA1E006E75C9 /* Elements */,
+				434340AF151FCA4D006E75C9 /* images */,
 				430C0778151E5BBA00FC7C4F /* AppNavigationViewControllers */,
 				430C076D151E5B8400FC7C4F /* AppDelegate.h */,
 				430C076E151E5B8400FC7C4F /* AppDelegate.m */,
 				430C0765151E5B8400FC7C4F /* Supporting Files */,
-				430C0775151E5BAC00FC7C4F /* AppNavigationController.h */,
-				430C0776151E5BAC00FC7C4F /* AppNavigationController.m */,
 				43965203151E928C0000181C /* AppTabBarController.h */,
 				43965204151E928C0000181C /* AppTabBarController.m */,
 			);
@@ -119,14 +135,16 @@
 		430C0778151E5BBA00FC7C4F /* AppNavigationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				434340D0151FDAB8006E75C9 /* AppStartView */,
+				434340BB151FCC98006E75C9 /* CluesNavigationController */,
 				430C0781151E5C2600FC7C4F /* GalleryViewControllers */,
 				430C077F151E5C0B00FC7C4F /* CameraViewControllers */,
 				430C0779151E5BDF00FC7C4F /* CameraNavigationController.h */,
 				430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */,
-				430C077C151E5BFA00FC7C4F /* GalleryNavigationController.h */,
-				430C077D151E5BFA00FC7C4F /* GalleryNavigationController.m */,
 				430C0788151E5F9300FC7C4F /* AppStartViewController.h */,
 				430C0789151E5F9300FC7C4F /* AppStartViewController.m */,
+				434340B8151FCC4A006E75C9 /* CluesNavigationController.h */,
+				434340B9151FCC4B006E75C9 /* CluesNavigationController.m */,
 			);
 			name = AppNavigationViewControllers;
 			sourceTree = "<group>";
@@ -147,6 +165,45 @@
 				430C0783151E5D7900FC7C4F /* GalleryViewController.m */,
 			);
 			name = GalleryViewControllers;
+			sourceTree = "<group>";
+		};
+		434340AF151FCA4D006E75C9 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				434340C3151FCF22006E75C9 /* camera2.png */,
+				434340C1151FCEE8006E75C9 /* clues2.png */,
+				434340BF151FCE8A006E75C9 /* clues.png */,
+				434340B3151FCB7E006E75C9 /* gallery.png */,
+				434340B0151FCAAA006E75C9 /* home.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		434340BB151FCC98006E75C9 /* CluesNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				434340BC151FCCF6006E75C9 /* CluesViewController.h */,
+				434340BD151FCCF6006E75C9 /* CluesViewController.m */,
+			);
+			name = CluesNavigationController;
+			sourceTree = "<group>";
+		};
+		434340CC151FDA1E006E75C9 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				434340CD151FDA3F006E75C9 /* AppCell.h */,
+				434340CE151FDA3F006E75C9 /* AppCell.m */,
+			);
+			name = Elements;
+			sourceTree = "<group>";
+		};
+		434340D0151FDAB8006E75C9 /* AppStartView */ = {
+			isa = PBXGroup;
+			children = (
+				434340D1151FDAD1006E75C9 /* AppCellData.h */,
+				434340D2151FDAD1006E75C9 /* AppCellData.m */,
+			);
+			name = AppStartView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +258,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				430C0769151E5B8400FC7C4F /* InfoPlist.strings in Resources */,
+				434340B1151FCAAA006E75C9 /* home.png in Resources */,
+				434340B5151FCB7E006E75C9 /* gallery.png in Resources */,
+				434340C0151FCE8A006E75C9 /* clues.png in Resources */,
+				434340C2151FCEE9006E75C9 /* clues2.png in Resources */,
+				434340C4151FCF22006E75C9 /* camera2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,13 +275,15 @@
 			files = (
 				430C076B151E5B8400FC7C4F /* main.m in Sources */,
 				430C076F151E5B8400FC7C4F /* AppDelegate.m in Sources */,
-				430C0777151E5BAC00FC7C4F /* AppNavigationController.m in Sources */,
 				430C077B151E5BDF00FC7C4F /* CameraNavigationController.m in Sources */,
-				430C077E151E5BFA00FC7C4F /* GalleryNavigationController.m in Sources */,
 				430C0784151E5D7900FC7C4F /* GalleryViewController.m in Sources */,
 				430C0787151E5E4A00FC7C4F /* CameraViewController.m in Sources */,
 				430C078A151E5F9400FC7C4F /* AppStartViewController.m in Sources */,
 				43965205151E928C0000181C /* AppTabBarController.m in Sources */,
+				434340BA151FCC4B006E75C9 /* CluesNavigationController.m in Sources */,
+				434340BE151FCCF6006E75C9 /* CluesViewController.m in Sources */,
+				434340CF151FDA3F006E75C9 /* AppCell.m in Sources */,
+				434340D3151FDAD1006E75C9 /* AppCellData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

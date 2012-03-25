@@ -1,31 +1,37 @@
+
 //
-//  GalleryNavigationController.m
+//  CluesNavigationController.m
 //  Photohunt
 //
-//  Created by Sean McGary on 3/24/12.
+//  Created by Sean McGary on 3/25/12.
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
-#import "GalleryNavigationController.h"
+#import "CluesNavigationController.h"
 
-@interface GalleryNavigationController ()
+@interface CluesNavigationController ()
 
 @end
 
-@implementation GalleryNavigationController
+@implementation CluesNavigationController
 
-@synthesize galleryView;
+@synthesize cluesView;
 
 - (id) init
 {
     self = [super init];
     
-    if(self) {
-        galleryView = [[GalleryViewController alloc] init];  
-    }  
+    if(self){
+        
+        cluesView = [[CluesViewController alloc] init];
+        
+        self.tabBarItem.title = @"Clues";
+        self.tabBarItem.image = [UIImage imageNamed:@"clues2.png"];
+    }
     
     return self;
 }
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +46,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self pushViewController:galleryView animated:YES];
+    
+    [self pushViewController:cluesView animated:NO];
 }
 
 - (void)viewDidUnload

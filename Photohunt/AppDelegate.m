@@ -11,7 +11,6 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize appNavController;
 @synthesize appTabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,17 +18,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    
-    /*appNavController = [[AppNavigationController alloc] init];
-    
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    _window.rootViewController = appNavController;*/
-    
-    // Override point for customization after application launch.
 
     appTabBarController = [[AppTabBarController alloc] init];
-    
-    /*tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];*/
     
     self.window.rootViewController = appTabBarController;
     

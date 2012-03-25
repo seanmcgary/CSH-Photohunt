@@ -1,30 +1,25 @@
 //
-//  GalleryViewController.m
+//  CluesViewController.m
 //  Photohunt
 //
-//  Created by Sean McGary on 3/24/12.
+//  Created by Sean McGary on 3/25/12.
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
-#import "GalleryViewController.h"
+#import "CluesViewController.h"
 
-@interface GalleryViewController ()
+@interface CluesViewController ()
 
 @end
 
-@implementation GalleryViewController
+@implementation CluesViewController
 
 - (id) init 
 {
-    
     self = [super init];
     
     if(self){
-        self.view.backgroundColor = [UIColor yellowColor];
-        self.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         
-        self.tabBarItem.title = @"Gallery";
-        self.tabBarItem.image = [UIImage imageNamed:@"gallery.png"];
     }
     
     return self;
@@ -43,6 +38,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor orangeColor];
 }
 
 - (void)viewDidUnload

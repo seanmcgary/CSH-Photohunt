@@ -14,12 +14,38 @@
 
 @implementation AppStartViewController
 
+@synthesize sections;
+@synthesize cells;
+@synthesize tableView;
+@synthesize toolbar;
+
 - (id) init
 {
     self = [super init];
     
     if(self){
+        self.view.backgroundColor = [UIColor blueColor];
+        self.tabBarItem.title = @"Home";
+        self.tabBarItem.image = [UIImage imageNamed:@"home.png"];
         
+        cells = [[NSArray alloc] initWithObjects: 
+                 [[AppCellData alloc] initWithData:@"Team Name" :@"Team Faggot"],
+                 [[AppCellData alloc] initWithData:@"Photos Taken" :@"6/30"],
+                 [[AppCellData alloc] initWithData:@"Photos Submitted" :@"3/20"],
+                 [[AppCellData alloc] initWithData:@"Potential Points" :@"42"],
+                 [[AppCellData alloc] initWithData:@"Time Left" :@"4:12"],
+                 nil];
+        
+        sections = [[NSArray alloc] initWithObjects:cells, nil];
+        
+        tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStyleGrouped];
+        
+        tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        [tableView reloadData];
+        
+        self.view = tableView;
     }
     
     return self;
@@ -38,9 +64,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    /*toolbar = [[UIToolbar alloc] init];
     
-    self.view.backgroundColor = [UIColor blueColor];
-    self.title = @"CSH Photohunt";
+    toolbar.barStyle = UIBarStyleDefault;
+    [toolbar sizeToFit];
+    toolbar.frame = CGRectMake(0, 410, 320, 50);
+    
+    [self.tableView addSubview:toolbar];*/
 }
 
 - (void)viewDidUnload
@@ -52,6 +82,47 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
+    // Number of rows is the number of time zones in the region for the specified section.
+    
+    NSArray *sec = [sections objectAtIndex:section];
+    
+    return [sec count];
+    
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
+{
+    NSLog(@"Section");
+    // The header for the section is the region name -- get this from the region at the section index.
+    
+    return @"";
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *MyIdentifier = @"MyIdentifier";
+    
+    NSLog(@"Creating cell");
+    
+    AppCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    
+    if (cell == nil) {
+        cell = [[AppCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                  reuseIdentifier:MyIdentifier];
+    }
+    
+    NSArray *section = [sections objectAtIndex:indexPath.section];
+    
+    AppCellData *item = [section objectAtIndex:indexPath.row];
+    
+    [cell setCellData:item.category:item.value];
+    
+    return cell;
 }
 
 @end

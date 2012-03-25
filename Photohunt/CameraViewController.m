@@ -16,6 +16,13 @@
 
 - (id) init 
 {
+    
+    self = [super init];
+    
+    if(self){
+        self.view.backgroundColor = [UIColor redColor];
+    }
+    
     return self;
 }
 
@@ -32,8 +39,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-    self.title = @"Camera view";
+    
 }
 
 - (void)viewDidUnload

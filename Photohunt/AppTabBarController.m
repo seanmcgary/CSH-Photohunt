@@ -15,8 +15,9 @@
 @implementation AppTabBarController
 
 @synthesize cameraNavController,
-            galleryNavController,
-            appStartView;
+            appStartView,
+            cluesNavController,
+            galleryView;
 
 - (id) init
 {
@@ -24,10 +25,18 @@
     
     if(self){
         cameraNavController = [[CameraNavigationController alloc] init];
-        galleryNavController = [[GalleryNavigationController alloc] init];
         appStartView = [[AppStartViewController alloc] init];
+        cluesNavController = [[CluesNavigationController alloc] init];
+        galleryView = [[GalleryViewController alloc] init];
         
-        self.viewControllers = [[NSArray alloc] initWithObjects:cameraNavController, galleryNavController, appStartView, nil];
+        
+        
+        self.viewControllers = [[NSArray alloc] initWithObjects:
+                                                appStartView,
+                                                cameraNavController, 
+                                                galleryView, 
+                                                cluesNavController,
+                                nil];
     }
     
     return self;
@@ -46,7 +55,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
     
 }
 

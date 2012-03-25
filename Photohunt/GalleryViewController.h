@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GalleryViewController : UIViewController
+@interface GalleryViewController : UIImagePickerController
 
 - (id) init;
 
