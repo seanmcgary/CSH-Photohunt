@@ -97,7 +97,6 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
 {
-    NSLog(@"Section");
     // The header for the section is the region name -- get this from the region at the section index.
     
     return @"";
@@ -106,8 +105,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyIdentifier";
-    
-    NSLog(@"Creating cell");
     
     AppCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     

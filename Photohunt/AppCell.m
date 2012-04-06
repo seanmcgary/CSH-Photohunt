@@ -28,7 +28,6 @@
 
 - (void) setCellData: (NSString *) category: (NSString *) value
 {
-    NSLog(@"Creating cell\nValue: %@", value);
     
     UIView *accessoryView = [[UIView alloc] initWithFrame:CGRectMake(0,                                          0, 150, 43)];
     

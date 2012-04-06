@@ -14,13 +14,15 @@
 
 @implementation CameraViewController
 
+@synthesize fakeCamera;
+
 - (id) init 
 {
     
     self = [super init];
     
     if(self){
-        self.view.backgroundColor = [UIColor redColor];
+        self.view.backgroundColor = [UIColor whiteColor];
     }
     
     return self;
@@ -38,7 +40,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	// Do any additional setup after loading the view
+    
+    fakeCamera = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [fakeCamera setBackgroundImage:[UIImage imageNamed:@"test_photo.JPG"] forState:UIControlStateNormal];
+    
+    fakeCamera.frame = CGRectMake(10, 10, self.view.frame.size.width - 20, (self.view.frame.size.height - 150));
+    
+    
+    [fakeCamera addTarget:self action:@selector(takeFakePicture:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:fakeCamera];
     
 }
 
@@ -51,6 +64,12 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)takeFakePicture:(id)sender
+{
+    NSLog(@"taking fake picture");
+    
 }
 
 @end

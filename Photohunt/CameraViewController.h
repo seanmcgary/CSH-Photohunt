@@ -10,6 +10,10 @@
 
 @interface CameraViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIButton *fakeCamera;
+
 - (id) init;
+
+- (IBAction)takeFakePicture:(id)sender;
 
 @end
