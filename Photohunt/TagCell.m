@@ -1,23 +1,27 @@
+
 //
-//  ClueCell.m
+//  TagCell.m
 //  Photohunt
 //
-//  Created by Sean McGary on 4/5/12.
+//  Created by Sean McGary on 4/6/12.
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
-#import "ClueCell.h"
+#import "TagCell.h"
 
-@implementation ClueCell
+@implementation TagCell
 
-@synthesize clueInfo;
 
-- (id) initWithClueInfo: (NSDictionary *)clueInfo {
-    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cluecell"];
+@synthesize tagDesc;
+
+- (id) init 
+{
+    self = [super init];
     
     if(self){
-        self.clueInfo = [[NSDictionary alloc] initWithDictionary:clueInfo];
-        NSLog(@"Foobar");
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        NSLog(@"Tag Cell");
+        
     }
     
     return self;

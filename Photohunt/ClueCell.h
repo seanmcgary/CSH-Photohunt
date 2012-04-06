@@ -10,6 +10,8 @@
 
 @interface ClueCell : UITableViewCell
 
-- (id) init;
+@property (strong, nonatomic) NSDictionary *clueInfo;
+
+- (id) initWithClueInfo: (NSDictionary *)clueInfo;
 
 @end

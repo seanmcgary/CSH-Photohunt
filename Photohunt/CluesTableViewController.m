@@ -1,33 +1,28 @@
 //
-//  CluesViewController.m
+//  CluesTableViewController.m
 //  Photohunt
 //
-//  Created by Sean McGary on 4/5/12.
+//  Created by Sean McGary on 4/6/12.
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
-#import "CluesViewController.h"
+#import "CluesTableViewController.h"
 
-@interface CluesViewController ()
+@interface CluesTableViewController ()
 
 @end
 
-@implementation CluesViewController
+@implementation CluesTableViewController
 
-@synthesize items;
-@synthesize clues;
+@synthesize clueList;
 
-- (id) init {
+- (id) initWithClues: (NSArray *) clueList {
     self = [super init];
     
     if(self){
-        self.title = @"Tags";
-        items = [[NSMutableArray alloc] init];
-        
-        [items addObject:@"All Clues"];
-        
-        clues = [[ClueSheet alloc] init];
-        
+        self.title = @"Clues";
+        //NSLog(@"ClueList: %@", clueList);
+        self.clueList = [[NSArray alloc] initWithArray:clueList];
     }
     
     return self;
@@ -51,39 +46,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
-    items = [[NSMutableArray alloc] initWithObjects:
-                                    @"View All",
-             nil];
-    
-    NSURL *url = [NSURL URLWithString:@"http://waffles.csh.rit.edu/api/clues"];
-    
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    NSMutableDictionary *requestHeaders = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"application/json", @"Accept", nil];
-    
-    [request setRequestHeaders: requestHeaders];
-    [request setCompletionBlock:^{
-        NSData *respData = [[request responseString] dataUsingEncoding:NSUTF8StringEncoding];
-        
-        NSError *jsonErr;
-        
-        NSMutableDictionary *jsonResp = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableContainers error:&jsonErr];
-        
-        [clues parseClueJSON:jsonResp];
-        
-        [self.tableView reloadData];
-        
-        
-    }];
-    
-    [request setFailedBlock:^{
-        NSError *err = [request error];
-        
-        NSLog(@"Error: %@", [err localizedDescription]);
-    }];
-    
-    [request startAsynchronous];
 }
 
 - (void)viewDidUnload
@@ -109,29 +71,19 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    //return [items count];
-    NSLog(@"Num clues: %u", [clues numClues]);
-    return [clues numTags];
+    return [self.clueList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"Creating cell");
-    //static NSString *CellIdentifier = @"Cell";
     
-    /*UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSDictionary *clue = [self.clueList objectAtIndex:indexPath.row];
     
-    if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero];
-    }*/
+    ClueCell *cell = [[ClueCell alloc] initWithClueInfo:clue];
     
-    TagCell *cell = [[TagCell alloc] init];
+    cell.textLabel.text = [clue objectForKey:@"description"];
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
-    NSString *desc = [clues.tagList objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = desc;
-    //cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-    cell.tagDesc = desc;
     return cell;
 }
 
@@ -178,18 +130,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TagCell *cell = (TagCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"Index path: %@", cell.textLabel.text);
+    ClueCell *cell = (ClueCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
-    NSString *tag = cell.tagDesc;
+    NSLog(@"Cell: %@", cell.clueInfo);
     
-    // get the tag with its associated clues
-    NSArray *tagClues = [clues getCluesForTag:tag];
-
+    ClueDetailViewController *details = [[ClueDetailViewController alloc] initWithClueData:cell.clueInfo: NO];
     
-    CluesTableViewController *cluesView = [[CluesTableViewController alloc] initWithClues:tagClues];
-    
-    [self.navigationController pushViewController:cluesView animated:YES];
+    [self.navigationController pushViewController:details animated:YES];
     
 }
 

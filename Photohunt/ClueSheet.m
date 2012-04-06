@@ -35,9 +35,9 @@
     if([[json objectForKey:@"code"] integerValue] == 0){
         for(id obj in [json objectForKey:@"data"]){
             // create clue list of ClueData objects
-            ClueData *clue = [[ClueData alloc] initWithClueData:obj];
+            //ClueData *clue = [[ClueData alloc] initWithClueData:obj];
             
-            [clueList addObject:clue];
+            [clueList addObject:obj];
             
             // parse out clues
             for(id tag in [obj objectForKey:@"tags"]){
@@ -50,9 +50,9 @@
             for(id tag in tagList){
                 NSMutableArray *tagClues = [[NSMutableArray alloc] init];
                 
-                for(ClueData *clueData in clueList){
+                for(id clueData in clueList){
                     
-                    NSMutableDictionary *clue = [[NSMutableDictionary alloc] initWithDictionary:clueData.clue];
+                    NSMutableDictionary *clue = [[NSMutableDictionary alloc] initWithDictionary:clueData];
                     
                     NSArray *clueTags = [[NSArray alloc] initWithArray:[clue objectForKey:@"tags"]];
                     
@@ -67,7 +67,7 @@
             }
         }
         
-        //[self persistClueSheet];
+        [self persistClueSheet];
     }
 }
 
@@ -89,6 +89,12 @@
     }
     
     return NO;
+}
+
+- (NSArray *) getCluesForTag: (NSString *) tag {
+    NSArray *clues = [[NSArray alloc] initWithArray:[tagsWithClues objectForKey:tag]];
+    
+    return clues;
 }
 
 - (void) persistClueSheet {

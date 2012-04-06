@@ -12,6 +12,7 @@
 @interface CluesNavigationController : UINavigationController
 
 @property (strong, nonatomic) CluesViewController *cluesView;
+@property (strong, nonatomic) CluesTableViewController *clues;
 
 - (id) init;
 

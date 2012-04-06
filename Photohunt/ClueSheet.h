@@ -33,4 +33,6 @@
 
 - (void) restoreClueSheet;
 
+- (NSArray *) getCluesForTag: (NSString *) tag;
+
 @end

@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
 #import "ClueSheet.h"
-#import "ClueCell.h"
-#import "ClueData.h"
+#import "TagCell.h"
+#import "CluesTableViewController.h"
 
 @interface CluesViewController : UITableViewController
 

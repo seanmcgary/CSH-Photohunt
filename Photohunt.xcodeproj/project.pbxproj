@@ -60,6 +60,9 @@
 		4397F027152E2A0300399FF2 /* ClueSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397F026152E2A0200399FF2 /* ClueSheet.m */; };
 		4397F02A152E386900399FF2 /* ClueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397F029152E386900399FF2 /* ClueCell.m */; };
 		4397F02D152E397C00399FF2 /* ClueData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397F02C152E397C00399FF2 /* ClueData.m */; };
+		43AF398E152F833E001EEB92 /* CluesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF398D152F833E001EEB92 /* CluesTableViewController.m */; };
+		43AF3991152F8744001EEB92 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF3990152F8743001EEB92 /* TagCell.m */; };
+		43AF3995152F8F1F001EEB92 /* ClueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF3994152F8F1F001EEB92 /* ClueDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +163,12 @@
 		4397F029152E386900399FF2 /* ClueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueCell.m; sourceTree = "<group>"; };
 		4397F02B152E397C00399FF2 /* ClueData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueData.h; sourceTree = "<group>"; };
 		4397F02C152E397C00399FF2 /* ClueData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueData.m; sourceTree = "<group>"; };
+		43AF398C152F833E001EEB92 /* CluesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesTableViewController.h; sourceTree = "<group>"; };
+		43AF398D152F833E001EEB92 /* CluesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesTableViewController.m; sourceTree = "<group>"; };
+		43AF398F152F8743001EEB92 /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
+		43AF3990152F8743001EEB92 /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
+		43AF3993152F8F1E001EEB92 /* ClueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueDetailViewController.h; sourceTree = "<group>"; };
+		43AF3994152F8F1F001EEB92 /* ClueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,14 +300,17 @@
 		434340BB151FCC98006E75C9 /* CluesNavigationController */ = {
 			isa = PBXGroup;
 			children = (
+				43AF3992152F87B8001EEB92 /* TableElements */,
 				4397F025152E2A0200399FF2 /* ClueSheet.h */,
 				4397F026152E2A0200399FF2 /* ClueSheet.m */,
 				4397EFC5152E165000399FF2 /* CluesViewController.h */,
 				4397EFC6152E165000399FF2 /* CluesViewController.m */,
-				4397F028152E386900399FF2 /* ClueCell.h */,
-				4397F029152E386900399FF2 /* ClueCell.m */,
 				4397F02B152E397C00399FF2 /* ClueData.h */,
 				4397F02C152E397C00399FF2 /* ClueData.m */,
+				43AF398C152F833E001EEB92 /* CluesTableViewController.h */,
+				43AF398D152F833E001EEB92 /* CluesTableViewController.m */,
+				43AF3993152F8F1E001EEB92 /* ClueDetailViewController.h */,
+				43AF3994152F8F1F001EEB92 /* ClueDetailViewController.m */,
 			);
 			name = CluesNavigationController;
 			sourceTree = "<group>";
@@ -420,6 +432,17 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		43AF3992152F87B8001EEB92 /* TableElements */ = {
+			isa = PBXGroup;
+			children = (
+				4397F028152E386900399FF2 /* ClueCell.h */,
+				4397F029152E386900399FF2 /* ClueCell.m */,
+				43AF398F152F8743001EEB92 /* TagCell.h */,
+				43AF3990152F8743001EEB92 /* TagCell.m */,
+			);
+			name = TableElements;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -526,6 +549,9 @@
 				4397F027152E2A0300399FF2 /* ClueSheet.m in Sources */,
 				4397F02A152E386900399FF2 /* ClueCell.m in Sources */,
 				4397F02D152E397C00399FF2 /* ClueData.m in Sources */,
+				43AF398E152F833E001EEB92 /* CluesTableViewController.m in Sources */,
+				43AF3991152F8744001EEB92 /* TagCell.m in Sources */,
+				43AF3995152F8F1F001EEB92 /* ClueDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
