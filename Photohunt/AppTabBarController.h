@@ -9,18 +9,20 @@
 #import <UIKit/UIKit.h>
 
 #import "CameraNavigationController.h"
-#import "AppStartViewController.h"
 #import "CluesNavigationController.h"
-#import "GalleryViewController.h";
+#import "GalleryViewController.h"
+#import "CameraViewController.h"
+#import "AppHomeNavigationController.h"
 
 @interface AppTabBarController : UITabBarController
 
 - (id) init;
 
-@property (strong, nonatomic) CameraNavigationController *cameraNavController;
+@property (strong, nonatomic) CameraViewController *cameraView;
+
 @property (strong, nonatomic) CluesNavigationController *cluesNavController; 
 @property (strong, nonatomic) GalleryViewController *galleryView;
 
-@property (strong, nonatomic) AppStartViewController *appStartView;
+@property (strong, nonatomic) AppHomeNavigationController *appHomeNavController;
 
 @end

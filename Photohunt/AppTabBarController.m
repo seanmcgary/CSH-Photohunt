@@ -14,8 +14,8 @@
 
 @implementation AppTabBarController
 
-@synthesize cameraNavController,
-            appStartView,
+@synthesize cameraView,
+            appHomeNavController,
             cluesNavController,
             galleryView;
 
@@ -24,16 +24,16 @@
     self = [super init];
     
     if(self){
-        cameraNavController = [[CameraNavigationController alloc] init];
-        appStartView = [[AppStartViewController alloc] init];
+        cameraView = [[CameraViewController alloc] init];
         cluesNavController = [[CluesNavigationController alloc] init];
         galleryView = [[GalleryViewController alloc] init];
+        appHomeNavController = [[AppHomeNavigationController alloc] init];
         
         
         
         self.viewControllers = [[NSArray alloc] initWithObjects:
-                                                appStartView,
-                                                cameraNavController, 
+                                                appHomeNavController,
+                                                cameraView, 
                                                 galleryView, 
                                                 cluesNavController,
                                 nil];

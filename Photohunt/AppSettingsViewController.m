@@ -1,38 +1,28 @@
-
 //
-//  CluesNavigationController.m
+//  AppSettingsViewController.m
 //  Photohunt
 //
-//  Created by Sean McGary on 3/25/12.
+//  Created by Sean McGary on 4/7/12.
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
-#import "CluesNavigationController.h"
+#import "AppSettingsViewController.h"
 
-@interface CluesNavigationController ()
+@interface AppSettingsViewController ()
 
 @end
 
-@implementation CluesNavigationController
+@implementation AppSettingsViewController
 
-@synthesize cluesView;
-@synthesize clues;
-
-- (id) init
-{
+- (id) init {
     self = [super init];
     
     if(self){
-        
-        cluesView = [[CluesViewController alloc] init];
-        
-        self.tabBarItem.title = @"Clues";
-        self.tabBarItem.image = [UIImage imageNamed:@"clues2.png"];
+        self.title = @"Settings";
     }
     
     return self;
 }
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,8 +37,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    [self pushViewController:cluesView animated:NO];
 }
 
 - (void)viewDidUnload

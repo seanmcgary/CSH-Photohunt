@@ -25,8 +25,6 @@
     
     if(self){
         self.view.backgroundColor = [UIColor blueColor];
-        self.tabBarItem.title = @"Home";
-        self.tabBarItem.image = [UIImage imageNamed:@"home.png"];
         
         cells = [[NSArray alloc] initWithObjects: 
                  [[AppCellData alloc] initWithData:@"Team Name" :@"Team Faggot"],

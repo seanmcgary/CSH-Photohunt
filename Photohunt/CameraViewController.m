@@ -2,7 +2,7 @@
 //  CameraViewController.m
 //  Photohunt
 //
-//  Created by Sean McGary on 3/24/12.
+//  Created by Sean McGary on 4/6/12.
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
@@ -14,15 +14,35 @@
 
 @implementation CameraViewController
 
-@synthesize fakeCamera;
+@synthesize library;
+@synthesize locMgr;
 
-- (id) init 
+- (id) init
 {
-    
     self = [super init];
     
     if(self){
-        self.view.backgroundColor = [UIColor whiteColor];
+        self.tabBarItem.title = @"Camera";
+        self.tabBarItem.image = [UIImage imageNamed:@"camera2.png"];
+        
+        if([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear])
+        {
+            self.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        else 
+        {
+            self.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        
+
+        self.delegate = self;
+        self.library = [[ALAssetsLibrary alloc] init];
+        
+        self.locMgr = [[CLLocationManager alloc] init];
+        self.locMgr.delegate = self;
+        
+        [locMgr startUpdatingLocation];
+        
     }
     
     return self;
@@ -40,19 +60,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view
-    
-    fakeCamera = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [fakeCamera setBackgroundImage:[UIImage imageNamed:@"test_photo.JPG"] forState:UIControlStateNormal];
-    
-    fakeCamera.frame = CGRectMake(10, 10, self.view.frame.size.width - 20, (self.view.frame.size.height - 150));
-    
-    
-    [fakeCamera addTarget:self action:@selector(takeFakePicture:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:fakeCamera];
-    
+	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
@@ -66,10 +74,48 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)takeFakePicture:(id)sender
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    NSLog(@"taking fake picture");
+    NSLog(@"Picked image");
+    // Access the uncropped image from info dictionary
+    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
+    NSMutableDictionary *metadata = [[NSMutableDictionary alloc] initWithDictionary:[info objectForKey:UIImagePickerControllerMediaMetadata]];
+    
+    [metadata setLocation:[locMgr location]];
+    
+    NSLog(@"META: %@", metadata);
+    
+    [locMgr stopUpdatingLocation];
+    
+    // Save image
+    //UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    NSUInteger groupTypes = ALAssetsGroupAll;
+    
+    [library writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)image.imageOrientation 
+                          completionBlock:^(NSURL* assetURL, NSError* error) {
+                              if (error != NULL){
+                                  // Show error message...
+                              } else {  // No errors
+                                  // Show message image successfully saved
+                                  NSLog(@"Saved successfully");
+                              }
+                          }];
+
+    [library enumerateGroupsWithTypes:groupTypes usingBlock:^(ALAssetsGroup *group, BOOL *stop ){
+        if(group != nil) {
+            //[assetGroups addObject:group];
+            NSLog(@"Number of assets in group: %d",
+                  [group numberOfAssets]);
+            
+            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
+                NSLog(@"asset index: %u", index);
+                NSLog(@"Asset: %@", result);
+                
+            }];
+        }
+    } failureBlock:^(NSError *error) {NSLog(@"A problem occurred");}];
+
 }
 
 @end

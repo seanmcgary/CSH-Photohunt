@@ -15,7 +15,6 @@
 		430C076F151E5B8400FC7C4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C076E151E5B8400FC7C4F /* AppDelegate.m */; };
 		430C077B151E5BDF00FC7C4F /* CameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */; };
 		430C0784151E5D7900FC7C4F /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0783151E5D7900FC7C4F /* GalleryViewController.m */; };
-		430C0787151E5E4A00FC7C4F /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0786151E5E4A00FC7C4F /* CameraViewController.m */; };
 		430C078A151E5F9400FC7C4F /* AppStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0789151E5F9300FC7C4F /* AppStartViewController.m */; };
 		430ED6A615210D53000AD64E /* test_photo.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 430ED6A515210D53000AD64E /* test_photo.JPG */; };
 		434340B1151FCAAA006E75C9 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 434340B0151FCAAA006E75C9 /* home.png */; };
@@ -63,6 +62,14 @@
 		43AF398E152F833E001EEB92 /* CluesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF398D152F833E001EEB92 /* CluesTableViewController.m */; };
 		43AF3991152F8744001EEB92 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF3990152F8743001EEB92 /* TagCell.m */; };
 		43AF3995152F8F1F001EEB92 /* ClueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF3994152F8F1F001EEB92 /* ClueDetailViewController.m */; };
+		43AF3998152FAA62001EEB92 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF3997152FAA62001EEB92 /* CameraViewController.m */; };
+		43AF399A152FAFCF001EEB92 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AF3999152FAFCF001EEB92 /* AssetsLibrary.framework */; };
+		43AF399C152FB026001EEB92 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AF399B152FB026001EEB92 /* CoreLocation.framework */; };
+		43AF39A1152FB4C0001EEB92 /* NSMutableDictionary+ImageMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF39A0152FB4C0001EEB92 /* NSMutableDictionary+ImageMetadata.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		43AF39A3152FB60C001EEB92 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AF39A2152FB60C001EEB92 /* CoreMedia.framework */; };
+		43AF39A5152FB6A5001EEB92 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AF39A4152FB6A5001EEB92 /* ImageIO.framework */; };
+		43B4C4521530D3D600D8EA40 /* AppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4C4511530D3D600D8EA40 /* AppSettingsViewController.m */; };
+		43B4C4551530D41B00D8EA40 /* AppHomeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4C4541530D41B00D8EA40 /* AppHomeNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,8 +87,6 @@
 		430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraNavigationController.m; sourceTree = "<group>"; };
 		430C0782151E5D7900FC7C4F /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		430C0783151E5D7900FC7C4F /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
-		430C0785151E5E4A00FC7C4F /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
-		430C0786151E5E4A00FC7C4F /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		430C0788151E5F9300FC7C4F /* AppStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStartViewController.h; sourceTree = "<group>"; };
 		430C0789151E5F9300FC7C4F /* AppStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartViewController.m; sourceTree = "<group>"; };
 		430ED6A515210D53000AD64E /* test_photo.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_photo.JPG; sourceTree = "<group>"; };
@@ -169,6 +174,18 @@
 		43AF3990152F8743001EEB92 /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
 		43AF3993152F8F1E001EEB92 /* ClueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueDetailViewController.h; sourceTree = "<group>"; };
 		43AF3994152F8F1F001EEB92 /* ClueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueDetailViewController.m; sourceTree = "<group>"; };
+		43AF3996152FAA62001EEB92 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		43AF3997152FAA62001EEB92 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		43AF3999152FAFCF001EEB92 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		43AF399B152FB026001EEB92 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		43AF399F152FB4C0001EEB92 /* NSMutableDictionary+ImageMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+ImageMetadata.h"; sourceTree = "<group>"; };
+		43AF39A0152FB4C0001EEB92 /* NSMutableDictionary+ImageMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+ImageMetadata.m"; sourceTree = "<group>"; };
+		43AF39A2152FB60C001EEB92 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		43AF39A4152FB6A5001EEB92 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		43B4C4501530D3D600D8EA40 /* AppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettingsViewController.h; sourceTree = "<group>"; };
+		43B4C4511530D3D600D8EA40 /* AppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettingsViewController.m; sourceTree = "<group>"; };
+		43B4C4531530D41B00D8EA40 /* AppHomeNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHomeNavigationController.h; sourceTree = "<group>"; };
+		43B4C4541530D41B00D8EA40 /* AppHomeNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHomeNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +193,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43AF39A5152FB6A5001EEB92 /* ImageIO.framework in Frameworks */,
+				43AF39A3152FB60C001EEB92 /* CoreMedia.framework in Frameworks */,
+				43AF399C152FB026001EEB92 /* CoreLocation.framework in Frameworks */,
+				43AF399A152FAFCF001EEB92 /* AssetsLibrary.framework in Frameworks */,
 				4397F023152E211700399FF2 /* libxml2.dylib in Frameworks */,
 				4397F021152E211200399FF2 /* libz.dylib in Frameworks */,
 				4397F01F152E210700399FF2 /* SystemConfiguration.framework in Frameworks */,
@@ -193,6 +214,10 @@
 		430C074F151E5B8300FC7C4F = {
 			isa = PBXGroup;
 			children = (
+				43AF39A4152FB6A5001EEB92 /* ImageIO.framework */,
+				43AF39A2152FB60C001EEB92 /* CoreMedia.framework */,
+				43AF399B152FB026001EEB92 /* CoreLocation.framework */,
+				43AF3999152FAFCF001EEB92 /* AssetsLibrary.framework */,
 				4397F022152E211700399FF2 /* libxml2.dylib */,
 				4397F020152E211200399FF2 /* libz.dylib */,
 				4397F01E152E210700399FF2 /* SystemConfiguration.framework */,
@@ -225,6 +250,7 @@
 		430C0764151E5B8400FC7C4F /* Photohunt */ = {
 			isa = PBXGroup;
 			children = (
+				43AF399D152FB4A5001EEB92 /* GusUtils */,
 				4397EFC8152E20AB00399FF2 /* ASIHTTPRequest */,
 				434340CC151FDA1E006E75C9 /* Elements */,
 				434340AF151FCA4D006E75C9 /* images */,
@@ -258,10 +284,10 @@
 				430C077F151E5C0B00FC7C4F /* CameraViewControllers */,
 				430C0779151E5BDF00FC7C4F /* CameraNavigationController.h */,
 				430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */,
-				430C0788151E5F9300FC7C4F /* AppStartViewController.h */,
-				430C0789151E5F9300FC7C4F /* AppStartViewController.m */,
 				434340B8151FCC4A006E75C9 /* CluesNavigationController.h */,
 				434340B9151FCC4B006E75C9 /* CluesNavigationController.m */,
+				43B4C4531530D41B00D8EA40 /* AppHomeNavigationController.h */,
+				43B4C4541530D41B00D8EA40 /* AppHomeNavigationController.m */,
 			);
 			name = AppNavigationViewControllers;
 			sourceTree = "<group>";
@@ -269,8 +295,8 @@
 		430C077F151E5C0B00FC7C4F /* CameraViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				430C0785151E5E4A00FC7C4F /* CameraViewController.h */,
-				430C0786151E5E4A00FC7C4F /* CameraViewController.m */,
+				43AF3996152FAA62001EEB92 /* CameraViewController.h */,
+				43AF3997152FAA62001EEB92 /* CameraViewController.m */,
 			);
 			name = CameraViewControllers;
 			sourceTree = "<group>";
@@ -327,8 +353,12 @@
 		434340D0151FDAB8006E75C9 /* AppStartView */ = {
 			isa = PBXGroup;
 			children = (
+				430C0788151E5F9300FC7C4F /* AppStartViewController.h */,
+				430C0789151E5F9300FC7C4F /* AppStartViewController.m */,
 				434340D1151FDAD1006E75C9 /* AppCellData.h */,
 				434340D2151FDAD1006E75C9 /* AppCellData.m */,
+				43B4C4501530D3D600D8EA40 /* AppSettingsViewController.h */,
+				43B4C4511530D3D600D8EA40 /* AppSettingsViewController.m */,
 			);
 			name = AppStartView;
 			sourceTree = "<group>";
@@ -443,6 +473,15 @@
 			name = TableElements;
 			sourceTree = "<group>";
 		};
+		43AF399D152FB4A5001EEB92 /* GusUtils */ = {
+			isa = PBXGroup;
+			children = (
+				43AF399F152FB4C0001EEB92 /* NSMutableDictionary+ImageMetadata.h */,
+				43AF39A0152FB4C0001EEB92 /* NSMutableDictionary+ImageMetadata.m */,
+			);
+			name = GusUtils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -516,7 +555,6 @@
 				430C076F151E5B8400FC7C4F /* AppDelegate.m in Sources */,
 				430C077B151E5BDF00FC7C4F /* CameraNavigationController.m in Sources */,
 				430C0784151E5D7900FC7C4F /* GalleryViewController.m in Sources */,
-				430C0787151E5E4A00FC7C4F /* CameraViewController.m in Sources */,
 				430C078A151E5F9400FC7C4F /* AppStartViewController.m in Sources */,
 				43965205151E928C0000181C /* AppTabBarController.m in Sources */,
 				434340BA151FCC4B006E75C9 /* CluesNavigationController.m in Sources */,
@@ -552,6 +590,10 @@
 				43AF398E152F833E001EEB92 /* CluesTableViewController.m in Sources */,
 				43AF3991152F8744001EEB92 /* TagCell.m in Sources */,
 				43AF3995152F8F1F001EEB92 /* ClueDetailViewController.m in Sources */,
+				43AF3998152FAA62001EEB92 /* CameraViewController.m in Sources */,
+				43AF39A1152FB4C0001EEB92 /* NSMutableDictionary+ImageMetadata.m in Sources */,
+				43B4C4521530D3D600D8EA40 /* AppSettingsViewController.m in Sources */,
+				43B4C4551530D41B00D8EA40 /* AppHomeNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,9 +668,6 @@
 				INFOPLIST_FILE = "Photohunt/Photohunt-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "09EB649C-A9BB-47BB-B3ED-15DC06BB66DA";
-				"PROVISIONING_PROFILE[sdk=*]" = "7F6BD8F2-8B59-47A2-BA0D-59A483DE4F42";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "09EB649C-A9BB-47BB-B3ED-15DC06BB66DA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -644,8 +683,6 @@
 				INFOPLIST_FILE = "Photohunt/Photohunt-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "09EB649C-A9BB-47BB-B3ED-15DC06BB66DA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7F6BD8F2-8B59-47A2-BA0D-59A483DE4F42";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

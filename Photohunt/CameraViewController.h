@@ -2,18 +2,22 @@
 //  CameraViewController.h
 //  Photohunt
 //
-//  Created by Sean McGary on 3/24/12.
+//  Created by Sean McGary on 4/6/12.
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <CoreLocation/CoreLocation.h>
+#import "NSMutableDictionary+ImageMetadata.h"
 
-@interface CameraViewController : UIViewController
+@interface CameraViewController : UIImagePickerController <UIImagePickerControllerDelegate, CLLocationManagerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIButton *fakeCamera;
+@property (strong, atomic) ALAssetsLibrary* library;
+
+@property (nonatomic, retain) CLLocationManager *locMgr;
 
 - (id) init;
 
-- (IBAction)takeFakePicture:(id)sender;
 
 @end
