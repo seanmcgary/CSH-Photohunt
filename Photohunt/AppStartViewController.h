@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppCell.h"
 #import "AppCellData.h"
+#import "AppSettingsViewController.h"
 
 @interface AppStartViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

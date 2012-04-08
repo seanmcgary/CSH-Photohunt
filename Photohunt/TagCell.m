@@ -20,7 +20,6 @@
     
     if(self){
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        NSLog(@"Tag Cell");
         
     }
     

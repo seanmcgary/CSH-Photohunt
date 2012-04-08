@@ -70,6 +70,13 @@
 		43AF39A5152FB6A5001EEB92 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AF39A4152FB6A5001EEB92 /* ImageIO.framework */; };
 		43B4C4521530D3D600D8EA40 /* AppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4C4511530D3D600D8EA40 /* AppSettingsViewController.m */; };
 		43B4C4551530D41B00D8EA40 /* AppHomeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4C4541530D41B00D8EA40 /* AppHomeNavigationController.m */; };
+		43B4C4571530E7AB00D8EA40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B4C4561530E7AB00D8EA40 /* QuartzCore.framework */; };
+		43B4C45D1530FDDF00D8EA40 /* disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B4C4581530FDDF00D8EA40 /* disabled.png */; };
+		43B4C45E1530FDDF00D8EA40 /* end-click.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B4C4591530FDDF00D8EA40 /* end-click.png */; };
+		43B4C45F1530FDDF00D8EA40 /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B4C45A1530FDDF00D8EA40 /* end.png */; };
+		43B4C4601530FDDF00D8EA40 /* save-clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B4C45B1530FDDF00D8EA40 /* save-clicked.png */; };
+		43B4C4631530FEE800D8EA40 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B4C4621530FEE800D8EA40 /* save.png */; };
+		43B4C4661530FFA100D8EA40 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4C4651530FFA000D8EA40 /* AppHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +193,14 @@
 		43B4C4511530D3D600D8EA40 /* AppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettingsViewController.m; sourceTree = "<group>"; };
 		43B4C4531530D41B00D8EA40 /* AppHomeNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHomeNavigationController.h; sourceTree = "<group>"; };
 		43B4C4541530D41B00D8EA40 /* AppHomeNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHomeNavigationController.m; sourceTree = "<group>"; };
+		43B4C4561530E7AB00D8EA40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		43B4C4581530FDDF00D8EA40 /* disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabled.png; sourceTree = "<group>"; };
+		43B4C4591530FDDF00D8EA40 /* end-click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "end-click.png"; sourceTree = "<group>"; };
+		43B4C45A1530FDDF00D8EA40 /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
+		43B4C45B1530FDDF00D8EA40 /* save-clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-clicked.png"; sourceTree = "<group>"; };
+		43B4C4621530FEE800D8EA40 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		43B4C4641530FFA000D8EA40 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
+		43B4C4651530FFA000D8EA40 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B4C4571530E7AB00D8EA40 /* QuartzCore.framework in Frameworks */,
 				43AF39A5152FB6A5001EEB92 /* ImageIO.framework in Frameworks */,
 				43AF39A3152FB60C001EEB92 /* CoreMedia.framework in Frameworks */,
 				43AF399C152FB026001EEB92 /* CoreLocation.framework in Frameworks */,
@@ -214,6 +230,7 @@
 		430C074F151E5B8300FC7C4F = {
 			isa = PBXGroup;
 			children = (
+				43B4C4561530E7AB00D8EA40 /* QuartzCore.framework */,
 				43AF39A4152FB6A5001EEB92 /* ImageIO.framework */,
 				43AF39A2152FB60C001EEB92 /* CoreMedia.framework */,
 				43AF399B152FB026001EEB92 /* CoreLocation.framework */,
@@ -288,6 +305,8 @@
 				434340B9151FCC4B006E75C9 /* CluesNavigationController.m */,
 				43B4C4531530D41B00D8EA40 /* AppHomeNavigationController.h */,
 				43B4C4541530D41B00D8EA40 /* AppHomeNavigationController.m */,
+				43B4C4641530FFA000D8EA40 /* AppHelper.h */,
+				43B4C4651530FFA000D8EA40 /* AppHelper.m */,
 			);
 			name = AppNavigationViewControllers;
 			sourceTree = "<group>";
@@ -313,6 +332,11 @@
 		434340AF151FCA4D006E75C9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				43B4C4621530FEE800D8EA40 /* save.png */,
+				43B4C4581530FDDF00D8EA40 /* disabled.png */,
+				43B4C4591530FDDF00D8EA40 /* end-click.png */,
+				43B4C45A1530FDDF00D8EA40 /* end.png */,
+				43B4C45B1530FDDF00D8EA40 /* save-clicked.png */,
 				430ED6A515210D53000AD64E /* test_photo.JPG */,
 				434340C3151FCF22006E75C9 /* camera2.png */,
 				434340C1151FCEE8006E75C9 /* clues2.png */,
@@ -541,6 +565,11 @@
 				434340C4151FCF22006E75C9 /* camera2.png in Resources */,
 				430ED6A615210D53000AD64E /* test_photo.JPG in Resources */,
 				4397F018152E20D500399FF2 /* README-GHUnit in Resources */,
+				43B4C45D1530FDDF00D8EA40 /* disabled.png in Resources */,
+				43B4C45E1530FDDF00D8EA40 /* end-click.png in Resources */,
+				43B4C45F1530FDDF00D8EA40 /* end.png in Resources */,
+				43B4C4601530FDDF00D8EA40 /* save-clicked.png in Resources */,
+				43B4C4631530FEE800D8EA40 /* save.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +623,7 @@
 				43AF39A1152FB4C0001EEB92 /* NSMutableDictionary+ImageMetadata.m in Sources */,
 				43B4C4521530D3D600D8EA40 /* AppSettingsViewController.m in Sources */,
 				43B4C4551530D41B00D8EA40 /* AppHomeNavigationController.m in Sources */,
+				43B4C4661530FFA100D8EA40 /* AppHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

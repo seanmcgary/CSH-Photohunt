@@ -34,7 +34,9 @@
                  [[AppCellData alloc] initWithData:@"Time Left" :@"4:12"],
                  nil];
         
-        sections = [[NSArray alloc] initWithObjects:cells, nil];
+        NSArray *settings = [[NSArray alloc] initWithObjects:@"Settings", nil];
+        
+        sections = [[NSArray alloc] initWithObjects:cells, settings, nil];
         
         tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStyleGrouped];
         
@@ -82,6 +84,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
     // Number of rows is the number of time zones in the region for the specified section.
@@ -104,20 +112,46 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyIdentifier";
     
-    AppCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    if(indexPath.section == 0){
     
-    if (cell == nil) {
-        cell = [[AppCell alloc] initWithStyle:UITableViewCellStyleDefault 
+        AppCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    
+        if (cell == nil) {
+            cell = [[AppCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                   reuseIdentifier:MyIdentifier];
+        }
+    
+        NSArray *section = [sections objectAtIndex:indexPath.section];
+    
+        AppCellData *item = [section objectAtIndex:indexPath.row];
+    
+        [cell setCellData:item.category:item.value];
+        
+        cell.userInteractionEnabled = NO;
+    
+        return cell;
+        
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
+        }
+        
+        cell.textLabel.text = @"Settings";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        
+        return cell;
     }
+
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AppSettingsViewController *settings = [[AppSettingsViewController alloc] init];
     
-    NSArray *section = [sections objectAtIndex:indexPath.section];
-    
-    AppCellData *item = [section objectAtIndex:indexPath.row];
-    
-    [cell setCellData:item.category:item.value];
-    
-    return cell;
+    [self.navigationController pushViewController:settings animated:YES];
 }
 
 @end

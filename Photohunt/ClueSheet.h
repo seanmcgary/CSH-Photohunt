@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ClueData.h"
+#import "AppHelper.h"
 
 @interface ClueSheet : NSObject
 

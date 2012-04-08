@@ -111,11 +111,7 @@
     [archiver encodeObject:bundle forKey:@"clueListBundle"];
     [archiver finishEncoding];
     
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults setObject:data forKey:@"clueList"];
-    [defaults synchronize];
+    [AppHelper saveClueSheet:data];
 }
 
 - (void) restoreClueSheet {

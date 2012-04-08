@@ -116,14 +116,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"Creating cell");
-    //static NSString *CellIdentifier = @"Cell";
-    
-    /*UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero];
-    }*/
     
     TagCell *cell = [[TagCell alloc] init];
     
