@@ -18,6 +18,7 @@
 @synthesize cells;
 @synthesize tableView;
 @synthesize toolbar;
+@synthesize requiresLogin;
 
 - (id) init
 {
@@ -26,29 +27,41 @@
     if(self){
         self.view.backgroundColor = [UIColor blueColor];
         
-        cells = [[NSArray alloc] initWithObjects: 
-                 [[AppCellData alloc] initWithData:@"Team Name" :@"Team Faggot"],
-                 [[AppCellData alloc] initWithData:@"Photos Taken" :@"6/30"],
-                 [[AppCellData alloc] initWithData:@"Photos Submitted" :@"3/20"],
-                 [[AppCellData alloc] initWithData:@"Potential Points" :@"42"],
-                 [[AppCellData alloc] initWithData:@"Time Left" :@"4:12"],
-                 nil];
-        
-        NSArray *settings = [[NSArray alloc] initWithObjects:@"Settings", nil];
-        
-        sections = [[NSArray alloc] initWithObjects:cells, settings, nil];
-        
-        tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStyleGrouped];
-        
-        tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        [tableView reloadData];
-        
-        self.view = tableView;
     }
     
     return self;
+}
+
+- (void) viewWillAppear:(BOOL)animated 
+{
+    NSMutableDictionary *gameData = [AppHelper getGameData];
+    NSArray *settings = [[NSArray alloc] initWithObjects:@"Settings", nil];
+    
+    if(gameData == nil){
+        requiresLogin = YES;
+        sections = [[NSArray alloc] initWithObjects:settings, nil];
+    } else {
+        requiresLogin = NO;
+        NSLog(@"Game data: %@", gameData);
+        cells = [[NSArray alloc] initWithObjects: 
+                 [[AppCellData alloc] initWithData:@"Team Name" :[gameData objectForKey:@"team"]],
+                 [[AppCellData alloc] initWithData:@"Photos Taken" :[NSString stringWithFormat:@"%u/%u", [[gameData objectForKey:@"photosTaken"] integerValue], [[gameData objectForKey:@"maxPhotos"] integerValue]]],
+                 [[AppCellData alloc] initWithData:@"Photos Submitted" :[NSString stringWithFormat:@"%u/%u", [[gameData objectForKey:@"photosJudged"] integerValue], [[gameData objectForKey:@"maxJudgedPhotos"] integerValue]]],
+                 [[AppCellData alloc] initWithData:@"Potential Points" :[NSString stringWithFormat:@"%u", [[gameData objectForKey:@"pointsSubmitted"] integerValue]]],
+                 [[AppCellData alloc] initWithData:@"Time Left" :@"4:12"],
+                 nil];
+        
+        sections = [[NSArray alloc] initWithObjects:cells, settings, nil];
+    }
+    
+    tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStyleGrouped];
+    
+    tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    [tableView reloadData];
+    
+    self.view = tableView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -63,14 +76,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    /*toolbar = [[UIToolbar alloc] init];
-    
-    toolbar.barStyle = UIBarStyleDefault;
-    [toolbar sizeToFit];
-    toolbar.frame = CGRectMake(0, 410, 320, 50);
-    
-    [self.tableView addSubview:toolbar];*/
 }
 
 - (void)viewDidUnload
@@ -87,7 +92,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return [sections count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
@@ -112,7 +117,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyIdentifier";
     
-    if(indexPath.section == 0){
+    if(indexPath.section == 0 && requiresLogin == NO){
     
         AppCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     

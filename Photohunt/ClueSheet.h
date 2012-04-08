@@ -32,7 +32,7 @@
 
 - (void) persistClueSheet;
 
-- (void) restoreClueSheet;
+- (void) getStoredClueSheet;
 
 - (NSArray *) getCluesForTag: (NSString *) tag;
 

@@ -77,6 +77,8 @@
 		43B4C4601530FDDF00D8EA40 /* save-clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B4C45B1530FDDF00D8EA40 /* save-clicked.png */; };
 		43B4C4631530FEE800D8EA40 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B4C4621530FEE800D8EA40 /* save.png */; };
 		43B4C4661530FFA100D8EA40 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4C4651530FFA000D8EA40 /* AppHelper.m */; };
+		43B4C46A1531117400D8EA40 /* AppLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4C4691531117400D8EA40 /* AppLoginButton.m */; };
+		43B4C46D1531129400D8EA40 /* AppEndGameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4C46C1531129400D8EA40 /* AppEndGameButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +203,10 @@
 		43B4C4621530FEE800D8EA40 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		43B4C4641530FFA000D8EA40 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
 		43B4C4651530FFA000D8EA40 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		43B4C4681531117400D8EA40 /* AppLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppLoginButton.h; sourceTree = "<group>"; };
+		43B4C4691531117400D8EA40 /* AppLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLoginButton.m; sourceTree = "<group>"; };
+		43B4C46B1531129400D8EA40 /* AppEndGameButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppEndGameButton.h; sourceTree = "<group>"; };
+		43B4C46C1531129400D8EA40 /* AppEndGameButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppEndGameButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +383,7 @@
 		434340D0151FDAB8006E75C9 /* AppStartView */ = {
 			isa = PBXGroup;
 			children = (
+				43B4C4671531115600D8EA40 /* FormElements */,
 				430C0788151E5F9300FC7C4F /* AppStartViewController.h */,
 				430C0789151E5F9300FC7C4F /* AppStartViewController.m */,
 				434340D1151FDAD1006E75C9 /* AppCellData.h */,
@@ -506,6 +513,17 @@
 			name = GusUtils;
 			sourceTree = "<group>";
 		};
+		43B4C4671531115600D8EA40 /* FormElements */ = {
+			isa = PBXGroup;
+			children = (
+				43B4C4681531117400D8EA40 /* AppLoginButton.h */,
+				43B4C4691531117400D8EA40 /* AppLoginButton.m */,
+				43B4C46B1531129400D8EA40 /* AppEndGameButton.h */,
+				43B4C46C1531129400D8EA40 /* AppEndGameButton.m */,
+			);
+			name = FormElements;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -624,6 +642,8 @@
 				43B4C4521530D3D600D8EA40 /* AppSettingsViewController.m in Sources */,
 				43B4C4551530D41B00D8EA40 /* AppHomeNavigationController.m in Sources */,
 				43B4C4661530FFA100D8EA40 /* AppHelper.m in Sources */,
+				43B4C46A1531117400D8EA40 /* AppLoginButton.m in Sources */,
+				43B4C46D1531129400D8EA40 /* AppEndGameButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

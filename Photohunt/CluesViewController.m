@@ -26,8 +26,6 @@
         
         [items addObject:@"All Clues"];
         
-        clues = [[ClueSheet alloc] init];
-        
     }
     
     return self;
@@ -38,6 +36,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        clues = [[ClueSheet alloc] init];
     }
     return self;
 }
@@ -51,39 +50,13 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
-    items = [[NSMutableArray alloc] initWithObjects:
-                                    @"View All",
-             nil];
-    
-    NSURL *url = [NSURL URLWithString:@"http://waffles.csh.rit.edu/api/clues"];
-    
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    NSMutableDictionary *requestHeaders = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"application/json", @"Accept", nil];
-    
-    [request setRequestHeaders: requestHeaders];
-    [request setCompletionBlock:^{
-        NSData *respData = [[request responseString] dataUsingEncoding:NSUTF8StringEncoding];
-        
-        NSError *jsonErr;
-        
-        NSMutableDictionary *jsonResp = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableContainers error:&jsonErr];
-        
-        [clues parseClueJSON:jsonResp];
-        
-        [self.tableView reloadData];
-        
-        
-    }];
-    
-    [request setFailedBlock:^{
-        NSError *err = [request error];
-        
-        NSLog(@"Error: %@", [err localizedDescription]);
-    }];
-    
-    [request startAsynchronous];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    NSLog(@"view will appear");
+    [clues getStoredClueSheet];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -110,7 +83,6 @@
 {
     // Return the number of rows in the section.
     //return [items count];
-    NSLog(@"Num clues: %u", [clues numClues]);
     return [clues numTags];
 }
 

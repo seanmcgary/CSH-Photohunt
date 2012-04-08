@@ -105,16 +105,16 @@
     [bundle setObject:tagList forKey:@"tagList"];
     [bundle setObject:tagsWithClues forKey:@"tagsWithClues"];
     
-    
-    NSMutableData *data = [[NSMutableData alloc] init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeObject:bundle forKey:@"clueListBundle"];
-    [archiver finishEncoding];
-    
-    [AppHelper saveClueSheet:data];
+    [AppHelper saveClueSheet:bundle];
 }
 
-- (void) restoreClueSheet {
+- (void) getStoredClueSheet {
+    NSLog(@"getting stored sheet");
+    NSMutableDictionary *storedClues = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getClueSheet]];
+    
+    clueList = [storedClues objectForKey:@"clueList"];
+    tagList = [storedClues objectForKey:@"tagList"];
+    tagsWithClues = [storedClues objectForKey:@"tagsWithClues"];
     
 }
 

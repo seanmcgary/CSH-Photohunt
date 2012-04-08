@@ -15,8 +15,15 @@
 
 +(void) setGameProgress: (BOOL) game;
 
-+(void)saveClueSheet: (NSMutableData *)clueSheet;
++(void)saveClueSheet: (NSMutableDictionary *)clueSheet;
 
-+(NSMutableData *)getClueSheet;
++(NSMutableDictionary *)getClueSheet;
+
++(void) setGameData: (NSMutableDictionary *) gameData;
+
+// returns nil if the field doesnt exist
++(id)getGameData;
+
++(void) endGame;
 
 @end

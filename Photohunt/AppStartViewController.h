@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIToolbar *toolbar;
+@property (readwrite, assign) BOOL requiresLogin;
 
 - (id) init;
 
