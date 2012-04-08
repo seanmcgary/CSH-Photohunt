@@ -41,4 +41,8 @@
 
 +(void) decrementJudgedPhotoCount;
 
++(void) markPhotoAsUploaded: (NSString *)photoName;
+
++(void) updatePhoto: (NSDictionary *)photoData;
+
 @end

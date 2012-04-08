@@ -81,6 +81,11 @@
         
         NSLog(@"upload response: %@", jsonResp);
         
+        if([[jsonResp objectForKey:@"code"] integerValue] == 0){
+            // mark the photo as uploaded
+            [AppHelper markPhotoAsUploaded:[photoWithMetaData objectForKey:@"photoName"]];
+        }
+        
     }];
     
     [request setFailedBlock:^{

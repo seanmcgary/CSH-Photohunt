@@ -226,4 +226,43 @@
     }
 }
 
++(void) markPhotoAsUploaded: (NSString *)photoName
+{
+    NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
+    
+    NSLog(@"savedPhotos (markAsUploaded)\n%@", savedPhotos);
+    
+    for(NSMutableDictionary *photo in savedPhotos){
+        if([[photo objectForKey:@"photoName"] isEqualToString:photoName]){
+            //[photo setObject:[NSNumber numberWithInt:1] forKey:@"hasBeenUploaded"];
+            NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
+            [updatedPhoto setObject:[NSNumber numberWithInt:1] forKey:@"hasBeenUploaded"];
+            [AppHelper updatePhoto:updatedPhoto];
+        }
+    }
+}
+
++(void) updatePhoto: (NSDictionary *) photoData
+{
+    NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
+    
+    NSUInteger replaceIndex;
+    
+    for(NSMutableDictionary *photo in savedPhotos){
+        if([[photo objectForKey:@"photoName"] isEqualToString:[photoData objectForKey:@"photoName"]])
+        {
+            //[savedPhotos replaceObjectAtIndex: withObject:photoData]; 
+            replaceIndex = [savedPhotos indexOfObject:photo];
+        }
+    }
+    
+    [savedPhotos replaceObjectAtIndex:replaceIndex withObject:photoData];
+    
+    NSLog(@"photo list: %@", savedPhotos);
+    
+    [AppHelper saveAllPhotos:savedPhotos];
+    
+    
+}
+
 @end

@@ -90,6 +90,7 @@
     [metadata setLocation:[locMgr location]];
     
     [locMgr stopUpdatingLocation];
+    [locMgr stopMonitoringSignificantLocationChanges];
     
     NSMutableDictionary *photoContainer = [[NSMutableDictionary alloc] init];
     
