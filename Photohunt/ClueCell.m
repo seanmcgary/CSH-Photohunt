@@ -13,11 +13,12 @@
 @synthesize clueInfo;
 
 - (id) initWithClueInfo: (NSDictionary *)clueInfo {
-    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cluecell"];
-    
+    self = [super init];
+    NSLog(@"creating clue cell");
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if(self){
         self.clueInfo = [[NSDictionary alloc] initWithDictionary:clueInfo];
-        NSLog(@"Foobar");
+
     }
     
     return self;

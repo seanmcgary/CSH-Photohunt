@@ -82,7 +82,6 @@
     ClueCell *cell = [[ClueCell alloc] initWithClueInfo:clue];
     
     cell.textLabel.text = [clue objectForKey:@"description"];
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     return cell;
 }
