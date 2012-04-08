@@ -10,8 +10,9 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
 #import "NSMutableDictionary+ImageMetadata.h"
+#import "EditPhotoViewController.h"
 
-@interface CameraViewController : UIImagePickerController <UIImagePickerControllerDelegate, CLLocationManagerDelegate>
+@interface CameraViewController : UIImagePickerController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate>
 
 @property (strong, atomic) ALAssetsLibrary* library;
 

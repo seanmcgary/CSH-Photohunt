@@ -17,6 +17,13 @@
 		430C0784151E5D7900FC7C4F /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0783151E5D7900FC7C4F /* GalleryViewController.m */; };
 		430C078A151E5F9400FC7C4F /* AppStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0789151E5F9300FC7C4F /* AppStartViewController.m */; };
 		430ED6A615210D53000AD64E /* test_photo.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 430ED6A515210D53000AD64E /* test_photo.JPG */; };
+		431532D3153207A600F5A42E /* GMGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 431532C9153207A600F5A42E /* GMGridView.m */; };
+		431532D4153207A600F5A42E /* GMGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 431532CB153207A600F5A42E /* GMGridViewCell.m */; };
+		431532D5153207A600F5A42E /* GMGridViewLayoutStrategies.m in Sources */ = {isa = PBXBuildFile; fileRef = 431532CE153207A600F5A42E /* GMGridViewLayoutStrategies.m */; };
+		431532D6153207A600F5A42E /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 431532D0153207A600F5A42E /* UIGestureRecognizer+GMGridViewAdditions.m */; };
+		431532D7153207A600F5A42E /* UIView+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 431532D2153207A600F5A42E /* UIView+GMGridViewAdditions.m */; };
+		431532DA1532090A00F5A42E /* EditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431532D91532090A00F5A42E /* EditPhotoViewController.m */; };
+		431532DC15320E3100F5A42E /* savedPhotos in Resources */ = {isa = PBXBuildFile; fileRef = 431532DB15320E3100F5A42E /* savedPhotos */; };
 		434340B1151FCAAA006E75C9 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 434340B0151FCAAA006E75C9 /* home.png */; };
 		434340B5151FCB7E006E75C9 /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = 434340B3151FCB7E006E75C9 /* gallery.png */; };
 		434340BA151FCC4B006E75C9 /* CluesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 434340B9151FCC4B006E75C9 /* CluesNavigationController.m */; };
@@ -99,6 +106,21 @@
 		430C0788151E5F9300FC7C4F /* AppStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStartViewController.h; sourceTree = "<group>"; };
 		430C0789151E5F9300FC7C4F /* AppStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartViewController.m; sourceTree = "<group>"; };
 		430ED6A515210D53000AD64E /* test_photo.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_photo.JPG; sourceTree = "<group>"; };
+		431532C7153207A600F5A42E /* GMGridView-Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMGridView-Constants.h"; sourceTree = "<group>"; };
+		431532C8153207A600F5A42E /* GMGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGridView.h; sourceTree = "<group>"; };
+		431532C9153207A600F5A42E /* GMGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGridView.m; sourceTree = "<group>"; };
+		431532CA153207A600F5A42E /* GMGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGridViewCell.h; sourceTree = "<group>"; };
+		431532CB153207A600F5A42E /* GMGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGridViewCell.m; sourceTree = "<group>"; };
+		431532CC153207A600F5A42E /* GMGridViewCell+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMGridViewCell+Extended.h"; sourceTree = "<group>"; };
+		431532CD153207A600F5A42E /* GMGridViewLayoutStrategies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGridViewLayoutStrategies.h; sourceTree = "<group>"; };
+		431532CE153207A600F5A42E /* GMGridViewLayoutStrategies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGridViewLayoutStrategies.m; sourceTree = "<group>"; };
+		431532CF153207A600F5A42E /* UIGestureRecognizer+GMGridViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+GMGridViewAdditions.h"; sourceTree = "<group>"; };
+		431532D0153207A600F5A42E /* UIGestureRecognizer+GMGridViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+GMGridViewAdditions.m"; sourceTree = "<group>"; };
+		431532D1153207A600F5A42E /* UIView+GMGridViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GMGridViewAdditions.h"; sourceTree = "<group>"; };
+		431532D2153207A600F5A42E /* UIView+GMGridViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GMGridViewAdditions.m"; sourceTree = "<group>"; };
+		431532D81532090A00F5A42E /* EditPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPhotoViewController.h; sourceTree = "<group>"; };
+		431532D91532090A00F5A42E /* EditPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPhotoViewController.m; sourceTree = "<group>"; };
+		431532DB15320E3100F5A42E /* savedPhotos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = savedPhotos; sourceTree = "<group>"; };
 		434340B0151FCAAA006E75C9 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		434340B3151FCB7E006E75C9 /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
 		434340B8151FCC4A006E75C9 /* CluesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesNavigationController.h; sourceTree = "<group>"; };
@@ -273,6 +295,8 @@
 		430C0764151E5B8400FC7C4F /* Photohunt */ = {
 			isa = PBXGroup;
 			children = (
+				431532DB15320E3100F5A42E /* savedPhotos */,
+				431532C51532079200F5A42E /* GMGridView */,
 				43AF399D152FB4A5001EEB92 /* GusUtils */,
 				4397EFC8152E20AB00399FF2 /* ASIHTTPRequest */,
 				434340CC151FDA1E006E75C9 /* Elements */,
@@ -322,6 +346,8 @@
 			children = (
 				43AF3996152FAA62001EEB92 /* CameraViewController.h */,
 				43AF3997152FAA62001EEB92 /* CameraViewController.m */,
+				431532D81532090A00F5A42E /* EditPhotoViewController.h */,
+				431532D91532090A00F5A42E /* EditPhotoViewController.m */,
 			);
 			name = CameraViewControllers;
 			sourceTree = "<group>";
@@ -333,6 +359,25 @@
 				430C0783151E5D7900FC7C4F /* GalleryViewController.m */,
 			);
 			name = GalleryViewControllers;
+			sourceTree = "<group>";
+		};
+		431532C51532079200F5A42E /* GMGridView */ = {
+			isa = PBXGroup;
+			children = (
+				431532C7153207A600F5A42E /* GMGridView-Constants.h */,
+				431532C8153207A600F5A42E /* GMGridView.h */,
+				431532C9153207A600F5A42E /* GMGridView.m */,
+				431532CA153207A600F5A42E /* GMGridViewCell.h */,
+				431532CB153207A600F5A42E /* GMGridViewCell.m */,
+				431532CC153207A600F5A42E /* GMGridViewCell+Extended.h */,
+				431532CD153207A600F5A42E /* GMGridViewLayoutStrategies.h */,
+				431532CE153207A600F5A42E /* GMGridViewLayoutStrategies.m */,
+				431532CF153207A600F5A42E /* UIGestureRecognizer+GMGridViewAdditions.h */,
+				431532D0153207A600F5A42E /* UIGestureRecognizer+GMGridViewAdditions.m */,
+				431532D1153207A600F5A42E /* UIView+GMGridViewAdditions.h */,
+				431532D2153207A600F5A42E /* UIView+GMGridViewAdditions.m */,
+			);
+			name = GMGridView;
 			sourceTree = "<group>";
 		};
 		434340AF151FCA4D006E75C9 /* images */ = {
@@ -588,6 +633,7 @@
 				43B4C45F1530FDDF00D8EA40 /* end.png in Resources */,
 				43B4C4601530FDDF00D8EA40 /* save-clicked.png in Resources */,
 				43B4C4631530FEE800D8EA40 /* save.png in Resources */,
+				431532DC15320E3100F5A42E /* savedPhotos in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +690,12 @@
 				43B4C4661530FFA100D8EA40 /* AppHelper.m in Sources */,
 				43B4C46A1531117400D8EA40 /* AppLoginButton.m in Sources */,
 				43B4C46D1531129400D8EA40 /* AppEndGameButton.m in Sources */,
+				431532D3153207A600F5A42E /* GMGridView.m in Sources */,
+				431532D4153207A600F5A42E /* GMGridViewCell.m in Sources */,
+				431532D5153207A600F5A42E /* GMGridViewLayoutStrategies.m in Sources */,
+				431532D6153207A600F5A42E /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */,
+				431532D7153207A600F5A42E /* UIView+GMGridViewAdditions.m in Sources */,
+				431532DA1532090A00F5A42E /* EditPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

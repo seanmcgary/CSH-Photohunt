@@ -36,12 +36,9 @@
         
 
         self.delegate = self;
-        self.library = [[ALAssetsLibrary alloc] init];
         
         self.locMgr = [[CLLocationManager alloc] init];
         self.locMgr.delegate = self;
-        
-        [locMgr startUpdatingLocation];
         
     }
     
@@ -67,6 +64,14 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    NSLog(@"unloaded camera");
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [locMgr startUpdatingLocation];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -76,7 +81,7 @@
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    NSLog(@"Picked image");
+    NSLog(@"pickedImage");
     // Access the uncropped image from info dictionary
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
@@ -84,14 +89,44 @@
     
     [metadata setLocation:[locMgr location]];
     
-    NSLog(@"META: %@", metadata);
-    
     [locMgr stopUpdatingLocation];
+    
+    NSMutableDictionary *photoContainer = [[NSMutableDictionary alloc] init];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    time_t unixTime = (time_t) [[NSDate date] timeIntervalSince1970];
+    
+    NSString *photoName = [NSString stringWithFormat:@"%ld.jpg", unixTime];
+    NSString *photoSavePath = [documentsDirectory stringByAppendingPathComponent:photoName];
+    
+    [photoContainer setObject:photoName forKey:@"photoName"];
+    [photoContainer setObject:photoSavePath forKey:@"photoPath"];
+    [photoContainer setObject:[NSNumber numberWithInt:0] forKey:@"hasBeenExported"];
+    [photoContainer setObject:[NSNumber numberWithInt:0] forKey:@"hasBeenUploaded"];
+    [photoContainer setObject:[[NSMutableArray alloc] init] forKey:@"clues"];
+    [photoContainer setObject:[NSNumber numberWithInt:0] forKey:@"judge"];
+    [photoContainer setObject:metadata forKey:@"metadata"];
+    
+    // save the photo without the image embedded
+    [AppHelper savePhotoData:photoContainer];
+    
+    // write the image to disk
+    [UIImageJPEGRepresentation(image, 1.0) writeToFile:photoSavePath atomically:YES];
+    
+    // increment number of photos taken
+    [AppHelper incrementPhotoCount];
+    
+    // add the image to the container to pass it off to the edit view
+    [photoContainer setObject:image forKey:@"image"];
+    EditPhotoViewController *editPhoto = [[EditPhotoViewController alloc] initWithPhoto:photoContainer];
+    
+    [self pushViewController:editPhoto animated:YES];
     
     // Save image
     //UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-    NSUInteger groupTypes = ALAssetsGroupAll;
-    
+    /*NSUInteger groupTypes = ALAssetsGroupAll;
     [library writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)image.imageOrientation 
                           completionBlock:^(NSURL* assetURL, NSError* error) {
                               if (error != NULL){
@@ -115,7 +150,7 @@
             }];
         }
     } failureBlock:^(NSError *error) {NSLog(@"A problem occurred");}];
-
+     */
 }
 
 @end

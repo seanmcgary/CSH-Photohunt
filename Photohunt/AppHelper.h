@@ -10,7 +10,7 @@
 
 @interface AppHelper : NSObject
 
-// get the game state. if a game is in progre
+// get the game state. if a game is in progress
 +(BOOL) gameInProgress;
 
 +(void) setGameProgress: (BOOL) game;
@@ -24,6 +24,21 @@
 // returns nil if the field doesnt exist
 +(id)getGameData;
 
++(NSString *) getTeamToken;
+
 +(void) endGame;
+
++(id) getSavedPhotos;
+
+// add a photo to the saved data
++(id) savePhotoData: (NSMutableDictionary *) photoData;
+
++(void) saveAllPhotos: (NSMutableArray *) photoList;
+
++(void) incrementPhotoCount;
+
++(void) incrementJudgedPhotoCount;
+
++(void) decrementJudgedPhotoCount;
 
 @end

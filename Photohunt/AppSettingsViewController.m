@@ -182,6 +182,7 @@
             [gameData setValue:[NSNumber numberWithInt:0] forKey:@"photosTaken"];
             [gameData setValue:[NSNumber numberWithInt:0] forKey:@"photosJudged"];
             [gameData setValue:[NSNumber numberWithInt:0] forKey:@"pointsSubmitted"];
+            [gameData setValue:gameId forKey:@"teamToken"];
             [AppHelper setGameData: gameData];
             [AppHelper setGameProgress:YES];
             

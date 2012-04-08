@@ -48,7 +48,6 @@
 +(NSMutableDictionary *)getClueSheet
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"here");
     NSMutableData *clueSheetData = [defaults objectForKey:@"PH_clueSheet"];
 
     
@@ -109,10 +108,122 @@
     [defaults setBool:NO forKey:@"PH_gameState"];
     
     // delete other data here too
+    //[defaults setBool:NO forKey:@"PH_savedPhotos"];
     
     [defaults synchronize];
     
     
+}
+
++(id) getTeamToken
+{
+    NSMutableDictionary *gameData = [AppHelper getGameData];
+    
+    if(gameData){
+        return [gameData objectForKey:@"teamToken"];
+    } else {
+        return nil;
+    }
+}
+
++(id) getSavedPhotos 
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *photos = [defaults objectForKey:@"PH_savedPhotos"];
+    
+    if(!photos){
+        return nil;
+    }
+    
+    return photos;
+    
+}
+
+
++(id) savePhotoData: (NSMutableDictionary *) photoData
+{
+    
+    NSMutableArray *photoList = [NSMutableArray arrayWithArray:[AppHelper getSavedPhotos]];
+    NSLog(@"Photo List");
+    if(photoList == nil){
+        NSLog(@"photo list nil");
+        photoList = [[NSMutableArray alloc] init];
+    }
+    
+    [photoList addObject:photoData];
+    
+    [AppHelper saveAllPhotos:photoList];
+    
+    return photoData;
+}
+
++(void) saveAllPhotos: (NSMutableArray *) photoList
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:photoList forKey:@"PH_savedPhotos"];
+    [defaults synchronize];
+}
+
+
+
++(void) incrementPhotoCount
+{
+    NSMutableDictionary *gameData = [AppHelper getGameData];
+    
+    if(gameData){
+        NSNumber *photosTaken = [gameData objectForKey:@"photosTaken"];
+        
+        int val = [photosTaken intValue];
+        
+        val++;
+        
+        photosTaken = [NSNumber numberWithInt:val];
+        
+        [gameData setObject:photosTaken forKey:@"photosTaken"];
+        
+        [AppHelper setGameData:gameData];
+    }
+}
+
++(void) incrementJudgedPhotoCount
+{
+    NSMutableDictionary *gameData = [AppHelper getGameData];
+    
+    if(gameData){
+        NSNumber *photosJudged = [gameData objectForKey:@"photosJudged"];
+        
+        int val = [photosJudged intValue];
+        
+        val++;
+        
+        photosJudged = [NSNumber numberWithInt:val];
+        
+        [gameData setObject:photosJudged forKey:@"photosJudged"];
+        
+        [AppHelper setGameData:gameData];
+    }
+}
+
++(void) decrementJudgedPhotoCount
+{
+    NSMutableDictionary *gameData = [AppHelper getGameData];
+    
+    if(gameData){
+        NSNumber *photosJudged = [gameData objectForKey:@"photosJudged"];
+        
+        int val = [photosJudged intValue];
+        
+        if(val > 0){
+            val--;
+        }
+        
+        photosJudged = [NSNumber numberWithInt:val];
+        
+        [gameData setObject:photosJudged forKey:@"photosJudged"];
+        
+        [AppHelper setGameData:gameData];
+    }
 }
 
 @end
