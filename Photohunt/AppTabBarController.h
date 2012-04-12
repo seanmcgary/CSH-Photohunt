@@ -10,9 +10,9 @@
 
 #import "CameraNavigationController.h"
 #import "CluesNavigationController.h"
-#import "GalleryViewController.h"
 #import "CameraViewController.h"
 #import "AppHomeNavigationController.h"
+#import "GalleryNavigationController.h"
 
 @interface AppTabBarController : UITabBarController
 
@@ -21,8 +21,9 @@
 @property (strong, nonatomic) CameraViewController *cameraView;
 
 @property (strong, nonatomic) CluesNavigationController *cluesNavController; 
-@property (strong, nonatomic) GalleryViewController *galleryView;
 
 @property (strong, nonatomic) AppHomeNavigationController *appHomeNavController;
+
+@property (strong, nonatomic) GalleryNavigationController *galleryNav;
 
 @end

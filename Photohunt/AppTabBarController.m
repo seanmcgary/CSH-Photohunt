@@ -17,7 +17,7 @@
 @synthesize cameraView,
             appHomeNavController,
             cluesNavController,
-            galleryView;
+            galleryNav;
 
 - (id) init
 {
@@ -26,15 +26,16 @@
     if(self){
         cameraView = [[CameraViewController alloc] init];
         cluesNavController = [[CluesNavigationController alloc] init];
-        galleryView = [[GalleryViewController alloc] init];
         appHomeNavController = [[AppHomeNavigationController alloc] init];
+        
+        galleryNav = [[GalleryNavigationController alloc] init];
         
         
         
         self.viewControllers = [[NSArray alloc] initWithObjects:
                                                 appHomeNavController,
                                                 cameraView, 
-                                                galleryView, 
+                                                galleryNav, 
                                                 cluesNavController,
                                 nil];
     }

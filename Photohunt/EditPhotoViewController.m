@@ -54,14 +54,13 @@
     // get the teamID
     
     
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://photohunt.seanmcgary.com/api/photos/new?token=%@", teamToken]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://photohunt.csh.rit.edu/api/photos/new?token=%@", teamToken]];
     
     __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     NSMutableDictionary *requestHeaders = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"application/json", @"Accept", nil];
     
     // TODO - make this actually check the cert
-    //[request setValidatesSecureCertificate:NO];
+    [request setValidatesSecureCertificate:NO];
     [request setRequestHeaders: requestHeaders];
     [request setRequestMethod:@"POST"];
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
@@ -74,7 +73,7 @@
     [request setCompletionBlock:^{
         NSData *respData = [[request responseString] dataUsingEncoding:NSUTF8StringEncoding];
         
-        NSLog(@"server response:\n%@", [[NSString alloc] initWithData:respData encoding:NSUTF8StringEncoding]);
+        //NSLog(@"server response:\n%@", [[NSString alloc] initWithData:respData encoding:NSUTF8StringEncoding]);
         NSError *jsonErr;
         
         NSMutableDictionary *jsonResp = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableContainers error:&jsonErr];
@@ -111,15 +110,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self uploadPhoto];
+    NSLog(@"uploaded? : %u", [[self.photoWithMetaData objectForKey:@"hasBeenUploaded"] integerValue]);
+    if([[self.photoWithMetaData objectForKey:@"hasBeenUploaded"] integerValue] == 0){
+        [self uploadPhoto];
+    }
     
-    NSLog(@"Frame: %@", self.view.frame);
+
+    
+    //NSLog(@"Frame: %@", self.view.frame);
     scrollView.frame = self.view.frame;
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 5000);
     [self.view addSubview:scrollView];
     
 
-    
     UIImage *image = [photoWithMetaData objectForKey:@"image"];
     
     imageView = [[UIImageView alloc] init];
@@ -130,7 +133,9 @@
     
     //imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    [imageView setImage:image];
+    UIImage *newImage = [AppHelper imageWithImage:image scaledToSize:CGSizeMake((self.view.frame.size.width - 20), 200)];
+    
+    [imageView setImage:newImage];
     
     
     

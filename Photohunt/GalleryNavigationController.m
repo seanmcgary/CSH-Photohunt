@@ -1,30 +1,30 @@
 //
-//  GalleryViewController.m
+//  GalleryNavigationController.m
 //  Photohunt
 //
-//  Created by Sean McGary on 3/24/12.
+//  Created by Sean McGary on 4/12/12.
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
-#import "GalleryViewController.h"
+#import "GalleryNavigationController.h"
 
-@interface GalleryViewController ()
+@interface GalleryNavigationController ()
 
 @end
 
-@implementation GalleryViewController
+@implementation GalleryNavigationController
+
+@synthesize collectionView;
 
 - (id) init 
 {
-    
     self = [super init];
     
     if(self){
-        self.view.backgroundColor = [UIColor yellowColor];
-        self.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
         self.tabBarItem.title = @"Gallery";
         self.tabBarItem.image = [UIImage imageNamed:@"gallery.png"];
+        
+        self.collectionView = [[GalleryCollectionViewController alloc] init];
     }
     
     return self;
@@ -43,6 +43,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self pushViewController:self.collectionView animated:NO];
+    
 }
 
 - (void)viewDidUnload

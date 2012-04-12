@@ -14,7 +14,6 @@
 		430C076B151E5B8400FC7C4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C076A151E5B8400FC7C4F /* main.m */; };
 		430C076F151E5B8400FC7C4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C076E151E5B8400FC7C4F /* AppDelegate.m */; };
 		430C077B151E5BDF00FC7C4F /* CameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */; };
-		430C0784151E5D7900FC7C4F /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0783151E5D7900FC7C4F /* GalleryViewController.m */; };
 		430C078A151E5F9400FC7C4F /* AppStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C0789151E5F9300FC7C4F /* AppStartViewController.m */; };
 		430ED6A615210D53000AD64E /* test_photo.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 430ED6A515210D53000AD64E /* test_photo.JPG */; };
 		431532D3153207A600F5A42E /* GMGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 431532C9153207A600F5A42E /* GMGridView.m */; };
@@ -32,6 +31,9 @@
 		434340C4151FCF22006E75C9 /* camera2.png in Resources */ = {isa = PBXBuildFile; fileRef = 434340C3151FCF22006E75C9 /* camera2.png */; };
 		434340CF151FDA3F006E75C9 /* AppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 434340CE151FDA3F006E75C9 /* AppCell.m */; };
 		434340D3151FDAD1006E75C9 /* AppCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 434340D2151FDAD1006E75C9 /* AppCellData.m */; };
+		435DE0031537765F00EEA54E /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 435DDFFD1537764E00EEA54E /* libSSToolkit.a */; };
+		435DE006153776E800EEA54E /* GalleryCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 435DE005153776E800EEA54E /* GalleryCollectionViewController.m */; };
+		435DE014153782C800EEA54E /* GalleryPhotoViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 435DE013153782C800EEA54E /* GalleryPhotoViewItem.m */; };
 		43965205151E928C0000181C /* AppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43965204151E928C0000181C /* AppTabBarController.m */; };
 		4397EFC7152E165000399FF2 /* CluesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397EFC6152E165000399FF2 /* CluesViewController.m */; };
 		4397EFFD152E20C700399FF2 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397EFCA152E20C700399FF2 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -66,6 +68,7 @@
 		4397F027152E2A0300399FF2 /* ClueSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397F026152E2A0200399FF2 /* ClueSheet.m */; };
 		4397F02A152E386900399FF2 /* ClueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397F029152E386900399FF2 /* ClueCell.m */; };
 		4397F02D152E397C00399FF2 /* ClueData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397F02C152E397C00399FF2 /* ClueData.m */; };
+		439FFF3715378EE900DC7857 /* GalleryNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439FFF3615378EE800DC7857 /* GalleryNavigationController.m */; };
 		43AF398E152F833E001EEB92 /* CluesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF398D152F833E001EEB92 /* CluesTableViewController.m */; };
 		43AF3991152F8744001EEB92 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF3990152F8743001EEB92 /* TagCell.m */; };
 		43AF3995152F8F1F001EEB92 /* ClueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AF3994152F8F1F001EEB92 /* ClueDetailViewController.m */; };
@@ -88,6 +91,30 @@
 		43B4C46D1531129400D8EA40 /* AppEndGameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4C46C1531129400D8EA40 /* AppEndGameButton.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		435DDFFC1537764E00EEA54E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 435DDFF31537764D00EEA54E /* SSToolkit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = SSToolkit;
+		};
+		435DDFFE1537764E00EEA54E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 435DDFF31537764D00EEA54E /* SSToolkit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B239101D1357DC3E00ADE21B;
+			remoteInfo = SSToolkitTests;
+		};
+		435DE0011537765A00EEA54E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 435DDFF31537764D00EEA54E /* SSToolkit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = SSToolkit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		430C075A151E5B8400FC7C4F /* Photohunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photohunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		430C075E151E5B8400FC7C4F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -101,8 +128,6 @@
 		430C076E151E5B8400FC7C4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		430C0779151E5BDF00FC7C4F /* CameraNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraNavigationController.h; sourceTree = "<group>"; };
 		430C077A151E5BDF00FC7C4F /* CameraNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraNavigationController.m; sourceTree = "<group>"; };
-		430C0782151E5D7900FC7C4F /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
-		430C0783151E5D7900FC7C4F /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		430C0788151E5F9300FC7C4F /* AppStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStartViewController.h; sourceTree = "<group>"; };
 		430C0789151E5F9300FC7C4F /* AppStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartViewController.m; sourceTree = "<group>"; };
 		430ED6A515210D53000AD64E /* test_photo.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_photo.JPG; sourceTree = "<group>"; };
@@ -132,6 +157,11 @@
 		434340CE151FDA3F006E75C9 /* AppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCell.m; sourceTree = "<group>"; };
 		434340D1151FDAD1006E75C9 /* AppCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCellData.h; sourceTree = "<group>"; };
 		434340D2151FDAD1006E75C9 /* AppCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCellData.m; sourceTree = "<group>"; };
+		435DDFF31537764D00EEA54E /* SSToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSToolkit.xcodeproj; path = Vendor/SSToolkit/SSToolkit.xcodeproj; sourceTree = "<group>"; };
+		435DE004153776E800EEA54E /* GalleryCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryCollectionViewController.h; sourceTree = "<group>"; };
+		435DE005153776E800EEA54E /* GalleryCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryCollectionViewController.m; sourceTree = "<group>"; };
+		435DE012153782C800EEA54E /* GalleryPhotoViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryPhotoViewItem.h; sourceTree = "<group>"; };
+		435DE013153782C800EEA54E /* GalleryPhotoViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryPhotoViewItem.m; sourceTree = "<group>"; };
 		43965203151E928C0000181C /* AppTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTabBarController.h; sourceTree = "<group>"; };
 		43965204151E928C0000181C /* AppTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTabBarController.m; sourceTree = "<group>"; };
 		4397EFC5152E165000399FF2 /* CluesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesViewController.h; sourceTree = "<group>"; };
@@ -199,6 +229,8 @@
 		4397F029152E386900399FF2 /* ClueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueCell.m; sourceTree = "<group>"; };
 		4397F02B152E397C00399FF2 /* ClueData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueData.h; sourceTree = "<group>"; };
 		4397F02C152E397C00399FF2 /* ClueData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueData.m; sourceTree = "<group>"; };
+		439FFF3515378EE800DC7857 /* GalleryNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryNavigationController.h; sourceTree = "<group>"; };
+		439FFF3615378EE800DC7857 /* GalleryNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryNavigationController.m; sourceTree = "<group>"; };
 		43AF398C152F833E001EEB92 /* CluesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesTableViewController.h; sourceTree = "<group>"; };
 		43AF398D152F833E001EEB92 /* CluesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesTableViewController.m; sourceTree = "<group>"; };
 		43AF398F152F8743001EEB92 /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
@@ -236,6 +268,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				435DE0031537765F00EEA54E /* libSSToolkit.a in Frameworks */,
+				430C0763151E5B8400FC7C4F /* CoreGraphics.framework in Frameworks */,
 				43B4C4571530E7AB00D8EA40 /* QuartzCore.framework in Frameworks */,
 				43AF39A5152FB6A5001EEB92 /* ImageIO.framework in Frameworks */,
 				43AF39A3152FB60C001EEB92 /* CoreMedia.framework in Frameworks */,
@@ -248,7 +282,6 @@
 				4397F01B152E20EB00399FF2 /* MobileCoreServices.framework in Frameworks */,
 				430C075F151E5B8400FC7C4F /* UIKit.framework in Frameworks */,
 				430C0761151E5B8400FC7C4F /* Foundation.framework in Frameworks */,
-				430C0763151E5B8400FC7C4F /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +291,7 @@
 		430C074F151E5B8300FC7C4F = {
 			isa = PBXGroup;
 			children = (
+				435DDFF31537764D00EEA54E /* SSToolkit.xcodeproj */,
 				43B4C4561530E7AB00D8EA40 /* QuartzCore.framework */,
 				43AF39A4152FB6A5001EEB92 /* ImageIO.framework */,
 				43AF39A2152FB60C001EEB92 /* CoreMedia.framework */,
@@ -337,6 +371,8 @@
 				43B4C4541530D41B00D8EA40 /* AppHomeNavigationController.m */,
 				43B4C4641530FFA000D8EA40 /* AppHelper.h */,
 				43B4C4651530FFA000D8EA40 /* AppHelper.m */,
+				439FFF3515378EE800DC7857 /* GalleryNavigationController.h */,
+				439FFF3615378EE800DC7857 /* GalleryNavigationController.m */,
 			);
 			name = AppNavigationViewControllers;
 			sourceTree = "<group>";
@@ -355,8 +391,10 @@
 		430C0781151E5C2600FC7C4F /* GalleryViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				430C0782151E5D7900FC7C4F /* GalleryViewController.h */,
-				430C0783151E5D7900FC7C4F /* GalleryViewController.m */,
+				435DE004153776E800EEA54E /* GalleryCollectionViewController.h */,
+				435DE005153776E800EEA54E /* GalleryCollectionViewController.m */,
+				435DE012153782C800EEA54E /* GalleryPhotoViewItem.h */,
+				435DE013153782C800EEA54E /* GalleryPhotoViewItem.m */,
 			);
 			name = GalleryViewControllers;
 			sourceTree = "<group>";
@@ -437,6 +475,15 @@
 				43B4C4511530D3D600D8EA40 /* AppSettingsViewController.m */,
 			);
 			name = AppStartView;
+			sourceTree = "<group>";
+		};
+		435DDFF41537764D00EEA54E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				435DDFFD1537764E00EEA54E /* libSSToolkit.a */,
+				435DDFFF1537764E00EEA54E /* SSToolkitTests.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		4397EFC8152E20AB00399FF2 /* ASIHTTPRequest */ = {
@@ -583,6 +630,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				435DE0021537765A00EEA54E /* PBXTargetDependency */,
 			);
 			name = Photohunt;
 			productName = Photohunt;
@@ -608,12 +656,35 @@
 			mainGroup = 430C074F151E5B8300FC7C4F;
 			productRefGroup = 430C075B151E5B8400FC7C4F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 435DDFF41537764D00EEA54E /* Products */;
+					ProjectRef = 435DDFF31537764D00EEA54E /* SSToolkit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				430C0759151E5B8400FC7C4F /* Photohunt */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		435DDFFD1537764E00EEA54E /* libSSToolkit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSSToolkit.a;
+			remoteRef = 435DDFFC1537764E00EEA54E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		435DDFFF1537764E00EEA54E /* SSToolkitTests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SSToolkitTests.app;
+			remoteRef = 435DDFFE1537764E00EEA54E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		430C0758151E5B8400FC7C4F /* Resources */ = {
@@ -647,7 +718,6 @@
 				430C076B151E5B8400FC7C4F /* main.m in Sources */,
 				430C076F151E5B8400FC7C4F /* AppDelegate.m in Sources */,
 				430C077B151E5BDF00FC7C4F /* CameraNavigationController.m in Sources */,
-				430C0784151E5D7900FC7C4F /* GalleryViewController.m in Sources */,
 				430C078A151E5F9400FC7C4F /* AppStartViewController.m in Sources */,
 				43965205151E928C0000181C /* AppTabBarController.m in Sources */,
 				434340BA151FCC4B006E75C9 /* CluesNavigationController.m in Sources */,
@@ -696,10 +766,21 @@
 				431532D6153207A600F5A42E /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */,
 				431532D7153207A600F5A42E /* UIView+GMGridViewAdditions.m in Sources */,
 				431532DA1532090A00F5A42E /* EditPhotoViewController.m in Sources */,
+				435DE006153776E800EEA54E /* GalleryCollectionViewController.m in Sources */,
+				435DE014153782C800EEA54E /* GalleryPhotoViewItem.m in Sources */,
+				439FFF3715378EE900DC7857 /* GalleryNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		435DE0021537765A00EEA54E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SSToolkit;
+			targetProxy = 435DE0011537765A00EEA54E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		430C0767151E5B8400FC7C4F /* InfoPlist.strings */ = {
@@ -766,7 +847,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sean McGary (E422L43MP4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Photohunt/Photohunt-Prefix.pch";
-				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2/**";
+				HEADER_SEARCH_PATHS = (
+					"${SDK_DIR}/usr/include/libxml2/**",
+					"/Users/seanmcgary/Code/CSH/Photohunt/Vendor/SSToolkit/**",
+				);
 				INFOPLIST_FILE = "Photohunt/Photohunt-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -781,7 +865,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sean McGary (E422L43MP4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Photohunt/Photohunt-Prefix.pch";
-				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2/**";
+				HEADER_SEARCH_PATHS = (
+					"${SDK_DIR}/usr/include/libxml2/**",
+					"/Users/seanmcgary/Code/CSH/Photohunt/Vendor/SSToolkit/**",
+				);
 				INFOPLIST_FILE = "Photohunt/Photohunt-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";

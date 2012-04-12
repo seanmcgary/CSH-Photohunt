@@ -6,7 +6,13 @@
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
+#include <math.h>
+static inline double radians (double degrees) {
+    return degrees * M_PI/180;
+}
+
 #import <Foundation/Foundation.h>
+
 
 @interface AppHelper : NSObject
 
@@ -44,5 +50,7 @@
 +(void) markPhotoAsUploaded: (NSString *)photoName;
 
 +(void) updatePhoto: (NSDictionary *)photoData;
+
++ (UIImage*)imageWithImage:(UIImage*)sourceImage scaledToSize:(CGSize)newSize;
 
 @end
