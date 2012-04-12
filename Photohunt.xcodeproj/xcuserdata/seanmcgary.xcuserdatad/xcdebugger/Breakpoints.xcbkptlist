@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Photohunt/AppHelper.m"
-         timestampString = "355963862.062309"
+         timestampString = "355964379.43008"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "251"
-         endingLineNumber = "251"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
          landmarkName = "+updatePhoto:"
          landmarkType = "5">
       </FileBreakpoint>
