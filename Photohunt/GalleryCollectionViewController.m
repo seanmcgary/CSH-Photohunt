@@ -58,7 +58,7 @@
     NSLog(@"gallery appeared");
     // additional stuff here
     self.photos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
-    
+    NSLog(@"data: %@", self.photos);
     //NSLog(@"Photos list: %@", photos);
     [self.collectionView reloadData];
 }

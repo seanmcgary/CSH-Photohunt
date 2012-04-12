@@ -83,9 +83,6 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableData *gameDataData = [defaults objectForKey:@"PH_gameData"];
-    NSLog(@"here");
-    //[defaults removeObjectForKey:@"PH_gameData"];
-    //return nil;
     
     if(!gameDataData){
         NSLog(@"gamedata nil");
@@ -129,7 +126,18 @@
 +(id) getSavedPhotos 
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *photos = [defaults objectForKey:@"PH_savedPhotos"];
+    
+    NSMutableData *savedPhotoData = [defaults objectForKey:@"PH_savedPhotos"];
+    
+    if(!savedPhotoData){
+        NSLog(@"photo data nil");
+        return nil;
+    }
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:savedPhotoData];
+    
+    NSMutableArray *photos = [unarchiver decodeObjectForKey:@"PH_savedPhotos"];
+    [unarchiver finishDecoding];
+    
     
     if(!photos){
         return nil;
@@ -160,9 +168,16 @@
 
 +(void) saveAllPhotos: (NSMutableArray *) photoList
 {
+    
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:photoList forKey:@"PH_savedPhotos"];
+    [archiver finishEncoding];
+    
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    [defaults setObject:photoList forKey:@"PH_savedPhotos"];
+    [defaults setObject:data forKey:@"PH_savedPhotos"];
     [defaults synchronize];
 }
 
