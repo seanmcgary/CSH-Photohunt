@@ -24,6 +24,8 @@
 @synthesize imageView;
 @synthesize inNotes;
 @synthesize doneButton;
+@synthesize uploadProgress;
+@synthesize uploadLabel;
 
 
 -(id) initWithPhoto: (NSMutableDictionary *)photoWithMetaData
@@ -39,10 +41,6 @@
         teamToken = [AppHelper getTeamToken];
         
         NSLog(@"token: %@", teamToken);
-        
-        //[self uploadPhoto];
-        
-        //NSLog(@"%@", self.photoWithMetaData);
     }
     
     return self;
@@ -69,7 +67,7 @@
     [request setPostValue:@"{\"clues\":[], \"judge\":\"False\", \"notes\":\"\"}" forKey:@"json"];
     
     [request setFile:[photoWithMetaData objectForKey:@"photoPath"] withFileName:[photoWithMetaData objectForKey:@"photoName"] andContentType:@"image/jpeg" forKey:@"photo"];
-    
+    [request setUploadProgressDelegate:uploadProgress];
     [request setCompletionBlock:^{
         NSData *respData = [[request responseString] dataUsingEncoding:NSUTF8StringEncoding];
         
@@ -82,6 +80,10 @@
         
         if([[jsonResp objectForKey:@"code"] integerValue] == 0){
             // mark the photo as uploaded
+            
+            [self.uploadLabel setText:@"Uploaded"];
+            [self.uploadProgress setHidden:YES];
+            
             [AppHelper markPhotoAsUploaded:[photoWithMetaData objectForKey:@"photoName"]];
         }
         
@@ -111,12 +113,29 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     NSLog(@"uploaded? : %u", [[self.photoWithMetaData objectForKey:@"hasBeenUploaded"] integerValue]);
-    if([[self.photoWithMetaData objectForKey:@"hasBeenUploaded"] integerValue] == 0){
+
+    uploadLabel = [[UILabel alloc] init];
+    
+    if([[self.photoWithMetaData objectForKey:@"hasBeenUploaded"] integerValue] == 0)
+    {
+        
+        self.uploadProgress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+        
+        self.uploadProgress.frame = CGRectMake(10, 210, (self.view.frame.size.width - 20), 31);
+        
+        [self.view addSubview:self.uploadProgress];
+        
+        [uploadLabel setText:@"Uploading..."];
+        
         [self uploadPhoto];
+        
+    } 
+    else 
+    {
+        [self.uploadLabel setText:@"Uploaded"];
     }
     
 
-    
     //NSLog(@"Frame: %@", self.view.frame);
     scrollView.frame = self.view.frame;
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 5000);
@@ -137,33 +156,36 @@
     
     [imageView setImage:newImage];
     
+    uploadLabel.frame = CGRectMake(10, 230, (self.view.frame.size.width - 20), 31);
     
-    
-    judgeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 220, 100, 31)];
+    judgeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 100, 31)];
     
     judgeLabel.text = @"Judge?";
     
-    judgeSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(110, 220, 50, 31)];
+    judgeSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(110, 270, 50, 31)];
     
     
-    notesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 261, 100, 31)];
+    notesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 310, 100, 31)];
     notesLabel.text = @"Photo Notes:";
     
-    notesField = [[UITextView alloc] initWithFrame:CGRectMake(10, 302, (self.view.frame.size.width - 20), 50)];
-    notesField.editable = YES;
-    
-    [notesField setDelegate:self];
+    notesField = [[UITextField alloc] initWithFrame:CGRectMake(10, 342, (self.view.frame.size.width - 20), 31)];
+    [notesField setBorderStyle:UITextBorderStyleRoundedRect];
     [notesField setReturnKeyType:UIReturnKeyDone];
-    [notesField setScrollEnabled:YES];
+    
+    notesField.delegate = self;
     
     notesField.backgroundColor = [UIColor colorWithRed:.90f green:.90f blue:.90f alpha:1]; 
     
+    
     doneButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    doneButton.frame = CGRectMake(10, 362, 100, 31);
+    doneButton.frame = CGRectMake(10, 383, 100, 31);
     [doneButton setTitle:@"Done" forState:UIControlStateNormal];
     [doneButton addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    
     [scrollView addSubview:imageView];
+    [scrollView addSubview:uploadLabel];
     [scrollView addSubview:judgeLabel];
     [scrollView addSubview:judgeSwitch];
     [scrollView addSubview:notesLabel];
@@ -191,5 +213,9 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
 
 @end

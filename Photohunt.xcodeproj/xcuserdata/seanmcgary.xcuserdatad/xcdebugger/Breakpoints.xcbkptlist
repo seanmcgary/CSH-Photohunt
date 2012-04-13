@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Photohunt/EditPhotoViewController.m"
-         timestampString = "355962752.924917"
+         timestampString = "355979439.739712"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
          landmarkName = "-uploadPhoto"
          landmarkType = "5">
       </FileBreakpoint>

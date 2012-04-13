@@ -16,5 +16,4 @@
 
 - (id)initWithImagePath: (NSString *)imagePath;
 
-- (UIImage*)imageWithImage:(UIImage*)sourceImage scaledToSize:(CGSize)newSize;
 @end
