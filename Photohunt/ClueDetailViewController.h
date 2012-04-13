@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppCell.h"
+#import "AppHelper.h"
 
 @interface ClueDetailViewController : UITableViewController
 
@@ -29,5 +30,7 @@
 - (void) toggleBonus: (BOOL) show;
 
 - (void) parseSections: (NSDictionary *) clue;
+
+- (IBAction)saveClue:(id)sender;
 
 @end

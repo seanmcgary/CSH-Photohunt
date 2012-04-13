@@ -20,6 +20,7 @@
 @synthesize photoData;
 @synthesize selectionStatus;
 @synthesize noBonusSelected;
+@synthesize clueIsSelected;
 
 
 - (id) initWithClueData: (NSDictionary *) clue: (BOOL) showBonus {
@@ -45,30 +46,37 @@
     if(self){
         self.clueData = [[NSDictionary alloc] initWithDictionary:clue];
         self.showBonus = YES;
+        self.title = @"Clue Info";
         self.photoData = [[NSMutableDictionary alloc] initWithDictionary:photoData];
         
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] 
+                                      initWithTitle:@"Save"
+                                      style:UIBarButtonItemStyleBordered
+                                      target:self
+                                      action:@selector(saveClue:)];
+        
+        self.navigationItem.rightBarButtonItem = barButton;
+        
+        // create a dictionary to keep track of selected items
         self.selectionStatus = [[NSMutableDictionary alloc] init];        
         
-        self.title = @"Clue Info";
-        
+        // parse clues into the table
         [self parseSections:clue];
         
         // TODO - change this to check from photo data
-        noBonusSelected = NO;
+        noBonusSelected = NO;        
         
-        NSLog(@"Bonuses: %@", [clueData objectForKey:@"bonuses"]);
-        
-        
+        // put the bonuses in the selectionStatus list
         for(NSDictionary *bonus in [clueData objectForKey:@"bonuses"])
         {
             [selectionStatus setObject:[NSNumber numberWithInt:0] forKey:[bonus objectForKey:@"id"]];
         }
         
-        
+        // add a section to select "No bonus"
         [sections addObject:[[NSArray alloc] initWithObjects:@"No Bonus", nil]];
         
+        // put the bonuses in a section
         NSArray *bonuses = [[NSArray alloc] initWithArray:[clue objectForKey:@"bonuses"]];
-        
         [sections addObject:bonuses];
     }
     
@@ -267,18 +275,19 @@
         
         if(self.noBonusSelected == YES){
             self.noBonusSelected = NO;
+            self.clueIsSelected = NO;
         } else {
             self.noBonusSelected = YES;
+            self.clueIsSelected = YES;
         }
     
     } else if(indexPath.section == 2){
         self.noBonusSelected = NO;
+        self.clueIsSelected = YES;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
         // get the status
         NSNumber *status = [self.selectionStatus objectForKey:[[[sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"id"]];
-        
-        NSLog(@"status on click: %@", status);
         
         NSNumber *statusToSet;
         
@@ -294,10 +303,58 @@
         [self.selectionStatus setObject: statusToSet forKey:[[[sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"id"]];
     }
     
-    NSLog(@"Selections: %@", selectionStatus);
-    
     [self.tableView reloadData];  
     
+}
+
+-(IBAction)saveClue:(id)sender 
+{
+    NSLog(@"Saving clue");
+    NSLog(@"Selections: %@", selectionStatus);
+    
+    NSMutableDictionary *clueObject = [[NSMutableDictionary alloc] init];
+    
+    if(self.noBonusSelected && self.clueIsSelected){
+        // save with no clues
+        NSLog(@"no bonuses, but clue is selected");
+        [clueObject setObject:[self.clueData objectForKey:@"id"] forKey:@"id"];
+        [clueObject setObject:[[NSArray alloc] init] forKey:@"bonuses"];
+        
+        [AppHelper setClueForPhoto:clueObject forPhotoName:[photoData objectForKey:@"photoName"]];
+        
+        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
+        
+        NSLog(@"Photodata:\n %@", self.photoData);
+        
+    } else if(self.clueIsSelected){
+        // bonuses are selected
+        NSLog(@"Bonuses selected and clue is selected");
+        [clueObject setObject:[self.clueData objectForKey:@"id"] forKey:@"id"];
+        
+        NSMutableArray *bonuses = [[NSMutableArray alloc] init];
+        
+        for(NSDictionary *bonus in [clueData objectForKey:@"bonuses"])
+        {
+            NSNumber *state = [selectionStatus objectForKey:[bonus objectForKey:@"id"]];
+            
+            if([state integerValue] == 1){
+                [bonuses addObject:[bonus objectForKey:@"id"]];
+            }
+        }
+        
+        [clueObject setObject:bonuses forKey:@"bonuses"];
+        
+        NSLog(@"Bonuses selected: %@", clueObject);
+        [AppHelper setClueForPhoto:clueObject forPhotoName:[photoData objectForKey:@"photoName"]];
+        
+        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
+        
+        NSLog(@"Photodata:\n %@", self.photoData);
+        
+    } else {
+        // no clue and no bonus
+        NSLog(@"Clue is not selected at all");
+    }
 }
 
 @end

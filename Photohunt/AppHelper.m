@@ -323,6 +323,53 @@
     }
 }
 
++(void) setClueForPhoto: (NSMutableDictionary *) newClue forPhotoName: (NSString *)photoName
+{
+    NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
+    
+    for(NSMutableDictionary *photo in savedPhotos)
+    {
+        if([[photo objectForKey:@"photoName"] isEqualToString:photoName])
+        {
+            NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
+            
+            NSUInteger clueReplaceIndex;
+            
+            // grab the clues
+            NSMutableArray *clues = [[NSMutableArray alloc] initWithArray:[updatedPhoto objectForKey:@"clues"]];
+            
+            // iterate to find the clue
+            for(NSMutableDictionary *clue in clues)
+            {
+                if([[clue objectForKey:@"id"] integerValue] == [[newClue objectForKey:@"id"] integerValue])
+                {
+                    NSLog(@"Clue found for replacing...");
+                    clueReplaceIndex = [clues indexOfObject:clue];
+                }
+            }
+            
+            if([clues count] > 0){
+                NSLog(@"replace index: %u\n%u", clueReplaceIndex, NSNotFound);
+                
+                if(clueReplaceIndex > [clues count]){
+                    [clues addObject:newClue];
+
+                } else {
+                    [clues replaceObjectAtIndex:clueReplaceIndex withObject:newClue];
+
+                }
+            } else {
+                [clues addObject:newClue];
+            }            
+    
+            [updatedPhoto setObject:clues forKey:@"clues"];
+            
+            // update the photo
+            [AppHelper updatePhoto:updatedPhoto];
+        }
+    }
+}
+
 +(void) updatePhoto: (NSDictionary *) photoData
 {
     NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
@@ -340,6 +387,23 @@
     [savedPhotos replaceObjectAtIndex:replaceIndex withObject:photoData];
     
     [AppHelper saveAllPhotos:savedPhotos];
+}
+
++(id) getPhotoDataForPhotoName: (NSString *)photoName
+{
+    NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
+    
+    for(NSMutableDictionary *photo in savedPhotos)
+    {
+        if([[photo objectForKey:@"photoName"] isEqualToString:photoName])
+        {
+            NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
+            
+            return updatedPhoto;
+        }
+    }
+    
+    return nil;
 }
 
 // Snagged this from stackoverflow
