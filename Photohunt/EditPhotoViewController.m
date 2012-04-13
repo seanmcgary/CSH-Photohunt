@@ -309,9 +309,9 @@
 {
     NSMutableDictionary *clueSheet = [[NSMutableDictionary alloc] initWithDictionary: [AppHelper getClueSheet]];
     
-    CluesTableViewController *cluesTable = [[CluesTableViewController alloc] initWithClues:[clueSheet objectForKey:@"clueList"]];
+    ClueTagViewController *tagTable = [[ClueTagViewController alloc] initWithPhotoClueData:[photoWithMetaData objectForKey:@"clues"] andPhotoData:photoWithMetaData];
     
-    [self.navigationController pushViewController:cluesTable animated:YES];
+    [self.navigationController pushViewController:tagTable animated:YES];
 }
 
 @end

@@ -16,6 +16,9 @@
 
 @synthesize items;
 @synthesize clues;
+@synthesize photoData;
+@synthesize photoClues;
+@synthesize isEditingClues;
 
 - (id) init {
     self = [super init];
@@ -26,6 +29,22 @@
         
         [items addObject:@"All Clues"];
         
+        self.isEditingClues = NO;
+        
+    }
+    
+    return self;
+}
+
+- (id) initWithPhotoClueData: (NSMutableArray *) photoClues andPhotoData: (NSMutableDictionary *)photoData
+{
+    self = [self init];
+    
+    if(self){
+        self.photoClues = [[NSMutableArray alloc] initWithArray:photoClues];
+        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:photoData];
+        
+        self.isEditingClues = YES;
     }
     
     return self;
@@ -54,7 +73,6 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    NSLog(@"view will appear");
     [clues getStoredClueSheet];
     [self.tableView reloadData];
 }
@@ -143,15 +161,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TagCell *cell = (TagCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"Index path: %@", cell.textLabel.text);
     
     NSString *tag = cell.tagDesc;
     
     // get the tag with its associated clues
     NSArray *tagClues = [clues getCluesForTag:tag];
     
+    CluesTableViewController *cluesView;
     
-    CluesTableViewController *cluesView = [[CluesTableViewController alloc] initWithClues:tagClues];
+    if(self.isEditingClues){
+        cluesView = [[CluesTableViewController alloc] initWithCluesForEditing:tagClues withPhotoData:self.photoData];
+    } else {
+        cluesView = [[CluesTableViewController alloc] initWithClues:tagClues];
+    }
+    
     
     [self.navigationController pushViewController:cluesView animated:YES];
     

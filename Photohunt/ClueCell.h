@@ -11,7 +11,11 @@
 @interface ClueCell : UITableViewCell
 
 @property (strong, nonatomic) NSDictionary *clueInfo;
+@property (strong, nonatomic) NSMutableDictionary *photoData;
+@property (readwrite, assign) BOOL isEditingClues;
 
 - (id) initWithClueInfo: (NSDictionary *)clueInfo;
+
+- (id) initWithClueInfo: (NSDictionary *)clueInfo andPhotoData:(NSMutableDictionary *) photoData;
 
 @end

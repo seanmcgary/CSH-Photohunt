@@ -11,6 +11,7 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "CluesTableViewController.h"
+#import "ClueTagViewController.h"
 
 @interface EditPhotoViewController : UIViewController <UITextFieldDelegate>
 

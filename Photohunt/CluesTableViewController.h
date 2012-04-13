@@ -13,8 +13,12 @@
 @interface CluesTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *clueList;
+@property (strong, nonatomic) NSMutableDictionary *photoData;
+@property (readwrite, assign) BOOL isEditingClues;
 
 - (id) initWithClues: (NSArray *) clueList;
+
+- (id) initWithCluesForEditing: (NSArray *) clueList withPhotoData: (NSMutableDictionary *)photoData;
 
 
 

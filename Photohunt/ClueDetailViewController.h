@@ -15,8 +15,19 @@
 @property (readwrite, assign) BOOL showBonus;
 @property (strong, nonatomic) NSMutableArray *sections;
 
+@property (strong, nonatomic) NSMutableDictionary *photoData;
+
+@property (strong, nonatomic) NSMutableDictionary *selectionStatus;
+@property (readwrite, assign) BOOL noBonusSelected;
+@property (strong, nonatomic) NSMutableDictionary *photoClueData;
+@property (readwrite, assign) BOOL clueIsSelected;
+
 - (id) initWithClueData: (NSDictionary *) clue: (BOOL) showBonus;
 
+- (id) initWithClueData: (NSDictionary *) clue withPhotoData: (NSMutableDictionary *) photoData;
+
 - (void) toggleBonus: (BOOL) show;
+
+- (void) parseSections: (NSDictionary *) clue;
 
 @end

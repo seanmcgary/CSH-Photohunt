@@ -18,6 +18,12 @@
 @property (strong, nonatomic) NSMutableArray *items;
 @property (strong, nonatomic) ClueSheet *clues;
 
+@property (strong, nonatomic) NSMutableArray *photoClues;
+@property (strong, nonatomic) NSMutableDictionary *photoData;
+@property (readwrite, assign) BOOL isEditingClues;
+
 - (id) init;
+
+- (id) initWithPhotoClueData: (NSMutableArray *) photoClues andPhotoData: (NSMutableDictionary *)photoData;
 
 @end

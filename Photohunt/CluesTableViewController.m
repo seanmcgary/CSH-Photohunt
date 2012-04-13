@@ -15,6 +15,8 @@
 @implementation CluesTableViewController
 
 @synthesize clueList;
+@synthesize photoData;
+@synthesize isEditingClues;
 
 - (id) initWithClues: (NSArray *) clueList {
     self = [super init];
@@ -23,6 +25,23 @@
         self.title = @"Clues";
         //NSLog(@"ClueList: %@", clueList);
         self.clueList = [[NSArray alloc] initWithArray:clueList];
+        self.isEditingClues = NO;
+    }
+    
+    return self;
+}
+
+- (id) initWithCluesForEditing: (NSArray *) clueList withPhotoData: (NSMutableDictionary *)photoData
+{
+    self = [super init];
+    
+    if(self){
+        self.title = @"Clues";
+        //NSLog(@"ClueList: %@", clueList);
+        self.clueList = [[NSArray alloc] initWithArray:clueList];
+        
+        self.isEditingClues = YES;
+        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:photoData];
     }
     
     return self;
@@ -78,8 +97,15 @@
 {
     
     NSDictionary *clue = [self.clueList objectAtIndex:indexPath.row];
+    NSLog(@"Photo data in clues table:\n%@", self.photoData);
+    ClueCell *cell;
+    if(self.isEditingClues){
+        NSLog(@"Editing");
+        cell = [[ClueCell alloc] initWithClueInfo:clue andPhotoData:self.photoData];
+    } else {
+        cell = [[ClueCell alloc] initWithClueInfo:clue];
+    }
     
-    ClueCell *cell = [[ClueCell alloc] initWithClueInfo:clue];
     
     cell.textLabel.text = [clue objectForKey:@"description"];
     
@@ -132,11 +158,25 @@
     ClueCell *cell = (ClueCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
     NSLog(@"Cell: %@", cell.clueInfo);
-    
-    ClueDetailViewController *details = [[ClueDetailViewController alloc] initWithClueData:cell.clueInfo: NO];
+    ClueDetailViewController *details;
+    if(self.isEditingClues){
+        NSLog(@"You selected a clue");
+        
+        details = [[ClueDetailViewController alloc] initWithClueData:cell.clueInfo withPhotoData:photoData];
+        
+    } else {
+        NSLog(@"regular table action");
+        details = [[ClueDetailViewController alloc] initWithClueData:cell.clueInfo: NO];
+    }
     
     [self.navigationController pushViewController:details animated:YES];
     
+    
+}
+
+- (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Button tapped");
 }
 
 @end

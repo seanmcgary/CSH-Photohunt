@@ -11,6 +11,8 @@
 @implementation ClueCell
 
 @synthesize clueInfo;
+@synthesize photoData;
+@synthesize isEditingClues;
 
 - (id) initWithClueInfo: (NSDictionary *)clueInfo {
     self = [super init];
@@ -18,7 +20,22 @@
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if(self){
         self.clueInfo = [[NSDictionary alloc] initWithDictionary:clueInfo];
+        self.isEditingClues = NO;
 
+    }
+    
+    return self;
+}
+
+- (id) initWithClueInfo: (NSDictionary *)clueInfo andPhotoData:(NSMutableDictionary *) photoData
+{
+    self = [super init];
+    
+    if(self){
+        self.clueInfo = [[NSDictionary alloc] initWithDictionary:clueInfo];
+        self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:photoData];
+        self.isEditingClues = YES;
     }
     
     return self;
