@@ -60,6 +60,8 @@ static inline double radians (double degrees) {
 
 +(void) setClueForPhoto: (NSMutableDictionary *) newClue forPhotoName: (NSString *)photoName; 
 
++(void) removeClueForPhoto: (NSMutableDictionary *)clue forPhotoName: (NSString *)photoName;
+
 +(void) unmarkPhotoAsJudged: (NSString *)photoName;
 
 +(void) updatePhoto: (NSDictionary *) photoData;

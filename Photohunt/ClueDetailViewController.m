@@ -354,6 +354,11 @@
     } else {
         // no clue and no bonus
         NSLog(@"Clue is not selected at all");
+        
+        [AppHelper removeClueForPhoto:clueData forPhotoName:[self.photoData objectForKey:@"photoName"]];
+        
+        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
+        NSLog(@"Photodata:\n %@", self.photoData);
     }
 }
 

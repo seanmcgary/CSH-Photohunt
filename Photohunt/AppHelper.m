@@ -370,6 +370,43 @@
     }
 }
 
++(void) removeClueForPhoto: (NSMutableDictionary *)oldClue forPhotoName: (NSString *)photoName
+{
+    NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
+    
+    for(NSMutableDictionary *photo in savedPhotos)
+    {
+        if([[photo objectForKey:@"photoName"] isEqualToString:photoName])
+        {
+            NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
+            
+            NSUInteger clueReplaceIndex;
+            
+            // grab the clues
+            NSMutableArray *clues = [[NSMutableArray alloc] initWithArray:[updatedPhoto objectForKey:@"clues"]];
+            
+            // iterate to find the clue
+            for(NSMutableDictionary *clue in clues)
+            {
+                if([[clue objectForKey:@"id"] integerValue] == [[oldClue objectForKey:@"id"] integerValue])
+                {
+                    NSLog(@"Clue found for replacing...");
+                    clueReplaceIndex = [clues indexOfObject:clue];
+                }
+            }
+            
+            if([clues count] > 0 && clueReplaceIndex < [clues count]){
+                [clues removeObjectAtIndex:clueReplaceIndex];
+            }
+            
+            [updatedPhoto setObject:clues forKey:@"clues"];
+            
+            // update the photo
+            [AppHelper updatePhoto:updatedPhoto];
+        }
+    }
+}
+
 +(void) updatePhoto: (NSDictionary *) photoData
 {
     NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
