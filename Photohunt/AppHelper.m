@@ -258,6 +258,40 @@
     }
 }
 
++(void) markPhotoAsJudged: (NSString *)photoName
+{
+    NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
+    
+    for(NSMutableDictionary *photo in savedPhotos)
+    {
+        if([[photo objectForKey:@"photoName"] isEqualToString:photoName])
+        {
+            NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
+            [updatedPhoto setObject:[NSNumber numberWithInt:1] forKey:@"judge"];
+            [AppHelper updatePhoto:updatedPhoto];
+            
+            [AppHelper incrementJudgedPhotoCount];
+        }
+    }
+}
+
++(void) unmarkPhotoAsJudged: (NSString *)photoName
+{
+    NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
+    
+    for(NSMutableDictionary *photo in savedPhotos)
+    {
+        if([[photo objectForKey:@"photoName"] isEqualToString:photoName])
+        {
+            NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
+            [updatedPhoto setObject:[NSNumber numberWithInt:0] forKey:@"judge"];
+            [AppHelper updatePhoto:updatedPhoto];
+            [AppHelper decrementJudgedPhotoCount];
+        }
+    }
+    
+}
+
 +(void) updatePhoto: (NSDictionary *) photoData
 {
     NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];

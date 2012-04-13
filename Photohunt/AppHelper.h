@@ -12,6 +12,9 @@ static inline double radians (double degrees) {
 }
 
 #import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+
+
 
 
 @interface AppHelper : NSObject
@@ -49,8 +52,14 @@ static inline double radians (double degrees) {
 
 +(void) markPhotoAsUploaded: (NSString *)photoName;
 
-+(void) updatePhoto: (NSDictionary *)photoData;
++(void) markPhotoAsJudged: (NSString *)photoName;
 
-+ (UIImage*)imageWithImage:(UIImage*)sourceImage scaledToSize:(CGSize)newSize;
++(void) unmarkPhotoAsJudged: (NSString *)photoName;
+
++(void) updatePhoto: (NSDictionary *) photoData;
+
++(UIImage *)imageWithImage: (UIImage*)sourceImage scaledToSize:(CGSize)newSize;
+
+
 
 @end

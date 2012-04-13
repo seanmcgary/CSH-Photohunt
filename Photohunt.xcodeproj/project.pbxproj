@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4300F0B11537D6B4004E0A2E /* ClueTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4300F0B01537D6B4004E0A2E /* ClueTagViewController.m */; };
 		430C075F151E5B8400FC7C4F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430C075E151E5B8400FC7C4F /* UIKit.framework */; };
 		430C0761151E5B8400FC7C4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430C0760151E5B8400FC7C4F /* Foundation.framework */; };
 		430C0763151E5B8400FC7C4F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430C0762151E5B8400FC7C4F /* CoreGraphics.framework */; };
@@ -35,7 +36,6 @@
 		435DE006153776E800EEA54E /* GalleryCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 435DE005153776E800EEA54E /* GalleryCollectionViewController.m */; };
 		435DE014153782C800EEA54E /* GalleryPhotoViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 435DE013153782C800EEA54E /* GalleryPhotoViewItem.m */; };
 		43965205151E928C0000181C /* AppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43965204151E928C0000181C /* AppTabBarController.m */; };
-		4397EFC7152E165000399FF2 /* CluesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397EFC6152E165000399FF2 /* CluesViewController.m */; };
 		4397EFFD152E20C700399FF2 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397EFCA152E20C700399FF2 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4397EFFE152E20C700399FF2 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397EFCD152E20C700399FF2 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4397EFFF152E20C700399FF2 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397EFCF152E20C700399FF2 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -116,6 +116,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4300F0AF1537D6B4004E0A2E /* ClueTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueTagViewController.h; sourceTree = "<group>"; };
+		4300F0B01537D6B4004E0A2E /* ClueTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueTagViewController.m; sourceTree = "<group>"; };
 		430C075A151E5B8400FC7C4F /* Photohunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photohunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		430C075E151E5B8400FC7C4F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		430C0760151E5B8400FC7C4F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -164,8 +166,6 @@
 		435DE013153782C800EEA54E /* GalleryPhotoViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryPhotoViewItem.m; sourceTree = "<group>"; };
 		43965203151E928C0000181C /* AppTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTabBarController.h; sourceTree = "<group>"; };
 		43965204151E928C0000181C /* AppTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTabBarController.m; sourceTree = "<group>"; };
-		4397EFC5152E165000399FF2 /* CluesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesViewController.h; sourceTree = "<group>"; };
-		4397EFC6152E165000399FF2 /* CluesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesViewController.m; sourceTree = "<group>"; };
 		4397EFC9152E20C700399FF2 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		4397EFCA152E20C700399FF2 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		4397EFCB152E20C700399FF2 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -442,14 +442,14 @@
 				43AF3992152F87B8001EEB92 /* TableElements */,
 				4397F025152E2A0200399FF2 /* ClueSheet.h */,
 				4397F026152E2A0200399FF2 /* ClueSheet.m */,
-				4397EFC5152E165000399FF2 /* CluesViewController.h */,
-				4397EFC6152E165000399FF2 /* CluesViewController.m */,
 				4397F02B152E397C00399FF2 /* ClueData.h */,
 				4397F02C152E397C00399FF2 /* ClueData.m */,
 				43AF398C152F833E001EEB92 /* CluesTableViewController.h */,
 				43AF398D152F833E001EEB92 /* CluesTableViewController.m */,
 				43AF3993152F8F1E001EEB92 /* ClueDetailViewController.h */,
 				43AF3994152F8F1F001EEB92 /* ClueDetailViewController.m */,
+				4300F0AF1537D6B4004E0A2E /* ClueTagViewController.h */,
+				4300F0B01537D6B4004E0A2E /* ClueTagViewController.m */,
 			);
 			name = CluesNavigationController;
 			sourceTree = "<group>";
@@ -723,7 +723,6 @@
 				434340BA151FCC4B006E75C9 /* CluesNavigationController.m in Sources */,
 				434340CF151FDA3F006E75C9 /* AppCell.m in Sources */,
 				434340D3151FDAD1006E75C9 /* AppCellData.m in Sources */,
-				4397EFC7152E165000399FF2 /* CluesViewController.m in Sources */,
 				4397EFFD152E20C700399FF2 /* ASIAuthenticationDialog.m in Sources */,
 				4397EFFE152E20C700399FF2 /* ASIDataCompressor.m in Sources */,
 				4397EFFF152E20C700399FF2 /* ASIDataDecompressor.m in Sources */,
@@ -769,6 +768,7 @@
 				435DE006153776E800EEA54E /* GalleryCollectionViewController.m in Sources */,
 				435DE014153782C800EEA54E /* GalleryPhotoViewItem.m in Sources */,
 				439FFF3715378EE900DC7857 /* GalleryNavigationController.m in Sources */,
+				4300F0B11537D6B4004E0A2E /* ClueTagViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

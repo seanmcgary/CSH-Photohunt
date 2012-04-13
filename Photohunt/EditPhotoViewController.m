@@ -26,6 +26,7 @@
 @synthesize doneButton;
 @synthesize uploadProgress;
 @synthesize uploadLabel;
+@synthesize selectCluesButton;
 
 
 -(id) initWithPhoto: (NSMutableDictionary *)photoWithMetaData
@@ -164,6 +165,11 @@
     
     judgeSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(110, 270, 50, 31)];
     
+    if([[photoWithMetaData objectForKey:@"judge"] integerValue] == 1)
+    {
+        judgeSwitch.on = YES;
+    }
+    
     
     notesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 310, 100, 31)];
     notesLabel.text = @"Photo Notes:";
@@ -182,6 +188,11 @@
     [doneButton setTitle:@"Done" forState:UIControlStateNormal];
     [doneButton addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
+    selectCluesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    selectCluesButton.frame = CGRectMake(10, 424, (self.view.frame.size.width - 20), 31);
+    [selectCluesButton setTitle:@"Select Clues" forState:UIControlStateNormal];
+    [selectCluesButton addTarget:self action:@selector(selectClues:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     
     [scrollView addSubview:imageView];
@@ -191,6 +202,7 @@
     [scrollView addSubview:notesLabel];
     [scrollView addSubview:notesField];
     [scrollView addSubview:doneButton];
+    [scrollView addSubview:selectCluesButton];
 }
 
 - (void)viewDidUnload
@@ -208,6 +220,17 @@
 - (IBAction)doneButtonPressed:(id)sender 
 {
     // save all the shit
+    // if judged == checked && photo is not marked as judged, mark it
+    if(self.judgeSwitch.on == YES && [[photoWithMetaData objectForKey:@"judge"] integerValue] == 0)
+    {
+        [AppHelper markPhotoAsJudged:[photoWithMetaData objectForKey:@"photoName"]];
+    }
+    
+    if(self.judgeSwitch.on == NO && [[photoWithMetaData objectForKey:@"judge"] integerValue] == 1)
+    {
+        [AppHelper unmarkPhotoAsJudged:[photoWithMetaData objectForKey:@"photoName"]];
+    }
+    
     
     // pop back to the camera
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -216,6 +239,15 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
+}
+
+- (IBAction)selectClues:(id)sender
+{
+    NSMutableDictionary *clueSheet = [[NSMutableDictionary alloc] initWithDictionary: [AppHelper getClueSheet]];
+    
+    CluesTableViewController *cluesTable = [[CluesTableViewController alloc] initWithClues:[clueSheet objectForKey:@"clueList"]];
+    
+    [self.navigationController pushViewController:cluesTable animated:YES];
 }
 
 @end

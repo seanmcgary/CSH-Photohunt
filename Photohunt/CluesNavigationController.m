@@ -15,7 +15,7 @@
 
 @implementation CluesNavigationController
 
-@synthesize cluesView;
+@synthesize clueTags;
 @synthesize clues;
 
 - (id) init
@@ -24,7 +24,7 @@
     
     if(self){
         
-        cluesView = [[CluesViewController alloc] init];
+        clueTags = [[ClueTagViewController alloc] init];
         
         self.tabBarItem.title = @"Clues";
         self.tabBarItem.image = [UIImage imageNamed:@"clues2.png"];
@@ -48,7 +48,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self pushViewController:cluesView animated:NO];
+    [self pushViewController:clueTags animated:NO];
 }
 
 - (void)viewDidUnload

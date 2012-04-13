@@ -7,7 +7,7 @@
 //
 
 #import "SSCollectionViewItem.h"
-
+#import "AppHelper.h"
 
 
 @interface GalleryPhotoViewItem : SSCollectionViewItem

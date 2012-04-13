@@ -10,6 +10,7 @@
 #import "AppHelper.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+#import "CluesTableViewController.h"
 
 @interface EditPhotoViewController : UIViewController <UITextFieldDelegate>
 
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (strong, nonatomic) UIProgressView *uploadProgress;
 @property (strong, nonatomic) IBOutlet UILabel *uploadLabel;
+@property (strong, nonatomic) IBOutlet UIButton *selectCluesButton;
 
 @property (readwrite, assign) BOOL inNotes;
 
@@ -32,6 +34,8 @@
 - (void) uploadPhoto;
 
 - (IBAction)doneButtonPressed:(id)sender;
+
+- (IBAction)selectClues:(id)sender;
 
 
 @end

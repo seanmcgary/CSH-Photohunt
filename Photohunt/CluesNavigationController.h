@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CluesViewController.h"
+#import "ClueTagViewController.h"
 
 @interface CluesNavigationController : UINavigationController
 
-@property (strong, nonatomic) CluesViewController *cluesView;
+@property (strong, nonatomic) ClueTagViewController *clueTags;
 @property (strong, nonatomic) CluesTableViewController *clues;
 
 - (id) init;
