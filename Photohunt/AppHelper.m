@@ -16,7 +16,7 @@
     
     BOOL game = [defaults boolForKey:@"PH_gameState"];
     
-    NSLog(@"Game: %u", game);
+    //NSLog(@"Game: %u", game);
     
     return game;
 }
@@ -289,7 +289,38 @@
             [AppHelper decrementJudgedPhotoCount];
         }
     }
+}
+
++(void) setPhotoPhotoId: (NSString *)photoId photoName:(NSString *) photoName
+{
+    NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
     
+    for(NSMutableDictionary *photo in savedPhotos)
+    {
+        if([[photo objectForKey:@"photoName"] isEqualToString:photoName])
+        {
+            NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
+            [updatedPhoto setObject:photoId forKey:@"photoId"];
+            [AppHelper updatePhoto:updatedPhoto];
+            [AppHelper decrementJudgedPhotoCount];
+        }
+    }
+}
+
++(void) setPhotoNotes: (NSString *) notes forPhotoName:(NSString *)photoName
+{
+    NSMutableArray *savedPhotos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
+    
+    for(NSMutableDictionary *photo in savedPhotos)
+    {
+        if([[photo objectForKey:@"photoName"] isEqualToString:photoName])
+        {
+            NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
+            [updatedPhoto setObject:notes forKey:@"notes"];
+            [AppHelper updatePhoto:updatedPhoto];
+            [AppHelper decrementJudgedPhotoCount];
+        }
+    }
 }
 
 +(void) updatePhoto: (NSDictionary *) photoData
@@ -307,8 +338,6 @@
     }
     
     [savedPhotos replaceObjectAtIndex:replaceIndex withObject:photoData];
-    
-    NSLog(@"photo list: %@", savedPhotos);
     
     [AppHelper saveAllPhotos:savedPhotos];
 }

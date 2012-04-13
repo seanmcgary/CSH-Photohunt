@@ -109,6 +109,8 @@
     [photoContainer setObject:[[NSMutableArray alloc] init] forKey:@"clues"];
     [photoContainer setObject:[NSNumber numberWithInt:0] forKey:@"judge"];
     [photoContainer setObject:metadata forKey:@"metadata"];
+    [photoContainer setObject:@"" forKey:@"photoId"];
+    [photoContainer setObject:@"" forKey:@"notes"];
     
     // save the photo without the image embedded
     [AppHelper savePhotoData:photoContainer];
@@ -124,34 +126,6 @@
     EditPhotoViewController *editPhoto = [[EditPhotoViewController alloc] initWithPhoto:photoContainer];
     
     [self pushViewController:editPhoto animated:YES];
-    
-    // Save image
-    //UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-    /*NSUInteger groupTypes = ALAssetsGroupAll;
-    [library writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)image.imageOrientation 
-                          completionBlock:^(NSURL* assetURL, NSError* error) {
-                              if (error != NULL){
-                                  // Show error message...
-                              } else {  // No errors
-                                  // Show message image successfully saved
-                                  NSLog(@"Saved successfully");
-                              }
-                          }];
-
-    [library enumerateGroupsWithTypes:groupTypes usingBlock:^(ALAssetsGroup *group, BOOL *stop ){
-        if(group != nil) {
-            //[assetGroups addObject:group];
-            NSLog(@"Number of assets in group: %d",
-                  [group numberOfAssets]);
-            
-            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
-                NSLog(@"asset index: %u", index);
-                NSLog(@"Asset: %@", result);
-                
-            }];
-        }
-    } failureBlock:^(NSError *error) {NSLog(@"A problem occurred");}];
-     */
 }
 
 @end

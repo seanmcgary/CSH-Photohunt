@@ -54,6 +54,10 @@ static inline double radians (double degrees) {
 
 +(void) markPhotoAsJudged: (NSString *)photoName;
 
++(void) setPhotoPhotoId: (NSString *)photoId photoName:(NSString *) photoName;
+
++(void) setPhotoNotes: (NSString *) notes forPhotoName:(NSString *)photoName;
+
 +(void) unmarkPhotoAsJudged: (NSString *)photoName;
 
 +(void) updatePhoto: (NSDictionary *) photoData;

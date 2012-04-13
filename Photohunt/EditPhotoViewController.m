@@ -86,6 +86,10 @@
             [self.uploadProgress setHidden:YES];
             
             [AppHelper markPhotoAsUploaded:[photoWithMetaData objectForKey:@"photoName"]];
+            
+            [AppHelper setPhotoPhotoId:[jsonResp objectForKey:@"data"] photoName:[photoWithMetaData objectForKey:@"photoName"]];
+            
+            [photoWithMetaData setObject:[jsonResp objectForKey:@"data"] forKey:@"photoId"];
         }
         
     }];
@@ -113,7 +117,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSLog(@"uploaded? : %u", [[self.photoWithMetaData objectForKey:@"hasBeenUploaded"] integerValue]);
 
     uploadLabel = [[UILabel alloc] init];
     
@@ -182,6 +185,7 @@
     
     notesField.backgroundColor = [UIColor colorWithRed:.90f green:.90f blue:.90f alpha:1]; 
     
+    [notesField setText:[photoWithMetaData objectForKey:@"notes"]];
     
     doneButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     doneButton.frame = CGRectMake(10, 383, 100, 31);
@@ -219,7 +223,6 @@
 
 - (IBAction)doneButtonPressed:(id)sender 
 {
-    // save all the shit
     // if judged == checked && photo is not marked as judged, mark it
     if(self.judgeSwitch.on == YES && [[photoWithMetaData objectForKey:@"judge"] integerValue] == 0)
     {
@@ -231,9 +234,70 @@
         [AppHelper unmarkPhotoAsJudged:[photoWithMetaData objectForKey:@"photoName"]];
     }
     
+    // save the notes field
+    [AppHelper setPhotoNotes:notesField.text forPhotoName:[photoWithMetaData objectForKey:@"photoName"]];
     
-    // pop back to the camera
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    // prep the json to send to the server
+    NSMutableDictionary *jsonPayload = [[NSMutableDictionary alloc] init];
+    
+    [jsonPayload setObject:notesField.text forKey:@"notes"];
+    [jsonPayload setObject:[NSNumber numberWithBool:self.judgeSwitch.on] forKey:@"judge"];
+    [jsonPayload setObject:[[NSArray alloc] init] forKey:@"clues"];
+    
+    NSError *jsonParseError;
+    NSData* jsonData = [NSJSONSerialization 
+                        dataWithJSONObject:jsonPayload 
+                        options:NSJSONWritingPrettyPrinted 
+                        error:&jsonParseError];
+    
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"JSON data?\n %@", jsonString);
+    NSString *photoId = [photoWithMetaData objectForKey:@"photoId"];
+    NSLog(@"photoid: %@", photoId);
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://photohunt.csh.rit.edu/api/photos/edit?id=%@&token=%@", [photoWithMetaData objectForKey:@"photoId"], teamToken];
+    
+    NSLog(@"urlString: %@", urlString);
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    NSMutableDictionary *requestHeaders = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"application/json", @"Accept", nil];
+    
+    // TODO - make this actually check the cert
+    [request setValidatesSecureCertificate:NO];
+    [request setRequestHeaders: requestHeaders];
+    [request addRequestHeader:@"Content-Type" value:@"application/json"];
+    [request setRequestMethod:@"PUT"];
+    
+    [request appendPostData: jsonData];
+    
+    // set POST values
+    [request setUploadProgressDelegate:uploadProgress];
+    [request setCompletionBlock:^{
+        NSData *respData = [[request responseString] dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSLog(@"resp data: %@", respData);
+        NSError *jsonErr;
+        
+        NSMutableDictionary *jsonResp = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableContainers error:&jsonErr];
+        
+        NSLog(@"edit response: %@", jsonResp);
+        
+        // pop back to the camera
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    }];
+    
+    [request setFailedBlock:^{
+        NSError *err = [request error];
+        
+        NSLog(@"Error: %@", [err localizedDescription]);
+    }];
+    
+    [request startAsynchronous];
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
