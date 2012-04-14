@@ -24,7 +24,7 @@
     self = [super init];
     
     if(self){
-        self.title = @"Tags";
+        self.title = @"Clues";
         items = [[NSMutableArray alloc] init];
         
         [items addObject:@"All Clues"];
