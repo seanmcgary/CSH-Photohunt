@@ -37,33 +37,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        endGameAlert = [[UIAlertView alloc] 
-                        initWithTitle:@"Confirm End Game" 
-                        message:@"Do you really want to end the game?" 
-                        delegate:self 
-                        cancelButtonTitle:@"Nope" 
-                        otherButtonTitles:@"Yeah, end it", nil];
         
-        
-        // Custom initialization
-        self.view.backgroundColor = [UIColor colorWithRed:.90f green:.90f blue:.90f alpha:1];
-        
-        gameIdField = [[UITextField alloc] initWithFrame:
-                       CGRectMake(10, 10, (self.view.frame.size.width - 20), 31)];
-        gameIdField.borderStyle = UITextBorderStyleRoundedRect;
-        gameIdField.placeholder = @"Game Token";
-        gameIdField.autocorrectionType = NO;
-        gameIdField.autocapitalizationType = NO;
-        
-        // login button    
-        loginButton = [[AppLoginButton alloc] initWithFrame:CGRectMake(10, 56, (self.view.frame.size.width - 20), 31)];
-        [self colorButton:loginButton];    
-        [loginButton addTarget:self action:@selector(submitGameId:) forControlEvents:UIControlEventTouchUpInside];
-        
-        // end game button
-        endGameButton = [[AppEndGameButton alloc] initWithFrame:CGRectMake(10, 10, (self.view.frame.size.width - 20), 31)];
-        [self colorButton:endGameButton];
-        [endGameButton addTarget:self action:@selector(endGame:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -71,6 +45,54 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    endGameAlert = [[UIAlertView alloc] 
+                    initWithTitle:@"Confirm End Game" 
+                    message:@"Do you really want to end the game?" 
+                    delegate:self 
+                    cancelButtonTitle:@"Nope" 
+                    otherButtonTitles:@"Yeah, end it", nil];
+    
+    
+    // Custom initialization
+    self.view.backgroundColor = [UIColor colorWithRed:.90f green:.90f blue:.90f alpha:1];
+    
+    gameIdField = [[UITextField alloc] initWithFrame:
+                   CGRectMake(10, 10, (self.view.frame.size.width - 20), 31)];
+    gameIdField.borderStyle = UITextBorderStyleRoundedRect;
+    gameIdField.placeholder = @"Game Token";
+    gameIdField.autocorrectionType = UITextAutocorrectionTypeNo;
+    [gameIdField setAutocapitalizationType: UITextAutocapitalizationTypeNone];
+    
+    // login button    
+    loginButton = [[AppLoginButton alloc] initWithFrame:CGRectMake(10, 56, (self.view.frame.size.width - 20), 31)];
+    [self colorButton:loginButton];    
+    [loginButton addTarget:self action:@selector(submitGameId:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // end game button
+    endGameButton = [[AppEndGameButton alloc] initWithFrame:CGRectMake(10, 10, (self.view.frame.size.width - 20), 31)];
+    [self colorButton:endGameButton];
+    [endGameButton addTarget:self action:@selector(endGame:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // status label
+    statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 140, (self.view.frame.size.width - 20), 31)];
+    statusLabel.backgroundColor = [UIColor clearColor];
+    
+    // spinner
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    spinner.frame = CGRectMake((self.view.frame.size.width - 50) / 2, 150, 50, 50);
+    
+    
+    
+    [self.view addSubview:gameIdField];
+    [self.view addSubview:loginButton];
+    [self.view addSubview:endGameButton];
+    [self.view addSubview:statusLabel];
+    [self.view addSubview:spinner];
+    
+    
+    
 }
 
 - (void) refreshButtonStates
@@ -103,20 +125,7 @@
 {
     NSLog(@"view will appear");
     [self refreshButtonStates];
-    // status label
-    statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 140, (self.view.frame.size.width - 20), 31)];
-    statusLabel.backgroundColor = [UIColor clearColor];
     
-    // spinner
-    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
-    spinner.frame = CGRectMake((self.view.frame.size.width - 50) / 2, 150, 50, 50);
-    
-    [self.view addSubview:gameIdField];
-    [self.view addSubview:loginButton];
-    [self.view addSubview:endGameButton];
-    [self.view addSubview:statusLabel];
-    [self.view addSubview:spinner];
 }
 
 - (void) colorButton: (UIButton *)button

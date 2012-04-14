@@ -79,6 +79,7 @@
 		43E41D60153A0FB30073FD83 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E41D5F153A0FB30073FD83 /* CFNetwork.framework */; };
 		43E41D62153A0FB80073FD83 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E41D61153A0FB80073FD83 /* MobileCoreServices.framework */; };
 		43E41D70153A0FF30073FD83 /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E41D6D153A0FEC0073FD83 /* libSSToolkit.a */; };
+		43E41D75153A21F50073FD83 /* GameIdField.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E41D74153A21F50073FD83 /* GameIdField.m */; };
 		43FFBB17153A0D97009E0751 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43FFBB16153A0D97009E0751 /* UIKit.framework */; };
 		43FFBB19153A0D97009E0751 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43FFBB18153A0D97009E0751 /* Foundation.framework */; };
 		43FFBB1B153A0D97009E0751 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43FFBB1A153A0D97009E0751 /* CoreGraphics.framework */; };
@@ -237,6 +238,8 @@
 		43E41D5F153A0FB30073FD83 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		43E41D61153A0FB80073FD83 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		43E41D63153A0FEC0073FD83 /* SSToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSToolkit.xcodeproj; path = Vendor/SSToolkit/SSToolkit.xcodeproj; sourceTree = "<group>"; };
+		43E41D73153A21F50073FD83 /* GameIdField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameIdField.h; sourceTree = "<group>"; };
+		43E41D74153A21F50073FD83 /* GameIdField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameIdField.m; sourceTree = "<group>"; };
 		43FFBB12153A0D97009E0751 /* photohunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = photohunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43FFBB16153A0D97009E0751 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		43FFBB18153A0D97009E0751 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -445,6 +448,8 @@
 				43E41C7F153A0E230073FD83 /* AppSettingsViewController.m */,
 				43E41C80153A0E230073FD83 /* AppStartViewController.h */,
 				43E41C81153A0E230073FD83 /* AppStartViewController.m */,
+				43E41D73153A21F50073FD83 /* GameIdField.h */,
+				43E41D74153A21F50073FD83 /* GameIdField.m */,
 			);
 			name = AppView;
 			sourceTree = "<group>";
@@ -733,6 +738,7 @@
 				43E41D32153A0E230073FD83 /* ASIS3Request.m in Sources */,
 				43E41D33153A0E230073FD83 /* ASIS3ServiceRequest.m in Sources */,
 				43E41D36153A0E230073FD83 /* TagCell.m in Sources */,
+				43E41D75153A21F50073FD83 /* GameIdField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
