@@ -55,10 +55,10 @@
 - (void) viewDidAppear:(BOOL)animated   
 {
     [super viewDidAppear:animated];
-    NSLog(@"gallery appeared");
+    //NSLog(@"gallery appeared");
     // additional stuff here
     self.photos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
-    NSLog(@"data: %@", self.photos);
+    //NSLog(@"data: %@", self.photos);
     //NSLog(@"Photos list: %@", photos);
     [self.collectionView reloadData];
 }
@@ -131,7 +131,7 @@
 {
 	NSMutableDictionary *photo = [self.photos objectAtIndex:indexPath.row];
     
-    NSLog(@"photo: %@", photo);
+    //NSLog(@"photo: %@", photo);
     
     NSString *imagePath = [photo objectForKey:@"photoPath"];
     

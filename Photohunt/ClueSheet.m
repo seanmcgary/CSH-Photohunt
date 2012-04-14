@@ -28,9 +28,6 @@
 }
 
 - (void) parseClueJSON: (NSMutableDictionary *) json {
-    if([[json objectForKey:@"code"] isKindOfClass:[NSNumber class]]){
-        NSLog(@"integer");
-    }
     
     if([[json objectForKey:@"code"] integerValue] == 0){
         for(id obj in [json objectForKey:@"data"]){
@@ -109,7 +106,6 @@
 }
 
 - (void) getStoredClueSheet {
-    NSLog(@"getting stored sheet");
     NSMutableDictionary *storedClues = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getClueSheet]];
     
     clueList = [storedClues objectForKey:@"clueList"];

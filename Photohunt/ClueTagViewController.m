@@ -74,6 +74,12 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [clues getStoredClueSheet];
+    
+    if(self.isEditingClues){
+        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
+        
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -112,7 +118,6 @@
     NSString *desc = [clues.tagList objectAtIndex:indexPath.row];
     
     cell.textLabel.text = desc;
-    //cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     cell.tagDesc = desc;
     return cell;
 }

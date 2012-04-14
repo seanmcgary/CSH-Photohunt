@@ -56,7 +56,7 @@
     return self;
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void) viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
@@ -108,15 +108,29 @@
 {
     
     NSDictionary *clue = [self.clueList objectAtIndex:indexPath.row];
-    NSLog(@"Photo data in clues table:\n%@", self.photoData);
     ClueCell *cell;
     
     if(self.isEditingClues){
-        NSLog(@"Editing");
         cell = [[ClueCell alloc] initWithClueInfo:clue andPhotoData:self.photoData];
+        
+        NSMutableArray *selectedCluesList = [[NSMutableArray alloc] initWithArray:[photoData objectForKey:@"clues"]];
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        for(NSMutableDictionary *c in selectedCluesList)
+        {
+            if([[c objectForKey:@"id"] integerValue] == [[clue objectForKey:@"id"] integerValue])
+            {
+                
+                cell.contentView.backgroundColor = [UIColor colorWithRed:0 green:1.0f blue:0 alpha:0.1f];
+            }
+        }
+        
     } else {
         cell = [[ClueCell alloc] initWithClueInfo:clue];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    
     
     
     cell.textLabel.text = [clue objectForKey:@"description"];
@@ -169,15 +183,12 @@
 {
     ClueCell *cell = (ClueCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     
-    NSLog(@"Cell: %@", cell.clueInfo);
     ClueDetailViewController *details;
     if(self.isEditingClues){
-        NSLog(@"You selected a clue");
         
         details = [[ClueDetailViewController alloc] initWithClueData:cell.clueInfo withPhotoData:photoData];
         
     } else {
-        NSLog(@"regular table action");
         details = [[ClueDetailViewController alloc] initWithClueData:cell.clueInfo: NO];
     }
     

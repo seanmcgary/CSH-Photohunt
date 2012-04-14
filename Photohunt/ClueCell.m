@@ -15,9 +15,8 @@
 @synthesize isEditingClues;
 
 - (id) initWithClueInfo: (NSDictionary *)clueInfo {
-    self = [super init];
-    NSLog(@"creating clue cell");
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"clueCell"];
+    //self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if(self){
         self.clueInfo = [[NSDictionary alloc] initWithDictionary:clueInfo];
         self.isEditingClues = NO;
@@ -29,11 +28,15 @@
 
 - (id) initWithClueInfo: (NSDictionary *)clueInfo andPhotoData:(NSMutableDictionary *) photoData
 {
-    self = [super init];
+    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"clueCell"];
+    
+    self.editing = YES;
+    
+    self.textLabel.backgroundColor = [UIColor clearColor];
     
     if(self){
         self.clueInfo = [[NSDictionary alloc] initWithDictionary:clueInfo];
-        self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        //self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         self.photoData = [[NSMutableDictionary alloc] initWithDictionary:photoData];
         self.isEditingClues = YES;
     }

@@ -36,12 +36,11 @@
     if(self){
         scrollView = [[UIScrollView alloc] init];
         scrollView.bounces = YES;
-        self.tabBarController.tabBar.hidden = YES;
+        //self.navigationController.toolbarHidden = NO;
         self.photoWithMetaData = photoWithMetaData;
         self.title = @"Edit Photo";
         teamToken = [AppHelper getTeamToken];
         
-        NSLog(@"token: %@", teamToken);
     }
     
     return self;
@@ -72,7 +71,6 @@
     [request setCompletionBlock:^{
         NSData *respData = [[request responseString] dataUsingEncoding:NSUTF8StringEncoding];
         
-        //NSLog(@"server response:\n%@", [[NSString alloc] initWithData:respData encoding:NSUTF8StringEncoding]);
         NSError *jsonErr;
         
         NSMutableDictionary *jsonResp = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableContainers error:&jsonErr];
@@ -117,7 +115,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    
     uploadLabel = [[UILabel alloc] init];
     
     if([[self.photoWithMetaData objectForKey:@"hasBeenUploaded"] integerValue] == 0)
@@ -221,18 +219,38 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)viewDidAppear:(BOOL)animated    
+{
+    [super viewDidAppear:animated];
+    
+    //[self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.photoWithMetaData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoWithMetaData objectForKey:@"photoName"]]];
+    
+    
+}
+
 - (IBAction)doneButtonPressed:(id)sender 
 {
     // if judged == checked && photo is not marked as judged, mark it
     if(self.judgeSwitch.on == YES && [[photoWithMetaData objectForKey:@"judge"] integerValue] == 0)
     {
+        NSLog(@"marking photo as judged");
         [AppHelper markPhotoAsJudged:[photoWithMetaData objectForKey:@"photoName"]];
     }
     
     if(self.judgeSwitch.on == NO && [[photoWithMetaData objectForKey:@"judge"] integerValue] == 1)
     {
+        NSLog(@"UNmarking photo as judged");
         [AppHelper unmarkPhotoAsJudged:[photoWithMetaData objectForKey:@"photoName"]];
     }
+    
+    NSLog(@"DONE - %@", self.photoWithMetaData);
     
     // save the notes field
     [AppHelper setPhotoNotes:notesField.text forPhotoName:[photoWithMetaData objectForKey:@"photoName"]];
@@ -242,7 +260,7 @@
     
     [jsonPayload setObject:notesField.text forKey:@"notes"];
     [jsonPayload setObject:[NSNumber numberWithBool:self.judgeSwitch.on] forKey:@"judge"];
-    [jsonPayload setObject:[[NSArray alloc] init] forKey:@"clues"];
+    [jsonPayload setObject:[[NSArray alloc] initWithArray:[self.photoWithMetaData objectForKey:@"clues"]] forKey:@"clues"];
     
     NSError *jsonParseError;
     NSData* jsonData = [NSJSONSerialization 
@@ -252,13 +270,13 @@
     
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
-    NSLog(@"JSON data?\n %@", jsonString);
+    //NSLog(@"JSON data?\n %@", jsonString);
     NSString *photoId = [photoWithMetaData objectForKey:@"photoId"];
-    NSLog(@"photoid: %@", photoId);
+    //NSLog(@"photoid: %@", photoId);
     
     NSString *urlString = [NSString stringWithFormat:@"https://photohunt.csh.rit.edu/api/photos/edit?id=%@&token=%@", [photoWithMetaData objectForKey:@"photoId"], teamToken];
     
-    NSLog(@"urlString: %@", urlString);
+    //NSLog(@"urlString: %@", urlString);
     
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -307,6 +325,7 @@
 
 - (IBAction)selectClues:(id)sender
 {
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     NSMutableDictionary *clueSheet = [[NSMutableDictionary alloc] initWithDictionary: [AppHelper getClueSheet]];
     
     ClueTagViewController *tagTable = [[ClueTagViewController alloc] initWithPhotoClueData:[photoWithMetaData objectForKey:@"clues"] andPhotoData:photoWithMetaData];

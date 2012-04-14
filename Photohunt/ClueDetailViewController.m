@@ -67,23 +67,15 @@
         
         NSMutableDictionary *storedClue;
         
-        NSLog(@"StoredClue: %@", storedClues);
-        NSLog(@"Clue data: %@", clueData);
-        
         for(NSMutableDictionary *c in storedClues)
         {
-            NSLog(@"clue: %@", c);
             if([[c objectForKey:@"id"] integerValue] == [[clueData objectForKey:@"id"] integerValue])
             {
-                NSLog(@"found clue");
                 storedClue = [[NSMutableDictionary alloc] initWithDictionary:c];
             }
         }
         
-        NSLog(@"Stored clue: %@", storedClue);
-        
         if(storedClue){
-            NSLog(@"clue is selected");
             self.clueIsSelected = YES;
             
             if([[storedClue objectForKey:@"bonuses"] count] > 0){
@@ -94,7 +86,6 @@
             
             
         } else {
-            NSLog(@"clue is not stored");
             self.clueIsSelected = NO;
         }
         
@@ -164,9 +155,9 @@
       @"Tags", @"category",
       [tagList componentsJoinedByString:@", "], @"value", nil]];
     
-    if([[clue objectForKey:@"points"] isKindOfClass:[NSNumber class]]){
-        NSLog(@"Yup, its a number");
-    }
+    //if([[clue objectForKey:@"points"] isKindOfClass:[NSNumber class]]){
+    //    NSLog(@"Yup, its a number");
+   // }
     
     
     [sections addObject:clueDataSection];
@@ -220,14 +211,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
 {
     // The header for the section is the region name -- get this from the region at the section index.
-    //NSLog(@"Section: %u", section);
     return @"";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    //NSLog(@"indexpath: %u", indexPath.section);
     
     if(indexPath.section == 0){
     
@@ -322,7 +310,6 @@
     
     
     if(indexPath.section == 1){
-        NSLog(@"Set to no bonus");
         
         for(NSDictionary *b in [clueData objectForKey:@"bonuses"])
         {
@@ -365,14 +352,11 @@
 
 -(IBAction)saveClue:(id)sender 
 {
-    NSLog(@"Saving clue");
-    NSLog(@"Selections: %@", selectionStatus);
     
     NSMutableDictionary *clueObject = [[NSMutableDictionary alloc] init];
     
     if(self.noBonusSelected && self.clueIsSelected){
         // save with no clues
-        NSLog(@"no bonuses, but clue is selected");
         [clueObject setObject:[self.clueData objectForKey:@"id"] forKey:@"id"];
         [clueObject setObject:[[NSArray alloc] init] forKey:@"bonuses"];
         
@@ -380,7 +364,6 @@
         
     } else if(self.clueIsSelected){
         // bonuses are selected
-        NSLog(@"Bonuses selected and clue is selected");
         [clueObject setObject:[self.clueData objectForKey:@"id"] forKey:@"id"];
         
         NSMutableArray *bonuses = [[NSMutableArray alloc] init];
@@ -401,9 +384,7 @@
         
         
     } else {
-        // no clue and no bonus
-        NSLog(@"Clue is not selected at all");
-        
+        // no clue and no bonus        
         [AppHelper removeClueForPhoto:clueData forPhotoName:[self.photoData objectForKey:@"photoName"]];
         
        

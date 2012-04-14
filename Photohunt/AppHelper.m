@@ -207,6 +207,7 @@
     NSMutableDictionary *gameData = [AppHelper getGameData];
     
     if(gameData){
+        NSLog(@"incrementing judged count");
         NSNumber *photosJudged = [gameData objectForKey:@"photosJudged"];
         
         int val = [photosJudged intValue];
@@ -226,6 +227,7 @@
     NSMutableDictionary *gameData = [AppHelper getGameData];
     
     if(gameData){
+        NSLog(@"decrementing judged count");
         NSNumber *photosJudged = [gameData objectForKey:@"photosJudged"];
         
         int val = [photosJudged intValue];
@@ -302,7 +304,6 @@
             NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
             [updatedPhoto setObject:photoId forKey:@"photoId"];
             [AppHelper updatePhoto:updatedPhoto];
-            [AppHelper decrementJudgedPhotoCount];
         }
     }
 }
@@ -318,7 +319,6 @@
             NSMutableDictionary *updatedPhoto = [[NSMutableDictionary alloc] initWithDictionary:photo];
             [updatedPhoto setObject:notes forKey:@"notes"];
             [AppHelper updatePhoto:updatedPhoto];
-            [AppHelper decrementJudgedPhotoCount];
         }
     }
 }
