@@ -21,18 +21,25 @@
 @synthesize selectionStatus;
 @synthesize noBonusSelected;
 @synthesize clueIsSelected;
+@synthesize editingPhotoClues;
 
 
 - (id) initWithClueData: (NSDictionary *) clue: (BOOL) showBonus {
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     if(self){
+        self.editingPhotoClues = NO;
         self.clueData = [[NSDictionary alloc] initWithDictionary:clue];
         self.showBonus = showBonus;
         
         self.title = @"Clue Info";
         
         [self parseSections:clue];
+        
+        NSArray *bonuses = [[NSArray alloc] initWithArray:[clue objectForKey:@"bonuses"]];
+        [sections addObject:bonuses];
+        
+        NSLog(@"foo: %@", sections);
         
     }
     
@@ -44,7 +51,7 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     if(self){
-        
+        self.editingPhotoClues = YES;
         self.clueData = [[NSDictionary alloc] initWithDictionary:clue];
         self.showBonus = YES;
         self.title = @"Clue Info";
@@ -212,6 +219,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
 {
     // The header for the section is the region name -- get this from the region at the section index.
+    
+    if(section == 1 && self.editingPhotoClues == NO){
+        return @"Bonuses";
+    }
+    
     return @"";
 }
 
@@ -230,15 +242,28 @@
     
         return cell;
     } else if (indexPath.section == 1){
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"nobonus"];
-        
-        cell.textLabel.text = [[sections objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
-        
-        if(self.clueIsSelected == YES){
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if(self.editingPhotoClues){
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"nobonus"];
+            
+            cell.textLabel.text = [[sections objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
+            
+            if(self.clueIsSelected == YES){
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            
+            return cell;
+        } else {
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"nobonus"];
+            
+            cell.textLabel.text = [[[sections objectAtIndex:indexPath.section]objectAtIndex:indexPath.row] objectForKey:@"description"];
+            
+            cell.userInteractionEnabled = NO;
+            
+            
+            
+            return cell;
         }
         
-        return cell;
         
     } else {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"nobonus"];

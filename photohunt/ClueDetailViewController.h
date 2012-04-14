@@ -25,6 +25,8 @@
 @property (strong, nonatomic) NSMutableDictionary *photoClueData;
 @property (readwrite, assign) BOOL clueIsSelected;
 
+@property (readwrite, assign) BOOL editingPhotoClues;
+
 - (id) initWithClueData: (NSDictionary *) clue: (BOOL) showBonus;
 
 - (id) initWithClueData: (NSDictionary *) clue withPhotoData: (NSMutableDictionary *) photoData;
