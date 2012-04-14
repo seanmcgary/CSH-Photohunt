@@ -29,6 +29,8 @@
 
 - (void) parseClueJSON: (NSMutableDictionary *) json {
     
+    [tagList addObject:@"All"];
+    
     if([[json objectForKey:@"code"] integerValue] == 0){
         for(id obj in [json objectForKey:@"data"]){
             // create clue list of ClueData objects
@@ -53,8 +55,14 @@
                     
                     NSArray *clueTags = [[NSArray alloc] initWithArray:[clue objectForKey:@"tags"]];
                     
+                    
+                    if([tag isEqualToString:@"All"]){
+                        [tagClues addObject:clueData];
+                    }
+                    
                     for(NSString *t in clueTags){
-                        if([t isEqualToString:tag]){
+                        if([t isEqualToString:tag])
+                        {
                             [tagClues addObject:clueData];
                         }
                     }
@@ -63,6 +71,8 @@
                 [tagsWithClues setObject:tagClues forKey:tag];
             }
         }
+        
+        NSLog(@"clue list: %@", tagsWithClues);
         
         [self persistClueSheet];
     }
