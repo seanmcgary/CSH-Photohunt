@@ -199,8 +199,9 @@
     
     [notesField setText:[photoWithMetaData objectForKey:@"notes"]];
     
+    
     selectCluesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    selectCluesButton.frame = CGRectMake(10, 424, (self.view.frame.size.width - 20), 31);
+    selectCluesButton.frame = CGRectMake(10, 383, (self.view.frame.size.width - 20), 31);
     [selectCluesButton setTitle:@"Select Clues" forState:UIControlStateNormal];
     [selectCluesButton addTarget:self action:@selector(selectClues:) forControlEvents:UIControlEventTouchUpInside];
     
