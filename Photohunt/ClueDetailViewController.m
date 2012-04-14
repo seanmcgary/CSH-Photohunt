@@ -63,13 +63,69 @@
         // parse clues into the table
         [self parseSections:clue];
         
-        // TODO - change this to check from photo data
-        noBonusSelected = NO;        
+        NSMutableArray *storedClues = [[NSMutableArray alloc] initWithArray:[self.photoData objectForKey:@"clues"]];
+        
+        NSMutableDictionary *storedClue;
+        
+        NSLog(@"StoredClue: %@", storedClues);
+        NSLog(@"Clue data: %@", clueData);
+        
+        for(NSMutableDictionary *c in storedClues)
+        {
+            NSLog(@"clue: %@", c);
+            if([[c objectForKey:@"id"] integerValue] == [[clueData objectForKey:@"id"] integerValue])
+            {
+                NSLog(@"found clue");
+                storedClue = [[NSMutableDictionary alloc] initWithDictionary:c];
+            }
+        }
+        
+        NSLog(@"Stored clue: %@", storedClue);
+        
+        if(storedClue){
+            NSLog(@"clue is selected");
+            self.clueIsSelected = YES;
+            
+            if([[storedClue objectForKey:@"bonuses"] count] > 0){
+                self.noBonusSelected = NO; 
+            } else {
+                self.noBonusSelected = YES;
+            }
+            
+            
+        } else {
+            NSLog(@"clue is not stored");
+            self.clueIsSelected = NO;
+        }
+        
+        
         
         // put the bonuses in the selectionStatus list
         for(NSDictionary *bonus in [clueData objectForKey:@"bonuses"])
         {
-            [selectionStatus setObject:[NSNumber numberWithInt:0] forKey:[bonus objectForKey:@"id"]];
+            
+            if(storedClue){
+                
+                BOOL found = NO;
+                
+                for(NSNumber *bonusId in [storedClue objectForKey:@"bonuses"])
+                {
+                    if([bonusId integerValue] == [[bonus objectForKey:@"id"] integerValue])
+                    {
+                        found = YES;
+                        [selectionStatus setObject:[NSNumber numberWithInt:1] forKey:[bonus objectForKey:@"id"]];
+                        
+                    }
+                }
+                
+                if(found == NO){
+                    [selectionStatus setObject:[NSNumber numberWithInt:0] forKey:[bonus objectForKey:@"id"]];
+                }
+                
+            } else {
+            
+                [selectionStatus setObject:[NSNumber numberWithInt:0] forKey:[bonus objectForKey:@"id"]];
+            }
         }
         
         // add a section to select "No bonus"
@@ -322,10 +378,6 @@
         
         [AppHelper setClueForPhoto:clueObject forPhotoName:[photoData objectForKey:@"photoName"]];
         
-        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
-        
-        NSLog(@"Photodata:\n %@", self.photoData);
-        
     } else if(self.clueIsSelected){
         // bonuses are selected
         NSLog(@"Bonuses selected and clue is selected");
@@ -344,12 +396,9 @@
         
         [clueObject setObject:bonuses forKey:@"bonuses"];
         
-        NSLog(@"Bonuses selected: %@", clueObject);
+        //NSLog(@"Bonuses selected: %@", clueObject);
         [AppHelper setClueForPhoto:clueObject forPhotoName:[photoData objectForKey:@"photoName"]];
         
-        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
-        
-        NSLog(@"Photodata:\n %@", self.photoData);
         
     } else {
         // no clue and no bonus
@@ -357,9 +406,11 @@
         
         [AppHelper removeClueForPhoto:clueData forPhotoName:[self.photoData objectForKey:@"photoName"]];
         
-        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
-        NSLog(@"Photodata:\n %@", self.photoData);
+       
     }
+    
+    self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
+    //NSLog(@"Photodata:\n %@", self.photoData);
 }
 
 @end

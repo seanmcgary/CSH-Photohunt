@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSMutableDictionary *photoData;
 
 @property (strong, nonatomic) NSMutableDictionary *selectionStatus;
+
+// flag marking the "No Bonus" button
 @property (readwrite, assign) BOOL noBonusSelected;
 @property (strong, nonatomic) NSMutableDictionary *photoClueData;
 @property (readwrite, assign) BOOL clueIsSelected;

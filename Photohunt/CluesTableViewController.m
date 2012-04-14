@@ -56,6 +56,17 @@
     return self;
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if(self.isEditingClues){
+        self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
+        
+        [self.tableView reloadData];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -99,6 +110,7 @@
     NSDictionary *clue = [self.clueList objectAtIndex:indexPath.row];
     NSLog(@"Photo data in clues table:\n%@", self.photoData);
     ClueCell *cell;
+    
     if(self.isEditingClues){
         NSLog(@"Editing");
         cell = [[ClueCell alloc] initWithClueInfo:clue andPhotoData:self.photoData];
