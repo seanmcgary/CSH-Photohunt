@@ -121,7 +121,7 @@
         }
         
         // add a section to select "No bonus"
-        [sections addObject:[[NSArray alloc] initWithObjects:@"No Bonus", nil]];
+        [sections addObject:[[NSArray alloc] initWithObjects:@"Select Clue", nil]];
         
         // put the bonuses in a section
         NSArray *bonuses = [[NSArray alloc] initWithArray:[clue objectForKey:@"bonuses"]];
@@ -234,7 +234,7 @@
         
         cell.textLabel.text = [[sections objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
         
-        if(self.noBonusSelected == YES){
+        if(self.clueIsSelected == YES){
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         
@@ -298,35 +298,36 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*ClueCell *cell = (ClueCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    
-    NSLog(@"Cell: %@", cell.clueInfo);
-    
-    ClueDetailViewController *details = [[ClueDetailViewController alloc] initWithClueData:cell.clueInfo];
-    
-    [self.navigationController pushViewController:details animated:YES];
-     */
     
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     
     if(indexPath.section == 1){
         
-        for(NSDictionary *b in [clueData objectForKey:@"bonuses"])
-        {
-            [selectionStatus setObject:[NSNumber numberWithInt:0] forKey:[b objectForKey:@"id"]];
-        }
-        
-        if(self.noBonusSelected == YES){
+        /*if(self.noBonusSelected == YES){
             self.noBonusSelected = NO;
             self.clueIsSelected = NO;
         } else {
             self.noBonusSelected = YES;
             self.clueIsSelected = YES;
+        }*/
+        
+        if(clueIsSelected){
+            self.clueIsSelected = NO;
+            
+            for(NSDictionary *b in [clueData objectForKey:@"bonuses"])
+            {
+                [selectionStatus setObject:[NSNumber numberWithInt:0] forKey:[b objectForKey:@"id"]];
+            }
+            
+        } else {
+            self.clueIsSelected = YES;
         }
+        
+        
     
     } else if(indexPath.section == 2){
-        self.noBonusSelected = NO;
+        //self.noBonusSelected = YES;
         self.clueIsSelected = YES;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
@@ -351,6 +352,20 @@
     
 }
 
+-(int)countSelectedBonuses
+{
+    int counter = 0;
+    
+    for(id bonus in self.selectionStatus)
+    {
+        if([bonus integerValue] == 1){
+            counter++;
+        }
+    }
+    
+    return counter;
+}
+
 -(IBAction)saveClue:(id)sender 
 {
     
@@ -358,8 +373,10 @@
     
     NSMutableDictionary *clueObject = [[NSMutableDictionary alloc] init];
     
-    if(self.noBonusSelected && self.clueIsSelected){
+    
+    if([self countSelectedBonuses] == 0 && self.clueIsSelected){
         // save with no clues
+        NSLog(@"save with no bonuses");
         [clueObject setObject:[self.clueData objectForKey:@"id"] forKey:@"id"];
         [clueObject setObject:[[NSArray alloc] init] forKey:@"bonuses"];
         
@@ -367,6 +384,7 @@
         
     } else if(self.clueIsSelected){
         // bonuses are selected
+        NSLog(@"Save with bonuses");
         [clueObject setObject:[self.clueData objectForKey:@"id"] forKey:@"id"];
         
         NSMutableArray *bonuses = [[NSMutableArray alloc] init];
@@ -387,6 +405,7 @@
         
         
     } else {
+        NSLog(@"Save with no clue and no bonus");
         // no clue and no bonus        
         [AppHelper removeClueForPhoto:clueData forPhotoName:[self.photoData objectForKey:@"photoName"]];
         

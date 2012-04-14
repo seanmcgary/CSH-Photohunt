@@ -35,4 +35,6 @@
 
 - (IBAction)saveClue:(id)sender;
 
+-(int)countSelectedBonuses;
+
 @end
