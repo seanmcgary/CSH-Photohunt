@@ -40,6 +40,7 @@
         self.locMgr = [[CLLocationManager alloc] init];
         self.locMgr.delegate = self;
         
+        
     }
     
     return self;

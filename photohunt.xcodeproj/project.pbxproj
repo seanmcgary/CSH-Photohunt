@@ -420,6 +420,8 @@
 		43E41D3E153A0E900073FD83 /* NavControllers */ = {
 			isa = PBXGroup;
 			children = (
+				43E41C7A153A0E230073FD83 /* AppHomeNavigationController.h */,
+				43E41C7B153A0E230073FD83 /* AppHomeNavigationController.m */,
 				43E41C9C153A0E230073FD83 /* CameraNavigationController.h */,
 				43E41C9D153A0E230073FD83 /* CameraNavigationController.m */,
 				43E41CB9153A0E230073FD83 /* CluesNavigationController.h */,
@@ -437,8 +439,6 @@
 				43E41C75153A0E230073FD83 /* AppCellData.m */,
 				43E41C76153A0E230073FD83 /* AppEndGameButton.h */,
 				43E41C77153A0E230073FD83 /* AppEndGameButton.m */,
-				43E41C7A153A0E230073FD83 /* AppHomeNavigationController.h */,
-				43E41C7B153A0E230073FD83 /* AppHomeNavigationController.m */,
 				43E41C7C153A0E230073FD83 /* AppLoginButton.h */,
 				43E41C7D153A0E230073FD83 /* AppLoginButton.m */,
 				43E41C7E153A0E230073FD83 /* AppSettingsViewController.h */,

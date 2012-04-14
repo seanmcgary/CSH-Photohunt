@@ -61,7 +61,7 @@
         [loginButton addTarget:self action:@selector(submitGameId:) forControlEvents:UIControlEventTouchUpInside];
         
         // end game button
-        endGameButton = [[AppEndGameButton alloc] initWithFrame:CGRectMake(10, 92, (self.view.frame.size.width - 20), 31)];
+        endGameButton = [[AppEndGameButton alloc] initWithFrame:CGRectMake(10, 10, (self.view.frame.size.width - 20), 31)];
         [self colorButton:endGameButton];
         [endGameButton addTarget:self action:@selector(endGame:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -80,11 +80,22 @@
     if(gameStatus){
         [loginButton setEnabled:NO];
         [gameIdField setEnabled:NO];
+        
+        loginButton.hidden = YES;
+        gameIdField.hidden = YES;
+        
         [endGameButton setEnabled:YES];
+        
+        endGameButton.hidden = NO;
     } else {
         [loginButton setEnabled:YES];
         [gameIdField setEnabled:YES];
+        
+        loginButton.hidden = NO;
+        gameIdField.hidden = NO;
+        
         [endGameButton setEnabled:NO];
+        endGameButton.hidden = YES;
     }
 }
 

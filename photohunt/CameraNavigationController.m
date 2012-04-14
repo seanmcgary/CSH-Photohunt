@@ -24,6 +24,8 @@
         cameraView = [[CameraViewController alloc] init];
         self.tabBarItem.title = @"Camera";
         self.tabBarItem.image = [UIImage imageNamed:@"camera2.png"];
+        
+        
     }
     
     return self;
