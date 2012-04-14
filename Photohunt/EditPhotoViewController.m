@@ -114,7 +114,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    // get a scroll view going
+    scrollView.frame = self.view.frame;
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 700);
+    [self.view addSubview:scrollView];
+
     
     uploadLabel = [[UILabel alloc] init];
     
@@ -125,7 +130,7 @@
         
         self.uploadProgress.frame = CGRectMake(10, 210, (self.view.frame.size.width - 20), 31);
         
-        [self.view addSubview:self.uploadProgress];
+        [self.scrollView addSubview:self.uploadProgress];
         
         [uploadLabel setText:@"Uploading..."];
         
@@ -135,13 +140,7 @@
     else 
     {
         [self.uploadLabel setText:@"Uploaded"];
-    }
-    
-
-    //NSLog(@"Frame: %@", self.view.frame);
-    scrollView.frame = self.view.frame;
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 5000);
-    [self.view addSubview:scrollView];
+    }   
     
 
     UIImage *image = [photoWithMetaData objectForKey:@"image"];
