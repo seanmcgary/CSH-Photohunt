@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  photohunt
+//  Photohunt
 //
-//  Created by Sean McGary on 4/14/12.
+//  Created by Sean McGary on 3/24/12.
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
@@ -11,12 +11,18 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize appTabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+
+    appTabBarController = [[AppTabBarController alloc] init];
+    
+    self.window.rootViewController = appTabBarController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
