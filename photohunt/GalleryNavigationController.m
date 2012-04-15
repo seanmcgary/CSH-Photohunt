@@ -23,8 +23,10 @@
     if(self){
         self.tabBarItem.title = @"Gallery";
         self.tabBarItem.image = [UIImage imageNamed:@"gallery.png"];
-        //[self setNavigationBarHidden:YES];
+        [self setNavigationBarHidden:YES];
         self.collectionView = [[GalleryCollectionViewController alloc] init];
+        
+        //self.toolbarHidden = YES;
     }
     
     return self;

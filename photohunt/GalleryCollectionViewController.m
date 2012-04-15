@@ -25,6 +25,7 @@
         self.view.backgroundColor = [UIColor blackColor];
         
         self.photos = [[NSMutableArray alloc] init];
+        
     }
     
     return self;
@@ -43,6 +44,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setToolbarHidden:YES];
 }
 
 - (void)viewDidUnload
@@ -58,6 +62,7 @@
     //NSLog(@"gallery appeared");
     // additional stuff here
     self.photos = [[NSMutableArray alloc] initWithArray:[AppHelper getSavedPhotos]];
+    
     //NSLog(@"data: %@", self.photos);
     //NSLog(@"Photos list: %@", photos);
     [self.collectionView reloadData];
@@ -112,12 +117,11 @@
 }
 
 
-- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSUInteger)section {
-	SSLabel *header = [[SSLabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
-	header.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	header.text = [NSString stringWithFormat:@"Saved Photos", section + 1];
-	return nil;
-}
+/*- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSUInteger)section {
+	SSLabel *header = [[SSLabel alloc] initWithFrame:CGRectMake(0,0,0,0)];
+	//header.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	return header;
+}*/
 
 
 #pragma mark - SSCollectionViewDelegate

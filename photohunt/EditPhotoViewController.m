@@ -96,6 +96,8 @@
         NSError *err = [request error];
         
         NSLog(@"Error: %@", [err localizedDescription]);
+        
+        self.uploadLabel.text = @"Network Error, upload failed";
     }];
     
     [request startAsynchronous];
@@ -116,17 +118,26 @@
     [super viewDidLoad];
     
     // get a scroll view going
-    scrollView.frame = self.view.frame;
+    
     
     int yOffset = 0;
     
     if(self.navigationController.navigationBarHidden){
+        NSLog(@"navbar hidden");
         [self.navigationController setNavigationBarHidden:NO animated:YES];
+        
         //scrollView.frame.origin = CGPointMake(0, 50);
         
-        yOffset = 50;
+        yOffset = 30;
         
     } 
+    
+    scrollView.frame = self.view.frame;
+    
+    if(self.navigationController.toolbarHidden){
+        NSLog(@"toolbar hidden");
+        //yOffset = 0;
+    }
     
     scrollView.frame = CGRectMake(0, yOffset, (self.view.frame.size.width), self.view.frame.size.height);
     
@@ -251,6 +262,8 @@
     
     self.photoWithMetaData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoWithMetaData objectForKey:@"photoName"]]];
     
+    self.view.frame = [[UIScreen mainScreen] applicationFrame];
+    self.scrollView.frame = self.view.frame;
     
 }
 
