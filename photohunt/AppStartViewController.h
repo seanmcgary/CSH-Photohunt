@@ -10,6 +10,7 @@
 #import "AppCell.h"
 #import "AppCellData.h"
 #import "AppSettingsViewController.h"
+#import "AppPhotoUploadViewController.h"
 
 @interface AppStartViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

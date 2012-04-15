@@ -80,6 +80,9 @@
 		43E41D62153A0FB80073FD83 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E41D61153A0FB80073FD83 /* MobileCoreServices.framework */; };
 		43E41D70153A0FF30073FD83 /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E41D6D153A0FEC0073FD83 /* libSSToolkit.a */; };
 		43E41D75153A21F50073FD83 /* GameIdField.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E41D74153A21F50073FD83 /* GameIdField.m */; };
+		43E41D8E153B5FFE0073FD83 /* AppPhotoUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E41D8D153B5FFE0073FD83 /* AppPhotoUploadViewController.m */; };
+		43E41D95153B68B20073FD83 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 43E41D94153B68B20073FD83 /* upload.png */; };
+		43E41D98153B753E0073FD83 /* PhotoUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E41D97153B753D0073FD83 /* PhotoUploadCell.m */; };
 		43FFBB17153A0D97009E0751 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43FFBB16153A0D97009E0751 /* UIKit.framework */; };
 		43FFBB19153A0D97009E0751 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43FFBB18153A0D97009E0751 /* Foundation.framework */; };
 		43FFBB1B153A0D97009E0751 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43FFBB1A153A0D97009E0751 /* CoreGraphics.framework */; };
@@ -240,6 +243,11 @@
 		43E41D63153A0FEC0073FD83 /* SSToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSToolkit.xcodeproj; path = Vendor/SSToolkit/SSToolkit.xcodeproj; sourceTree = "<group>"; };
 		43E41D73153A21F50073FD83 /* GameIdField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameIdField.h; sourceTree = "<group>"; };
 		43E41D74153A21F50073FD83 /* GameIdField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameIdField.m; sourceTree = "<group>"; };
+		43E41D8C153B5FFD0073FD83 /* AppPhotoUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPhotoUploadViewController.h; sourceTree = "<group>"; };
+		43E41D8D153B5FFE0073FD83 /* AppPhotoUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPhotoUploadViewController.m; sourceTree = "<group>"; };
+		43E41D94153B68B20073FD83 /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
+		43E41D96153B753D0073FD83 /* PhotoUploadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoUploadCell.h; sourceTree = "<group>"; };
+		43E41D97153B753D0073FD83 /* PhotoUploadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUploadCell.m; sourceTree = "<group>"; };
 		43FFBB12153A0D97009E0751 /* photohunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = photohunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43FFBB16153A0D97009E0751 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		43FFBB18153A0D97009E0751 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -394,6 +402,7 @@
 		43E41D3C153A0E6E0073FD83 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				43E41D94153B68B20073FD83 /* upload.png */,
 				43E41C9B153A0E230073FD83 /* camera2.png */,
 				43E41CB5153A0E230073FD83 /* clues.png */,
 				43E41CB6153A0E230073FD83 /* clues2.png */,
@@ -450,6 +459,10 @@
 				43E41C81153A0E230073FD83 /* AppStartViewController.m */,
 				43E41D73153A21F50073FD83 /* GameIdField.h */,
 				43E41D74153A21F50073FD83 /* GameIdField.m */,
+				43E41D8C153B5FFD0073FD83 /* AppPhotoUploadViewController.h */,
+				43E41D8D153B5FFE0073FD83 /* AppPhotoUploadViewController.m */,
+				43E41D96153B753D0073FD83 /* PhotoUploadCell.h */,
+				43E41D97153B753D0073FD83 /* PhotoUploadCell.m */,
 			);
 			name = AppView;
 			sourceTree = "<group>";
@@ -678,6 +691,7 @@
 				43E41D34153A0E230073FD83 /* save-clicked.png in Resources */,
 				43E41D35153A0E230073FD83 /* save.png in Resources */,
 				43E41D37153A0E230073FD83 /* test_photo.JPG in Resources */,
+				43E41D95153B68B20073FD83 /* upload.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +753,8 @@
 				43E41D33153A0E230073FD83 /* ASIS3ServiceRequest.m in Sources */,
 				43E41D36153A0E230073FD83 /* TagCell.m in Sources */,
 				43E41D75153A21F50073FD83 /* GameIdField.m in Sources */,
+				43E41D8E153B5FFE0073FD83 /* AppPhotoUploadViewController.m in Sources */,
+				43E41D98153B753E0073FD83 /* PhotoUploadCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

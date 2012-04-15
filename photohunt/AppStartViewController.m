@@ -36,6 +36,7 @@
 {
     NSMutableDictionary *gameData = [AppHelper getGameData];
     NSArray *settings = [[NSArray alloc] initWithObjects:@"Settings", nil];
+    NSArray *downloads = [[NSArray alloc] initWithObjects:@"Photo Upload Status", nil];
     
     if(gameData == nil){
         requiresLogin = YES;
@@ -51,7 +52,7 @@
                  [[AppCellData alloc] initWithData:@"Time Left" :@"4:12"],
                  nil];
         
-        sections = [[NSArray alloc] initWithObjects:cells, settings, nil];
+        sections = [[NSArray alloc] initWithObjects:cells, settings, downloads, nil];
     }
     
     tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStyleGrouped];
@@ -136,7 +137,7 @@
     
         return cell;
         
-    } else {
+    } else if (indexPath.section == 1){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
         
         if (cell == nil) {
@@ -148,15 +149,33 @@
         
         
         return cell;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
+        }
+        
+        cell.textLabel.text = @"Photo Upload Status";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        return cell;
     }
 
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AppSettingsViewController *settings = [[AppSettingsViewController alloc] init];
     
-    [self.navigationController pushViewController:settings animated:YES];
+    if(indexPath.section == 1){
+        AppSettingsViewController *settings = [[AppSettingsViewController alloc] init];
+    
+        [self.navigationController pushViewController:settings animated:YES];
+    } else {
+        AppPhotoUploadViewController *uploads = [[AppPhotoUploadViewController   alloc] init];
+        
+        [self.navigationController pushViewController:uploads animated:YES];
+    }
 }
 
 @end
