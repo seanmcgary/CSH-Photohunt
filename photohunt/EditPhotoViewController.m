@@ -122,24 +122,21 @@
     
     int yOffset = 0;
     
+    
+    
     if(self.navigationController.navigationBarHidden){
         NSLog(@"navbar hidden");
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         
-        //scrollView.frame.origin = CGPointMake(0, 50);
-        
-        yOffset = 30;
+        if([self.parentViewController isKindOfClass:[UIImagePickerController class]])
+        {
+            yOffset = 50;
+        }
         
     } 
     
-    scrollView.frame = self.view.frame;
+    scrollView.frame = CGRectMake(self.view.frame.origin.x, yOffset, self.view.frame.size.width, self.view.frame.size.height);
     
-    if(self.navigationController.toolbarHidden){
-        NSLog(@"toolbar hidden");
-        //yOffset = 0;
-    }
-    
-    scrollView.frame = CGRectMake(0, yOffset, (self.view.frame.size.width), self.view.frame.size.height);
     
 
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 700);
@@ -252,8 +249,6 @@
 - (void)viewDidAppear:(BOOL)animated    
 {
     [super viewDidAppear:animated];
-    
-    //[self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -261,9 +256,6 @@
     [super viewDidAppear:animated];
     
     self.photoWithMetaData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoWithMetaData objectForKey:@"photoName"]]];
-    
-    self.view.frame = [[UIScreen mainScreen] applicationFrame];
-    self.scrollView.frame = self.view.frame;
     
 }
 

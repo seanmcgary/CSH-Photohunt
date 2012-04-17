@@ -38,8 +38,7 @@
         self.delegate = self;
         
         self.locMgr = [[CLLocationManager alloc] init];
-        self.locMgr.delegate = self;
-        
+        self.locMgr.delegate = self;        
         
     }
     
@@ -127,6 +126,9 @@
     // add the image to the container to pass it off to the edit view
     [photoContainer setObject:image forKey:@"image"];
     EditPhotoViewController *editPhoto = [[EditPhotoViewController alloc] initWithPhoto:photoContainer];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     
     [self pushViewController:editPhoto animated:YES];
 }
