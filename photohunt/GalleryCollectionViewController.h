@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) NSMutableArray *photos;
 
+@property (strong, nonatomic) NSMutableDictionary *loadedPhotoItems;
+
 - (id) init;
 
 @end

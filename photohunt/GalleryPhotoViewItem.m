@@ -48,7 +48,6 @@
             if (photo)
             {
                 
-                NSLog(@"Photo found");
                 photoImage = [[UIImage alloc] initWithData:photo];
                 
                 UIImage *newImage = [AppHelper imageWithImage:photoImage scaledToSize:CGSizeMake(200, 200)];
@@ -57,10 +56,6 @@
                 self.imageView.backgroundColor = [UIColor blackColor];
                 
             }
-        }
-        else
-        {
-            NSLog(@"File does not exist");
         }
     }
     

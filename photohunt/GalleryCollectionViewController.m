@@ -15,6 +15,7 @@
 @implementation GalleryCollectionViewController
 
 @synthesize photos;
+@synthesize loadedPhotoItems;
 
 - (id) init 
 {
@@ -25,6 +26,8 @@
         self.view.backgroundColor = [UIColor blackColor];
         
         self.photos = [[NSMutableArray alloc] init];
+        
+        self.loadedPhotoItems = [[NSMutableDictionary alloc] init];
         
     }
     
@@ -99,14 +102,14 @@
     
     NSString *photoPath = [photoData objectForKey:@"photoPath"];
     
-    GalleryPhotoViewItem *item = [[GalleryPhotoViewItem alloc] initWithImagePath:photoPath];
     
     
+    GalleryPhotoViewItem *item = [self.loadedPhotoItems objectForKey:photoPath];
     
-    // get the image from disk
-    //UIImage *photo = [[UIImage alloc] initWithContentsOfFile:[photoData objectForKey:@"photoPath"]];
-    
-    
+    if(!item){
+        item = [[GalleryPhotoViewItem alloc] initWithImagePath:photoPath];
+        [self.loadedPhotoItems setObject:item forKey:photoPath];
+    }   
     
 	return item;
 }
