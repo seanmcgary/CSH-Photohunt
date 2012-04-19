@@ -133,4 +133,9 @@
     [self pushViewController:editPhoto animated:YES];
 }
 
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self.tabBarController setSelectedIndex:2];
+}
+
 @end

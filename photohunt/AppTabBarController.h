@@ -18,6 +18,8 @@
 
 - (id) init;
 
+- (void)switchToGallery;
+
 @property (strong, nonatomic) CameraViewController *cameraView;
 
 @property (strong, nonatomic) CluesNavigationController *cluesNavController; 
