@@ -27,6 +27,10 @@
 
 @property (readwrite, assign) BOOL editingPhotoClues;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *barButton;
+
+@property (strong, nonatomic) UIAlertView *savedCluesAlert;
+
 - (id) initWithClueData: (NSDictionary *) clue: (BOOL) showBonus;
 
 - (id) initWithClueData: (NSDictionary *) clue withPhotoData: (NSMutableDictionary *) photoData;

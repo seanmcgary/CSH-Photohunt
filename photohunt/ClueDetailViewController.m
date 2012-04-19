@@ -22,6 +22,8 @@
 @synthesize noBonusSelected;
 @synthesize clueIsSelected;
 @synthesize editingPhotoClues;
+@synthesize barButton;
+@synthesize savedCluesAlert;
 
 
 - (id) initWithClueData: (NSDictionary *) clue: (BOOL) showBonus {
@@ -31,6 +33,7 @@
         self.editingPhotoClues = NO;
         self.clueData = [[NSDictionary alloc] initWithDictionary:clue];
         self.showBonus = showBonus;
+        
         
         self.title = @"Clue Info";
         
@@ -57,12 +60,19 @@
         self.title = @"Clue Info";
         self.photoData = [[NSMutableDictionary alloc] initWithDictionary:photoData];
         
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] 
+        self.savedCluesAlert = [[UIAlertView alloc] 
+                                initWithTitle:@"Clue Saved" 
+                                message:@"Clue Saved" 
+                                delegate:nil 
+                                cancelButtonTitle:@"Ok" 
+                                otherButtonTitles:nil, 
+                                nil];
+        
+        barButton = [[UIBarButtonItem alloc] 
                                       initWithTitle:@"Save"
                                       style:UIBarButtonItemStyleBordered
                                       target:self
                                       action:@selector(saveClue:)];
-        
         
         
         self.navigationItem.rightBarButtonItem = barButton;
@@ -393,11 +403,10 @@
 
 -(IBAction)saveClue:(id)sender 
 {
-    
-    
-    
     NSMutableDictionary *clueObject = [[NSMutableDictionary alloc] init];
     
+    [savedCluesAlert show];
+    NSLog(@"save clues alert");
     
     if([self countSelectedBonuses] == 0 && self.clueIsSelected){
         // save with no clues
@@ -438,7 +447,8 @@
     }
     
     self.photoData = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getPhotoDataForPhotoName:[self.photoData objectForKey:@"photoName"]]];
-    //NSLog(@"Photodata:\n %@", self.photoData);
+    
+    
 }
 
 @end
