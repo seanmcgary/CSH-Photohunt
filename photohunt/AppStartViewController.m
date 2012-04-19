@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 RIT. All rights reserved.
 //
 
+#include <math.h>
+
 #import "AppStartViewController.h"
 
 @interface AppStartViewController ()
@@ -43,14 +45,40 @@
         sections = [[NSArray alloc] initWithObjects:settings, nil];
     } else {
         requiresLogin = NO;
+        
+        NSString *dateString = [NSString stringWithFormat:@"%@", [gameData objectForKey:@"endTime"]];
+        
+        ISO8601DateFormatter *dateFormatter = [[ISO8601DateFormatter alloc] init];
+        
+        NSDate *endDate;
+        endDate = [dateFormatter dateFromString:dateString];
+        
+        NSDate *now = [NSDate date];
+        
+        NSTimeInterval diff = [endDate timeIntervalSinceDate:now];
+        
+        NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        
+        NSDateComponents *components = [gregorianCalendar components:
+                                        NSMinuteCalendarUnit
+                                        fromDate:now    
+                                        toDate:endDate
+                                        options:0];
+        
+        int hoursRemain = [components minute] / 60;
+        
+        int minutesRemain = ([components minute] - (hoursRemain * 60));
+        
         NSLog(@"Game data: %@", gameData);
         cells = [[NSArray alloc] initWithObjects: 
                  [[AppCellData alloc] initWithData:@"Team Name" :[gameData objectForKey:@"team"]],
                  [[AppCellData alloc] initWithData:@"Photos Taken" :[NSString stringWithFormat:@"%u/%u", [[gameData objectForKey:@"photosTaken"] integerValue], [[gameData objectForKey:@"maxPhotos"] integerValue]]],
                  [[AppCellData alloc] initWithData:@"Photos Submitted" :[NSString stringWithFormat:@"%u/%u", [[gameData objectForKey:@"photosJudged"] integerValue], [[gameData objectForKey:@"maxJudgedPhotos"] integerValue]]],
                  [[AppCellData alloc] initWithData:@"Potential Points" :[NSString stringWithFormat:@"%u", [[gameData objectForKey:@"pointsSubmitted"] integerValue]]],
-                 [[AppCellData alloc] initWithData:@"Time Left" :@"4:12"],
+                 [[AppCellData alloc] initWithData:@"Time Left" :[NSString stringWithFormat:@"%u:%u", hoursRemain, minutesRemain]],
                  nil];
+        
+        
         
         sections = [[NSArray alloc] initWithObjects:cells, settings, downloads, nil];
     }
