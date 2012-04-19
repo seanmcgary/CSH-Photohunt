@@ -70,6 +70,10 @@ static inline double radians (double degrees) {
 
 +(UIImage *)imageWithImage: (UIImage*)sourceImage scaledToSize:(CGSize)newSize;
 
++(void) deleteAllPhotos;
+
++(void) deletePhoto: (NSString *)photoPath;
+
 
 
 @end

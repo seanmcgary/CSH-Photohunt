@@ -100,12 +100,14 @@
 
 +(void) endGame
 {
+    
+    [AppHelper deleteAllPhotos];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:@"PH_gameData"];
     [defaults setBool:NO forKey:@"PH_gameState"];
-    
-    // delete other data here too
-    //[defaults setBool:NO forKey:@"PH_savedPhotos"];
+    [defaults removeObjectForKey:@"PH_savedPhotos"];
+    [defaults removeObjectForKey:@"PH_clueSheet"];
     
     [defaults synchronize];
     
@@ -493,6 +495,28 @@
     CGImageRelease(ref);
     
     return newImage; 
+}
+
++(void) deleteAllPhotos
+{
+    NSMutableArray *photos = [AppHelper getSavedPhotos];
+    
+    for(NSMutableDictionary *photo in photos)
+    {
+        [AppHelper deletePhoto:[photo objectForKey:@"photoPath"]];
+    }
+}
+
++(void) deletePhoto: (NSString *)photoPath
+{
+    NSFileManager *fileManger = [NSFileManager defaultManager];
+    
+    NSError *err;
+    
+    if([fileManger removeItemAtPath:photoPath error:&err] != YES)
+    {
+        NSLog(@"Error deleting file %@", photoPath);
+    }
 }
 
 @end
